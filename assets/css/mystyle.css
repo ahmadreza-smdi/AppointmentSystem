@@ -1,0 +1,10 @@
+.my_crausel{
+  height: auto;
+  width: auto;
+  max-width: 1150px;
+  max-height: 600px;
+}
+.my_footer{
+  background-color:#bbb;
+  color: #555;
+}
