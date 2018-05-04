@@ -2,6 +2,10 @@
     require_once ('functions.php');
     session_start();
     $job=$_REQUEST['job'];
+    if($job == 'session_des'){
+        session_des();
+        header("location:index.php?msg='you are now sign out'");
+    }
     if($job=='register'){
         $identity = $_REQUEST['r_identity'];
         $phone = $_REQUEST['r_phone'];
@@ -24,14 +28,14 @@
         $res=$link->query($query1);
         if(mysqli_num_rows($res)==0){
             if($link->query($query2)){
-                header('location:lr.php?msg=well done');
+                header('location:index.php?msg=well done');
             }
             else{
                 header('location:lr.php?msg=faild');
             }
         }
         else{
-            header('location:lr?msg=user are registered');
+            header('location:lr.php?msg=user are registered');
         }
         db_dis($link);
         
@@ -56,9 +60,9 @@
             $_SESSION['phone']=$row['phone'];
             $_SESSION['address']=$row['address'];
             $_SESSION['password']=$row['password'];
-            header("location:lr.php?msg=well done");
+            header("location:index.php?msg=well done");
         }
         else{
-           header('location:lr?msg=user are not exist');
+           header('location:lr.php?msg=user are not exist');
         }
     }

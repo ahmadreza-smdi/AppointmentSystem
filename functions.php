@@ -12,3 +12,6 @@ function db_connect(){
 function db_dis($link){
     $link->close();
 }
+function session_des(){
+    session_destroy();
+}

@@ -98,7 +98,7 @@
                                     <input id="r_type" name="r_type" value="doctor" required="required" type="radio"/>
                                 </p>
                                 <p class="signin button"> 
-									<input type="submit" value="Sign up"/> 
+									<input type="submit" value="ثبت نام"/> 
 								</p>
                                 <p class="change_link">  
 									قبلا ثبت نام کرده ام ?
