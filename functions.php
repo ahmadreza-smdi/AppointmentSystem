@@ -15,3 +15,9 @@ function db_dis($link){
 function session_des(){
     session_destroy();
 }
+function select_doctor($exp_id){
+    $link = db_connect();
+    $query = "select * from doctor where expertise_id='".$exp_id."'";
+    $res = $link->query($query);
+    return $res;
+}
