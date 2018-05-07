@@ -4,7 +4,8 @@
         <?php
             //include_once("css_links.php");
             //include_once("js_links.php");
-        include_once("functions.php");
+            include_once("functions.php");
+            getCliniksCities();
         ?>
 
 
@@ -17,11 +18,19 @@
         <select name="expertise">
         <option value="">-----------------</option>
         <?php
-        
         $expArray = getExpertises();
-        
         foreach($expArray as $exp){
-            echo '<option value="'."exp".'">'.$exp.'</option>';
+            echo '<option value="'.$exp.'">'.$exp.'</option>';
+        }
+        ?>
+        </select>
+        
+        <select name="city">
+        <option value="">-----------------</option>
+        <?php
+        $cities = getCliniksCities();
+        foreach($cities as $city){
+            echo '<option value="'.$city.'">'.$city.'</option>';
         }
         ?>
         </select>

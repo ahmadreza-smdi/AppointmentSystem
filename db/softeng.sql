@@ -25,6 +25,7 @@ DROP TABLE IF EXISTS `cliniks`;
 CREATE TABLE `cliniks` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `clinik` varchar(45) NOT NULL,
+  `city` varchar(45) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `id_UNIQUE` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
