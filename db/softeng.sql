@@ -82,10 +82,13 @@ CREATE TABLE `doctor` (
   `address` varchar(45) NOT NULL,
   `phone` varchar(45) NOT NULL,
   `password` varchar(45) NOT NULL,
+  `expertise_id` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `id_UNIQUE` (`id`),
   UNIQUE KEY `identity_UNIQUE` (`identity`),
-  UNIQUE KEY `phone_UNIQUE` (`phone`)
+  UNIQUE KEY `phone_UNIQUE` (`phone`),
+  UNIQUE KEY `expertise_UNIQUE` (`expertise_id`),
+  CONSTRAINT `fk_expertise_id_1` FOREIGN KEY (`expertise_id`) REFERENCES `expertise` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -99,6 +102,31 @@ LOCK TABLES `doctor` WRITE;
 UNLOCK TABLES;
 
 --
+-- Table structure for table `expertise`
+--
+
+DROP TABLE IF EXISTS `expertise`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `expertise` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(45) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `id_UNIQUE` (`id`),
+  UNIQUE KEY `name_UNIQUE` (`name`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `expertise`
+--
+
+LOCK TABLES `expertise` WRITE;
+/*!40000 ALTER TABLE `expertise` DISABLE KEYS */;
+/*!40000 ALTER TABLE `expertise` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `free`
 --
 
@@ -109,6 +137,9 @@ CREATE TABLE `free` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `date` varchar(45) NOT NULL,
   `doctor_id` int(11) NOT NULL,
+  `day` varchar(45) NOT NULL,
+  `month` varchar(45) NOT NULL,
+  `year` varchar(45) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `id_UNIQUE` (`id`),
   UNIQUE KEY `free_UNIQUE` (`date`),
@@ -143,10 +174,9 @@ CREATE TABLE `patient` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `identity` varchar(45) NOT NULL,
   PRIMARY KEY (`id`),
-  UNIQUE KEY `password_UNIQUE` (`password`),
   UNIQUE KEY `identity_UNIQUE` (`identity`),
   UNIQUE KEY `id_UNIQUE` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -155,6 +185,7 @@ CREATE TABLE `patient` (
 
 LOCK TABLES `patient` WRITE;
 /*!40000 ALTER TABLE `patient` DISABLE KEYS */;
+INSERT INTO `patient` VALUES ('qwe','qwe','qwe',NULL,'qwe','qwe',1,'qwe');
 /*!40000 ALTER TABLE `patient` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -169,6 +200,9 @@ CREATE TABLE `reserve` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `doctor_id` int(11) NOT NULL,
   `patient_id` int(11) NOT NULL,
+  `day` datetime NOT NULL,
+  `month` varchar(45) NOT NULL,
+  `year` varchar(45) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `id_UNIQUE` (`id`),
   UNIQUE KEY `doctor_id_UNIQUE` (`doctor_id`),
@@ -196,4 +230,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-05-02 17:46:25
+-- Dump completed on 2018-05-07  8:30:56
