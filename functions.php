@@ -18,11 +18,11 @@ function session_des(){
 
 function getExpertises(){
     $conn = db_connect();
-    $sql = "SELECT name FROM expertise";
+    $sql = "SELECT id,name FROM expertise";
     $result = $conn->query($sql);
     $out=Array();
     $index=0;
-    while ($row = mysqli_fetch_array($result)) $out[$index++] = $row['name'];
+    while ($row = mysqli_fetch_array($result)) $out[$index++] = $row;
     
     $conn->close();
     return $out;
