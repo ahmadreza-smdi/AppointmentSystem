@@ -16,15 +16,13 @@
         $type = $_REQUEST['r_type'];
         $link=db_connect();
         if($type == 'doctor'){
-            $query1="select * from doctor where identity='".mysqli_real_escape_string($link,$identity)."'";
-            $query2="insert into doctor set identity='".mysqli_real_escape_string($link,$identity)."',name='".mysqli_real_escape_string($link,$name)."',address='".mysqli_real_escape_string($link,$address)."',phone='".mysqli_real_escape_string($link,$phone)."',password='".mysqli_real_escape_string($link,$password)."'";
+            $query1="select * from doctors where identity='".mysqli_real_escape_string($link,$identity)."'";
+            $query2="insert into doctors set identity='".mysqli_real_escape_string($link,$identity)."',name='".mysqli_real_escape_string($link,$name)."',address='".mysqli_real_escape_string($link,$address)."',phone='".mysqli_real_escape_string($link,$phone)."',password='".mysqli_real_escape_string($link,$password)."'";
         }
         else{
-            $query1="select * from patient where identity='".mysqli_real_escape_string($link,$identity)."'";
-            $query2="insert into patient set identity='".mysqli_real_escape_string($link,$identity)."',blood_type='".mysqli_real_escape_string($link,$blood_type)."',name='".mysqli_real_escape_string($link,$name)."',address='".mysqli_real_escape_string($link,$address)."',phone='".mysqli_real_escape_string($link,$phone)."',password='".mysqli_real_escape_string($link,$password)."'";
+            $query1="select * from patients where identity='".mysqli_real_escape_string($link,$identity)."'";
+            $query2="insert into patients set identity='".mysqli_real_escape_string($link,$identity)."',blood_type='".mysqli_real_escape_string($link,$blood_type)."',name='".mysqli_real_escape_string($link,$name)."',address='".mysqli_real_escape_string($link,$address)."',phone='".mysqli_real_escape_string($link,$phone)."',password='".mysqli_real_escape_string($link,$password)."'";
         }
-        echo $query1;
-        echo $query2;
         $res=$link->query($query1);
         if(mysqli_num_rows($res)==0){
             if($link->query($query2)){
@@ -46,10 +44,10 @@
         $type = $_REQUEST['type'];
         $link=db_connect();
         if($type == "patient"){
-            $query="select * from patient where identity='".mysqli_real_escape_string($link,$identity)."' and password='".mysqli_real_escape_string($link,$password)."'";
+            $query="select * from patients where identity='".mysqli_real_escape_string($link,$identity)."' and password='".mysqli_real_escape_string($link,$password)."'";
         }
         else{
-            $query="select * from doctor where identity='".mysqli_real_escape_string($link,$identity)."' and password='".mysqli_real_escape_string($link,$password)."'";
+            $query="select * from doctors where identity='".mysqli_real_escape_string($link,$identity)."' and password='".mysqli_real_escape_string($link,$password)."'";
         }
         
         $res=$link->query($query);
