@@ -43,7 +43,7 @@ function getCliniksCities(){
 
 function select_doctor($exp_id){
     $link = db_connect();
-    $query = "select * from doctor where expertise_id='".$exp_id."'";
+    $query = "select * from doctors where expertise_id='".$exp_id."'";
     $res = $link->query($query);
     return $res;
 
@@ -51,7 +51,7 @@ function select_doctor($exp_id){
 
 function getPatient($identity){
     $conn = db_connect();
-    $sql = "SELECT * FROM patient WHERE identity='$identity'";
+    $sql = "SELECT * FROM patients WHERE identity='$identity'";
     $result = $conn->query($sql);
     if($result===false) return false;
     $out = mysqli_fetch_array($result);

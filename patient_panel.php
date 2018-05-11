@@ -55,7 +55,7 @@
             $password = $_POST['inp_pass'];
             $newIdentity = $_POST['inp_identity'];
             
-            $sql="update patient set name='$name', phone='$phone', address='$address', disease='$disease',"
+            $sql="update patients set name='$name', phone='$phone', address='$address', disease='$disease',"
                     . "blood_type='$blood_type', password='$password', identity='$newIdentity' WHERE identity='$identity'";
     
             if ($conn->query($sql) === TRUE) {
