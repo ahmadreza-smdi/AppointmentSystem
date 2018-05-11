@@ -48,3 +48,20 @@ function select_doctor($exp_id){
     return $res;
 
 }
+
+function getPatient($identity){
+    $conn = db_connect();
+    $sql = "SELECT * FROM patient WHERE identity='$identity'";
+    $result = $conn->query($sql);
+    if($result===false) return false;
+    $out = mysqli_fetch_array($result);
+    
+    $conn->close();
+    return $out;
+}
+
+function boldEcho($str,$color,$beforeBR=1,$afterBR=0){
+    for($i=0; $beforeBR>$i; $i++) echo '<br>';
+    echo '<b><font color="'.$color.'">'.$str.'</font></b>';
+    for($i=0; $afterBR>$i; $i++) echo '<br>';
+}
