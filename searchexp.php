@@ -18,7 +18,7 @@
 
             let findId = false;
             for(let i=0; expArray.length>i; i++)
-                if(expInp == expArray[i]['name'])
+                if(expInp === expArray[i]['expertise_name'])
                     findId=expArray[i]['id'];
             if(findId===false){
                 alert("تخصص مورد نظر یافت نشد!");
@@ -28,7 +28,7 @@
 
             let findCity = false;
             for(let i=0; citiesArray.length>i; i++)
-                if(cityInp == citiesArray[i])
+                if(cityInp === citiesArray[i])
                     findCity=citiesArray[i];
             if(findCity===false){
                 alert("شهر مورد نظر یافت نشد!");
@@ -46,22 +46,22 @@
     <form action="select_doctor.php" method="get" style="direction: rtl;">
 
         تخصص: <input id="txt_exp" type="text" list="list_exp" autocomplete="off" /><br>
-    <datalist id="list_exp" name="list_exp">
+        <datalist id="list_exp" name="list_exp">
         <?php
             foreach($expertieses as $exp){
-                echo '<option value="'.$exp['name'].'">'.$exp['name'].'</option>';
+                echo '<option value="'.$exp['expertise_name'].'">'.$exp['expertise_name'].'</option>';
             }
         ?>
-    </datalist>
+        </datalist>
 
         شهر: <input id="txt_city" type="text" list="list_city" autocomplete="off" /><br>
-    <datalist id="list_city" name="list_city">
+        <datalist id="list_city" name="list_city">
         <?php
             foreach($cities as $city){
                 echo '<option value="'.$city.'">'.$city.'</option>';
             }
         ?>
-    </datalist>
+        </datalist>
 
     <input type="hidden" id="exp_id" name="exp_id" />
     <input type="hidden" id="city" name="city" />

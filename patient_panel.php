@@ -9,7 +9,33 @@
         $identity = $_SESSION['identity'];
         $patient = getPatient($identity);
         if($patient===false) header("location:index.php");
+        $patReserves = getPatientAllReserves($patient['id']);
     ?>
+    
+    <style>
+        #customers {
+            font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        #customers td, #customers th {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+
+        #customers tr:nth-child(even){background-color: #f2f2f2;}
+
+        #customers tr:hover {background-color: #ddd;}
+
+        #customers th {
+            padding-top: 12px;
+            padding-bottom: 12px;
+            text-align: right;
+            background-color: #4CAF50;
+            color: white;
+        }
+    </style>
 
     <script language="javascript">
         function submitForm(){
@@ -71,6 +97,7 @@
         }
     ?>
 
+    <span style="font-weight: bold; font-size: 20px;">تغییر اطلاعات</span><br>
     <form method="post">
         کد ملی: <input type="text" id="inp_melli" name="inp_identity" value="<?php echo $patient['identity'] ?>" /><br>
         نام و نام خانوادگی: <input type="text" id="inp_name" name="inp_name" value="<?php echo $patient['name'] ?>" /><br>
@@ -84,5 +111,32 @@
 
         <input type="submit" value="ثبت تغییرات" name="submit" onclick="return submitForm();">
     </form>
+    
+    <?php if($patReserves === false || count($patReserves)==0) die; ?>
+    
+    <br>
+    <span style="font-weight: bold; font-size: 20px;">لیست رزرو های شما تا کنون</span><br>
+    <div id="patient_reserved_times">
+        <table id="customers" style="width: 70%;">
+            <tr>
+            <th>تاریخ</th>
+            <th>زمان</th>
+            <th>نام پزشک</th>
+            <th>کلینیک</th>
+            </tr>
+
+            <?php
+                for($i=0; count($patReserves)>$i; $i++){
+                    $reserve = $patReserves[$i];
+                    echo "<tr>";
+                    echo "<td>".$reserve['date']."</td>";
+                    echo "<td>".$reserve['time']."</td>";
+                    echo "<td>".$reserve['doctor_name']."</td>";
+                    echo "<td>".$reserve['clinik_name']."</td>";
+                    echo "</tr>";
+                }
+            ?>
+        </table>
+    </div>
 </body>
 
