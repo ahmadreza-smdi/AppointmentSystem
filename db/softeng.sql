@@ -515,6 +515,7 @@ CREATE TABLE `doctors` (
   UNIQUE KEY `phone_UNIQUE` (`phone`),
   KEY `fk_expertise_id_1` (`expertise_id`),
   CONSTRAINT `fk_expertise_id_1` FOREIGN KEY (`expertise_id`) REFERENCES `expertise` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_persian_ci;
 LOCK TABLES `doctors` WRITE;
 UNLOCK TABLES;
@@ -579,6 +580,7 @@ UNLOCK TABLES;
 
 INSERT INTO `patients` (`id`, `name`, `phone`, `address`, `disease`, `blood_type`, `password`, `identity`) VALUES
 (1, 'صادق باقرزاده', '0930', 'بوشهر - عاشوری', 'مرض نادانی', 'AB+', '123456', '532');
+
 
 
 
