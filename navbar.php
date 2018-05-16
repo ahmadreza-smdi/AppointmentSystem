@@ -1,5 +1,7 @@
 <?php
     require_once("functions.php");
+    include_once("css_links.php");
+    include_once("js_links.php");
     session_start();
 ?>
 <nav class="navbar navbar-default">

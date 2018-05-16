@@ -15,9 +15,12 @@ function db_dis($link){
 function session_des(){
     session_destroy();
 }
-function select_doctor($exp_id){
+function select_doctor($exp_id,$city){
     $link = db_connect();
-    $query = "select * from doctor where expertise_id='".$exp_id."'";
+    $query = "select * from doctor 
+        inner join cliniks_doctors on doctor.id = cliniks_doctors.doctor_id
+        inner join cliniks on cliniks.id = cliniks_doctors.cliniks_id
+        where expertise_id='".$exp_id."' and city='".$city."'";
     $res = $link->query($query);
     return $res;
 }
