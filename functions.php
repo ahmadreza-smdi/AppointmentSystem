@@ -58,7 +58,6 @@ function select_doctor($exp_id){
     $query = "select * from doctors where expertise_id='".$exp_id."'";
     $res = $link->query($query);
     return $res;
-
 }
 
 function getPatient($identity){
