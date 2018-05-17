@@ -25,7 +25,7 @@
                     <a class="hiddenanchor" id="tologin"></a>
                     <div id="wrapper">
                         <div id="login" class="animate form">
-                            <form  action="logic.php" autocomplete="on"> 
+                            <form  action="logic.php" method="post" autocomplete="on"> 
                                 <input type="hidden" name="job" value="login"/>
                                 <h1>ورود</h1> 
                                 <p> 
@@ -56,7 +56,7 @@
                         </div>
 
                         <div id="register" class="animate form">
-                            <form  action="logic.php" autocomplete="on"> 
+                            <form  action="logic.php" method="post" autocomplete="on"> 
                                 <input type="hidden" name="job" value="register"/>
                                 <h1> ثبت نام </h1> 
                                 <p> 
