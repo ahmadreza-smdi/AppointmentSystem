@@ -1,7 +1,7 @@
 <?php
     require_once('functions.php');
-    //$exp_id = $_REQUEST['exp_id'];
-    $exp_id = 1;
+    $exp_id = $_REQUEST['exp_id'];
+    $city = $_REQUEST['city'];
     $res = select_doctor($exp_id,$city);?>
     <div class="form-group">
         <label for="doctors">دکتر مورد نظر را انتخاب کنید</label>

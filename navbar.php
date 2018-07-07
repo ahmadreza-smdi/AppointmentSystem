@@ -21,6 +21,7 @@
                         </div>
                         <button type="submit" class="btn btn-default">جستجو</button>
                     </form>
+                    
                     <?php
                         if(!isset($_SESSION['identity'])){
                     ?>
@@ -33,6 +34,22 @@
                             <li><a href="logic.php?job=session_des">خروج</a></li>
                         </ul>
                        <?php }
+                    ?>
+                    <?php 
+                        if(isset($_SESSION['type']) && $_SESSION['type']=='patient'){
+                    ?>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="patient_panel.php">پنل کاربری</a></li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="searchexp.php">رزرو وقت دکتر</a></li>
+                    </ul>
+                    <?php }else{
+                    ?>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="doctor_panel.php">پنل کاربری</a></li>
+                    </ul>
+                    <?php }
                     ?>
                     </div><!-- /.navbar-collapse -->
                 </div><!-- /.container-fluid -->

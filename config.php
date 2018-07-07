@@ -1,6 +1,6 @@
 <?php
 $db = "softeng";
 $user = "root";
-$pass = "";
+$pass = "123";
 $host = "localhost";
 ?>
