@@ -288,4 +288,34 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
+
+
+
+
+
+
+DROP TABLE IF EXISTS `doctors_comments`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `doctors_comments` (
+  `comment_id` int(11) NOT NULL AUTO_INCREMENT,
+  `patient_id` int(11) NOT NULL,
+  `doctor_id` int(11) NOT NULL,
+  `comment_text` varchar(400) COLLATE utf8_persian_ci NOT NULL,
+  `comment_score` int(2) NOT NULL,
+  
+  PRIMARY KEY (`comment_id`),
+  UNIQUE KEY `id_UNIQUE` (`comment_id`),
+  KEY `fk_patinet_id_10_idx` (`patient_id`),
+  KEY `fk_doctor_id_10_idx` (`doctor_id`),
+  CONSTRAINT `fk_patient_id_10` FOREIGN KEY (`patient_id`) REFERENCES `patients` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_doctor_id_10` FOREIGN KEY (`doctor_id`) REFERENCES `doctors` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_persian_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+
+
+
+
+
 -- Dump completed on 2018-05-17 12:26:13
