@@ -60,6 +60,13 @@ function select_doctor($exp_id){
     return $res;
 }
 
+function getAllDoctors(){
+    $link = db_connect();
+    $query = "select * from doctors";
+    $res = $link->query($query);
+    return $res;
+}
+
 function getPatient($identity){
     $conn = db_connect();
     $sql = "SELECT * FROM patients WHERE identity='$identity'";
@@ -82,6 +89,17 @@ function getDoctor($identity){
     return $out;
 }
 
+function getFreeTime($id){
+    $conn = db_connect();
+    $sql = "SELECT * FROM free_times WHERE id='$id'";
+    $result = $conn->query($sql);
+    if($result===false) return false;
+    $out = mysqli_fetch_array($result);
+    
+    $conn->close();
+    return $out;
+}
+
 function getReserve($id){
     $conn = db_connect();
     $sql = "SELECT * FROM reserves WHERE id='$id'";
@@ -93,15 +111,31 @@ function getReserve($id){
     return $out;
 }
 
+function getDoctorFreeTimes($doctorId, $date){
+    $conn = db_connect();
+    $sql = "SELECT free_times.id, free_times.doctor_id, free_times.date, time_slots.time "
+            . "FROM free_times inner join time_slots on free_times.time_slot_id = time_slots.id "
+            . "WHERE doctor_id = '$doctorId' AND date = '$date' AND "
+            . "free_times.id not in (SELECT reserves.free_time_id FROM reserves)";
+    $result = $conn->query($sql);  
+    if($result===false) return false;
+    
+    $out = Array();
+    $index = 0;
+    while ($row = mysqli_fetch_array($result)) $out[$index++] = $row;
+    $conn->close();
+    return $out;
+}
+
 function getPatientAllReserves($patientId){
     $conn = db_connect();
-    $sql = "SELECT reserves.id as reserve_id, reserves.doctor_id,"
+    $sql = "SELECT reserves.id as reserve_id, doctors.id as doctor_id,"
             . " doctors.name as doctor_name, cliniks.clinik_name, date, time"
             . " FROM reserves inner join free_times on reserves.free_time_id = free_times.id"
             . " inner join time_slots on free_times.time_slot_id = time_slots.id"
-            . " inner join cliniks_doctors on cliniks_doctors.doctor_id = reserves.doctor_id"
+            . " inner join cliniks_doctors on cliniks_doctors.doctor_id = free_times.doctor_id"
             . " inner join cliniks on cliniks_doctors.clinik_id = cliniks.id"
-            . " inner join doctors on reserves.doctor_id = doctors.id"
+            . " inner join doctors on free_times.doctor_id = doctors.id"
             . " WHERE patient_id='$patientId'";
     
     $result = $conn->query($sql);
@@ -113,6 +147,15 @@ function getPatientAllReserves($patientId){
     
     $conn->close();
     return $out;
+}
+
+function reserveFreeTime($freeTimeId, $patientId){
+    $conn = db_connect();
+    $sql = "INSERT INTO reserves (patient_id, free_time_id) VALUES ('$patientId', '$freeTimeId')";
+    
+    if($conn->query($sql)) return true;
+    echo "Error: " . $sql . "<br>" . $conn->error;
+    return false;
 }
 
 function boldEcho($str,$color,$beforeBR=1,$afterBR=0){
