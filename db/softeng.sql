@@ -177,7 +177,8 @@ CREATE TABLE `free_times` (
   KEY `fk_free_slot_id_1_idx` (`time_slot_id`),
   KEY `fk_doctors_id_2_idx` (`doctor_id`),
   CONSTRAINT `fk_doctors_id_2` FOREIGN KEY (`doctor_id`) REFERENCES `doctors` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_free_slot_id_1` FOREIGN KEY (`time_slot_id`) REFERENCES `time_slots` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  CONSTRAINT `fk_free_slot_id_1` FOREIGN KEY (`time_slot_id`) REFERENCES `time_slots` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT tsunique UNIQUE (doctor_id, time_slot_id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_persian_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -231,15 +232,12 @@ DROP TABLE IF EXISTS `reserves`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `reserves` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `doctor_id` int(11) NOT NULL,
   `patient_id` int(11) NOT NULL,
   `free_time_id` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `id_UNIQUE` (`id`),
   KEY `fk_free_slot_id_1_idx` (`free_time_id`),
-  KEY `fk_doctor_id_2_idx` (`doctor_id`),
   KEY `fk_patient_id_1_idx` (`patient_id`),
-  CONSTRAINT `fk_doctor_id_2` FOREIGN KEY (`doctor_id`) REFERENCES `doctors` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_free_time_id_1` FOREIGN KEY (`free_time_id`) REFERENCES `free_times` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_patient_id_1` FOREIGN KEY (`patient_id`) REFERENCES `patients` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_persian_ci;
