@@ -66,7 +66,7 @@
     </script>
 
 
-    <title>Login and Registration Form with HTML5 and CSS3</title>
+    <title>پنل بیمار</title>
 </head>
 <body style="direction: rtl;">
     
