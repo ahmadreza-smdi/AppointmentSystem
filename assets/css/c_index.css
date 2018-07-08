@@ -1,0 +1,141 @@
+@font-face {
+    font-family: Font_I;
+    src: url('../fonts/glyphicons-halflings-regular.svg'),
+    url('../fonts/glyphicons-halflings-regular.svg');
+}
+.body{
+    background-image: url("../pics/background.JPG");
+    background-size: 50%;
+    position: relative;
+}
+
+.container{
+    margin-top: 40px;
+    text-align: right;
+    /*width: 110%;*/
+    /*background-color: #ff6c0c;*/
+    /*background-attachment: fixed;*/
+    /*background-position: top;*/
+    position: fixed;
+    /*opacity: 0.5;*/
+    /*height: 400px;*/
+    z-index: 9999;
+    /*background-position: center,center;*/
+    /*width: 75%;*/
+    padding-left: 0;
+    padding-right: 0;
+    width: 100%;
+    /*padding: 10px;*/
+    position: fixed;
+    left: 50%;
+    transform: translate(-50%, 0);
+    /*box-shadow: 5px 20px 18px #888888;*/
+}
+
+.reserve{
+    background-image: url("../pics/rezerve.JPG");
+    background-size: cover;
+    background-attachment: scroll;
+    background-repeat: no-repeat;
+    background-position: center;
+    opacity: 0.9;
+    height: 500px;
+    z-index: 1;
+    margin-top: -50px;
+    /*top: 0px;*/
+    /*position: absolute;*/
+    /*margin-bottom: -50px;*/
+
+    /*border-bottom: outset white;*/
+}
+.bottom_reserve {
+    height:400px;
+    font-size:36px;
+}
+.bottom_3{
+    /*background-color: beige;*/
+    height:400px;
+    font-size:36px;
+}
+.bottom_3_set{
+    width: 80%;
+    height:400px;
+    /*background-color: black;*/
+    margin-left: 10%;
+    margin-top: 30px;
+}
+.p_11{
+    text-align: center;
+    height:400px;
+    width: 30%;
+    display:inline-block;
+    color: white;
+}
+.p_12{
+    text-align: center;
+    height:400px;
+    width: 30%;
+    display:inline-block;
+    color: white;
+}
+.p_13{
+    text-align: center;
+    height:400px;
+    width: 30%;
+    display:inline-block;
+    color: white;
+}
+.bottom_about{
+    height:400px;
+    font-size:36px;
+}
+
+.parallax {
+    background-image: url("../pics/2.jpg");
+    min-height: 500px;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.parallax2 {
+    background-image: url("../pics/3.jpg");
+    min-height: 500px;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.r_bottom{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 150px;
+    margin-left: 30%;
+    text-align: center;
+    height: 100px;
+    width: 300px;
+    float: left;
+    border-radius: 3px; ;
+    border-style:solid;
+    border-width: medium;
+    border-width: 1px;
+    border-radius: 50px;
+    border-color: #001b6e;
+    background-color: white;
+    color: black;
+    font-family:Font_I;
+    font-size: 50px;
+}
+.visit_logo{
+    float: right;
+    margin-right: 30%;
+    margin-top: 50px;
+    background-image: url("../pics/visit.png");
+    height: 250px;
+    width: 350px;
+    background-repeat: no-repeat;
+}
+.bottom_about{
+    color: white;
+}
