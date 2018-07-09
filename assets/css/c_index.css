@@ -47,7 +47,7 @@
 .bottom_3{
     /*background-color: beige;*/
     height:400px;
-    font-size:36px;
+    /*font-size:36px;*/
 }
 .bottom_3_set{
     width: 80%;
@@ -58,24 +58,24 @@
 }
 .p_11{
     text-align: center;
-    height:400px;
+    height:20px;
     width: 30%;
     display:inline-block;
-    color: white;
+    color: black;
 }
 .p_12{
     text-align: center;
-    height:400px;
+    height:20px;
     width: 30%;
     display:inline-block;
-    color: white;
+    color: black;
 }
 .p_13{
     text-align: center;
-    height:400px;
+    height:20px;
     width: 30%;
     display:inline-block;
-    color: white;
+    color: black;
 }
 .bottom_about{
     height:400px;
