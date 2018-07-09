@@ -2,21 +2,22 @@
     session_start();
     require_once('functions.php');
     require_once('jdf.php');
-    
+
     if(!empty($_SESSION['identity'])) $patient = getPatient($_SESSION['identity']);
     else $patient=false;
-    
+
     if(isset($_REQUEST['doctor']) && isset($_REQUEST['date'])){
         $doctorId = $_REQUEST['doctor'];
         $date = $_REQUEST['date'];
     }
     else if(isset($_REQUEST['submit_reserve']) && !($patient===false) && isset($_REQUEST['free_time'])){
+        echo "Kire Khar " . $_REQUEST['free_time'] . ' - ' . $patient['id'] . '-';
         $res = reserveFreeTime($_REQUEST['free_time'], $patient['id']);
         if($res===true) header("location:patient_panel.php");
-        else die;
+        //else die;
     }
     else header("location:index.php");
-    
+
     $reqDate = getDbDateFromJdateStr($date);
     $freeTimes = getDoctorFreeTimes($doctorId, $reqDate);
 ?>
@@ -51,7 +52,7 @@
             color: white;
         }
     </style>
-    
+
     <script language="javascript">
         function submitForm(){
             <?php
@@ -66,7 +67,7 @@
             if(confirm("آیا مطمئن هستید؟") == false) return false;
             return true;
         }
-        
+
         function checkReserve(id){
             let changedCb = document.getElementById(id);
             let sendingInput = document.getElementById('free_time');
