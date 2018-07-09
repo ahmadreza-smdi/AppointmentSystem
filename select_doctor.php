@@ -1,6 +1,6 @@
 <?php
     require_once('functions.php');
-    require_once('jdf.php');
+    
     if(isset($_REQUEST['exp_id']) && isset($_REQUEST['city'])){
         $exp_id = $_REQUEST['exp_id'];
         $city = $_REQUEST['city'];
@@ -9,11 +9,8 @@
     else{
         $res = getAllDoctors();
     }
-    
-    $day_number = tr_num(jdate('j'), 'en');
-    $month_number = tr_num(jdate('n'), 'en');
-    $year_number = tr_num(jdate('y'), 'en');
-    $dateStr = $year_number . "/" . $month_number . "/" . $day_number;
+
+    $dateStr = getJdateStr();
     
     if(!empty($_SESSION['identity'])) $patient = getPatient($_SESSION['identity']);
     else $patient=false;
