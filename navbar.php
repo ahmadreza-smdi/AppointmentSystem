@@ -1,6 +1,5 @@
 <?php
     require_once("functions.php");
-    session_start();
 ?>
 <nav class="navbar navbar-default" style="background-color:#7c84e8; z-index: 9999">
                 <div class="container-fluid" style="padding-right: 10%; padding-left: 10%; margin-right: auto; margin-left: auto; margin-top: 5px; margin-bottom: 5px; z-index: 9999">
