@@ -17,14 +17,7 @@
     }
     else header("location:index.php");
     
-    $pieces = explode("/", $date);
-    if(strlen($pieces[0]) == 2) $year = '13' . $pieces[0];
-    else $year = $pieces[0];
-    if($pieces[1]>9) $month = $pieces[1];
-    else $month = "0".$pieces[1];
-    if($pieces[2]>9) $day = $pieces[2];
-    else $day = "0".$pieces[2];
-    $reqDate = $year.'-'.$month.'-'.$day;
+    $reqDate = getDbDateFromJdateStr($date);
     $freeTimes = getDoctorFreeTimes($doctorId, $reqDate);
 ?>
 
