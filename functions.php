@@ -240,6 +240,42 @@ function getJdateStr(){
     return $dateStr;
 }
 
+function getDoctorEnableTimeSlots($dbDate, $doctorId){
+    $conn = db_connect();
+    $sql = "SELECT time_slots.id, time_slots.time"
+            . " FROM free_times inner join time_slots on free_times.time_slot_id = time_slots.id"
+            . " WHERE free_times.doctor_id='$doctorId' AND free_times.date='$dbDate'"
+            . " ORDER BY time_slots.id ASC";
+    
+    $result = $conn->query($sql);
+    if($result===false) return false;
+    
+    $out = Array();
+    $index = 0;
+    while ($row = mysqli_fetch_array($result)) $out[$index++] = $row;
+    $conn->close();
+    return $out;    
+}
+
+function getDoctorDisableTimeSlots($dbDate, $doctorId){
+    $conn = db_connect();
+    $sql = "SELECT time_slots.id, time_slots.time"
+            . " FROM time_slots"
+            . " WHERE time_slots.id not in (SELECT time_slots.id"
+            . " FROM free_times inner join time_slots on free_times.time_slot_id = time_slots.id"
+            . " WHERE free_times.doctor_id='$doctorId' AND free_times.date='$dbDate')"
+            . " ORDER BY time_slots.id ASC";
+    
+    $result = $conn->query($sql);
+    if($result===false) return false;
+    
+    $out = Array();
+    $index = 0;
+    while ($row = mysqli_fetch_array($result)) $out[$index++] = $row;
+    $conn->close();
+    return $out;    
+}
+
 function getDbDateFromJdateStr($jdateStr){
     $pieces = explode("/", $jdateStr);
     if(strlen($pieces[0]) == 2) $year = '13' . $pieces[0];
@@ -250,6 +286,36 @@ function getDbDateFromJdateStr($jdateStr){
     else $day = "0".$pieces[2];
     $reqDate = $year.'-'.$month.'-'.$day;
     return $reqDate;
+}
+
+function addDoctorFreeTimes($doctorId, $dbdate, $timeSlotsStr){
+    $pieces = explode("-", $timeSlotsStr);
+    for($i=0; count($pieces)>$i; $i++) 
+        addDoctorFreeTime ($doctorId, $dbdate, $pieces[$i]);
+}
+
+function deleteDoctorFreeTimes($doctorId, $dbdate, $timeSlotsStr){
+    $pieces = explode("-", $timeSlotsStr);
+    for($i=0; count($pieces)>$i; $i++) 
+        deleteDoctorFreeTime ($doctorId, $dbdate, $pieces[$i]);
+}
+
+function addDoctorFreeTime($doctorId, $dbdate, $tsId){
+    $conn = db_connect();
+    $sql = "INSERT INTO free_times (date, doctor_id, time_slot_id) VALUES ('$dbdate', '$doctorId', '$tsId')";
+    
+    if($conn->query($sql)) return true;
+    echo "Error: " . $sql . "<br>" . $conn->error;
+    return false;    
+}
+
+function deleteDoctorFreeTime($doctorId, $dbdate, $tsId){
+    $conn = db_connect();
+    $sql = "DELETE FROM free_times WHERE date='$dbdate' AND doctor_id='$doctorId' AND time_slot_id='$tsId'";
+    
+    if($conn->query($sql)) return true;
+    echo "Error: " . $sql . "<br>" . $conn->error;
+    return false;    
 }
 
 function boldEcho($str,$color,$beforeBR=1,$afterBR=0){

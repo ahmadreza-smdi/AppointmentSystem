@@ -7,6 +7,8 @@
     $doctor = getDoctor($identity);
     if($doctor===false) header("location:index.php");
     
+    $dateStr = getJdateStr();
+    
     if(isset($_POST['submit'])){
         $conn = db_connect();
         $name = $_POST['name'];
@@ -30,6 +32,14 @@
             boldEcho("خطا در بروزرسانی!", "red",0,2);
         }
     }
+    
+    if(isset($_POST['submit_addfree'])){
+        addDoctorFreeTimes($doctor['id'], $_POST['adddate'], $_POST['addfree']);
+    }
+    
+    if(isset($_POST['submit_delfree'])){
+        deleteDoctorFreeTimes($doctor['id'], $_POST['deldate'], $_POST['delfree']);
+    }
 ?>
 <head>
 <meta charset="UTF-8" />
@@ -42,7 +52,35 @@
 <link rel="stylesheet" type="text/css" href="./assets/css/lr.css">
     <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
     <link href="https://fonts.googleapis.com/css?family=Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
-        
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="assets/css/js-persian-cal.css">
+    <script type="text/javascript" src="assets/js/js-persian-cal.min.js"></script>
+    
+    <style>
+        .customers {
+            font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        .customers td, #customers th {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+
+        .customers tr:nth-child(even){background-color: #f2f2f2;}
+        .customers tr {background-color: #ccc;}
+        .customers tr:hover {background-color: #aaa;}
+
+        .customers th {
+            padding-top: 12px;
+            padding-bottom: 12px;
+            text-align: right;
+            background-color: #4CAF50;
+            color: white;
+        }
+    </style>
+    
     <script language="javascript">
         function submitForm(){
             let melli = document.getElementById('melli').value;
@@ -60,6 +98,30 @@
             if(isNaN(melli)){ alert("کد ملی نامعتبر است!"); return false;}
             if(isNaN(phone)){ alert("شماره تلفن نامعتبر است"); return false;}
             if(!(pass === passConf)){ alert("عدم تطابق رمز عبور!"); return false;}
+        }
+        
+        function addFree(){
+            let sum="";
+            for(let i=0; document.getElementById('cbaddfree'+i)!=null; i++){
+                let cb = document.getElementById('cbaddfree'+i);
+                if(!cb.checked) continue;
+                if(sum != "") sum += "-";
+                sum += (cb.value.toString());
+            }
+            document.getElementById('addfree').value = sum;
+            return true;
+        }
+        
+        function delFree(){
+            let sum="";
+            for(let i=0; document.getElementById('cbdelfree'+i)!=null; i++){
+                let cb = document.getElementById('cbdelfree'+i);
+                if(!cb.checked) continue;
+                if(sum != "") sum += "-";
+                sum += (cb.value.toString());
+            }
+            document.getElementById('delfree').value = sum;
+            return true;            
         }
     </script>
 </head>
@@ -104,61 +166,93 @@
         ?>
         <br>
     </div>
+    
+    <form method="get">
+        <div class="date">
+            <p style="color: white;font-size: 25px;margin-right: -250px;margin-bottom: -15">: زمان</p>
+            <input type="text" id="pcal" name="date" class="pdate" readonly="true" value="<?php echo $dateStr; ?>"><br>
 
-    <div id="doctor_free_times">
-        <?php
-            /*echo '<table>';
-                if($res_3->num_rows > 0){
-                    echo "<tr>";
-                            echo "<td>شناسه</td>";
-                            echo "<td>تاریخ</td>";
-                            echo "<td>زمان آغاز</td>";
-                            echo "<td>زمان پایان</td>";
-                    echo "</tr>";
-                    while ($row = $res_3->fetch_assoc()){
-                        $id = $row["id"];
-                        $date = $row["date"];
-                        $start_time = $row["start_time"];
-                        $end_time = $row["end_time"];
+
+            <script type="text/javascript">
+            var objCal = new AMIB.persianCalendar('pcal');
+            </script>
+        </div>
+        
+        <input type="submit" value="ثبت" name="submdate" style="padding-left: 10px; padding-right: 10px">
+    </form>
+    
+    <?php
+        if(!isset($_REQUEST['submdate'])) die;
+        $date = $_REQUEST['date'];
+        $dbDate = getDbDateFromJdateStr($date);
+        $enableTimes = getDoctorEnableTimeSlots($dbDate, $doctor['id']);
+        $disableTimes = getDoctorDisableTimeSlots($dbDate, $doctor['id']);
+    ?>
+
+    
+    <div id="doctor_disable_times" style="margin: 20px;">
+        <form method="post">
+            <table class="customers" style="width: 70%;">
+                <tr>
+                <th>تاریخ</th>
+                <th>زمان</th>
+                <th>فعال کردن</th>
+                </tr>
+                
+                <input id="addfree" name="addfree" type="hidden" value="">
+                <input id="adddate" name="adddate" type="hidden" value="<?php echo $dbDate; ?>">
+                
+                <?php
+                    for($i=0; count($disableTimes)>$i; $i++){
+                        $disable = $disableTimes[$i];
                         echo "<tr>";
-                            echo "<td>$id</td>";
-                            echo "<td>$date</td>";
-                            echo "<td>$start_time</td>";
-                            echo "<td>$end_time</td>";
+                        echo "<td>".$dbDate."</td>";
+                        echo "<td>".$disable['time']."</td>";
+                        echo "<td>".'<input type="checkbox" id="cbaddfree'.$i.'" value="'.$disable['id'].'"'.
+                                ' onchange="checkReserve(this.id);">'."</td>";
+                        
+                        echo"</td>";
                         echo "</tr>";
                     }
-                }
-            echo '</table>';*/
-        ?>
+                ?>
+            </table>
+            
+            <input type="submit" value="ثبت" name="submit_addfree" 
+                   style="padding-left: 10px; padding-right: 10px;" onclick="return addFree();">
+        </form>
     </div>
 
-    <div id="doctor_reserved_times">
-        <?php
-            /*echo '<table>';
-                if($res_4->num_rows > 0){
-                    echo "<tr>";
-                            echo "<td>شناسه</td>";
-                            echo "<td>شناسه بیمار</td>";
-                            echo "<td>تاریخ</td>";
-                            echo "<td>زمان آغاز</td>";
-                            echo "<td>زمان پایان</td>";
-                    echo "</tr>";
-                    while ($row = $res_4->fetch_assoc()){
-                        $id = $row["id"];
-                        $patient_id = $row["patient_id"];
-                        $date = $row["date"];
-                        $start_time = $row["start_time"];
-                        $end_time = $row["end_time"];
+    <div id="doctor_enable_times" style="margin: 20px;">
+        <form method="post">
+            <table class="customers" style="width: 70%;">
+                <tr>
+                <th>تاریخ</th>
+                <th>زمان</th>
+                <th>لغو کردن</th>
+                </tr>
+                
+                <input id="delfree" name="delfree" type="hidden" value="">
+                <input id="deldate" name="deldate" type="hidden" value="<?php echo $dbDate; ?>">
+                
+                <?php
+                    for($i=0; count($enableTimes)>$i; $i++){
+                        $enable = $enableTimes[$i];
                         echo "<tr>";
-                            echo "<td>$id</td>";
-                            echo "<td>$date</td>";
-                            echo "<td>$start_time</td>";
-                            echo "<td>$end_time</td>";
+                        echo "<td>".$dbDate."</td>";
+                        echo "<td>".$enable['time']."</td>";
+                        echo "<td>".'<input type="checkbox" id="cbdelfree'.$i.'" value="'.$enable['id'].'"'.
+                                ' onchange="checkReserve(this.id);">'."</td>";
+                        
+                        echo"</td>";
                         echo "</tr>";
                     }
-                }
-            echo '</table>';*/
-        ?>
+                ?>
+            </table>
+            
+            <input type="submit" value="ثبت" name="submit_delfree" 
+                   style="padding-left: 10px; padding-right: 10px;" 
+                   onclick="return delFree();">
+        </form>
     </div>
 
 </body>

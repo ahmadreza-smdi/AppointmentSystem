@@ -178,7 +178,7 @@ CREATE TABLE `free_times` (
   KEY `fk_doctors_id_2_idx` (`doctor_id`),
   CONSTRAINT `fk_doctors_id_2` FOREIGN KEY (`doctor_id`) REFERENCES `doctors` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_free_slot_id_1` FOREIGN KEY (`time_slot_id`) REFERENCES `time_slots` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT tsunique UNIQUE (doctor_id, time_slot_id)
+  CONSTRAINT tsunique UNIQUE (`date`, `doctor_id`, `time_slot_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_persian_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
