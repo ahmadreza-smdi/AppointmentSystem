@@ -9,7 +9,6 @@
         $identity = $_SESSION['identity'];
         $patient = getPatient($identity);
         if($patient===false) header("location:index.php");
-        $patReserves = getPatientAllReserves($patient['id']);
     ?>
     
     <style>
@@ -47,13 +46,11 @@
             let blood = document.getElementById('inp_blood').value;
             let pass = document.getElementById('inp_pass').value;
             let passConf = document.getElementById('inp_pass_conf').value;
-            
+
             if(!melli){alert("کد ملی را وارد کنید!"); return false;}
             if(!name){alert("نام و نام خوانوادگی را وارد کنید!"); return false;}
             if(!phone){alert("شماره تماس را وارد کنید!"); return false;}
             if(!adress){alert("آدرس را وارد کنید!"); return false;}
-            if(!pass){alert("رمز عبور را وارد کنید!"); return false;}
-            if(!passConf){alert("رمز عبور تایید را وارد کنید!"); return false;}
             
             if( !(blood==="A+" || blood==="A-" ||
                     blood==="O+" || blood==="O-" ||
@@ -63,10 +60,16 @@
             if(isNaN(phone)){ alert("شماره تلفن نامعتبر است"); return false;}
             if(!(pass === passConf)){ alert("عدم تطابق رمز عبور!"); return false;}
         }
+        
+        function cancelReserve(reserveId){
+            if(confirm("آیا مطمئن هستید؟") == false) return false;
+            document.getElementById('delreserve').value = reserveId;
+            return true;
+        }
     </script>
 
 
-    <title>Login and Registration Form with HTML5 and CSS3</title>
+    <title>پنل بیمار</title>
 </head>
 <body style="direction: rtl;">
     
@@ -82,7 +85,9 @@
             $newIdentity = $_POST['inp_identity'];
             
             $sql="update patients set name='$name', phone='$phone', address='$address', disease='$disease',"
-                    . "blood_type='$blood_type', password='$password', identity='$newIdentity' WHERE identity='$identity'";
+                    . "blood_type='$blood_type', ";
+                    if($password!="") $sql .= "password='$password', ";
+                    $sql .= "identity='$newIdentity' WHERE identity='$identity'";
     
             if ($conn->query($sql) === TRUE) {
                 boldEcho("اطلاعات با موفقیت بروز شد!", "green",0,2);
@@ -95,48 +100,66 @@
                 boldEcho("خطا در بروزرسانی!", "red",0,2);
             }
         }
+        
+        else if(isset($_POST['delreserve'])){
+            $reserveId = $_POST['delreserve'];
+            $patientId = $patient['id'];
+            cancelReserve($patientId, $reserveId);
+        }
     ?>
 
     <span style="font-weight: bold; font-size: 20px;">تغییر اطلاعات</span><br>
     <form method="post">
-        کد ملی: <input type="text" id="inp_melli" name="inp_identity" value="<?php echo $patient['identity'] ?>" /><br>
+        کد ملی: <input type="text" id="inp_identity" name="inp_identity" value="<?php echo $patient['identity'] ?>" /><br>
         نام و نام خانوادگی: <input type="text" id="inp_name" name="inp_name" value="<?php echo $patient['name'] ?>" /><br>
         شماره تماس: <input type="text" id="inp_phone" name="inp_phone" value="<?php echo $patient['phone'] ?>" /><br>
         آدرس: <input type="text" id="inp_address" name="inp_address" value="<?php echo $patient['address'] ?>" /><br>
         بیماری خاص: <input type="text" id="inp_disease" name="inp_disease" value="<?php echo $patient['disease'] ?>" /><br>
         گروه خونی: <input type="text" id="inp_blood" name="inp_blood" value="<?php echo $patient['blood_type'] ?>" /><br>
-        رمز عبور: <input type="password" id="inp_pass" name="inp_pass" value="<?php echo $patient['password'] ?>" /><br>
-        تایید رمز عبور: <input type="password" id="inp_pass_conf" name="inp_pass_conf" 
-                               value="<?php echo $patient['password'] ?>" /><br>
+        رمز عبور: <input type="password" id="inp_pass" name="inp_pass" /><br>
+        تایید رمز عبور: <input type="password" id="inp_pass_conf" name="inp_pass_conf" /><br>
 
         <input type="submit" value="ثبت تغییرات" name="submit" onclick="return submitForm();">
     </form>
     
-    <?php if($patReserves === false || count($patReserves)==0) die; ?>
+    <?php
+        $patReserves = getPatientAllReserves($patient['id']);
+        if($patReserves === false || count($patReserves)==0) die;
+    ?>
     
     <br>
     <span style="font-weight: bold; font-size: 20px;">لیست رزرو های شما تا کنون</span><br>
     <div id="patient_reserved_times">
-        <table id="customers" style="width: 70%;">
-            <tr>
-            <th>تاریخ</th>
-            <th>زمان</th>
-            <th>نام پزشک</th>
-            <th>کلینیک</th>
-            </tr>
-
-            <?php
-                for($i=0; count($patReserves)>$i; $i++){
-                    $reserve = $patReserves[$i];
-                    echo "<tr>";
-                    echo "<td>".$reserve['date']."</td>";
-                    echo "<td>".$reserve['time']."</td>";
-                    echo "<td>".$reserve['doctor_name']."</td>";
-                    echo "<td>".$reserve['clinik_name']."</td>";
-                    echo "</tr>";
-                }
-            ?>
-        </table>
+        <form method="post">
+            <table id="customers" style="width: 70%;">
+                <tr>
+                <th>تاریخ</th>
+                <th>زمان</th>
+                <th>نام پزشک</th>
+                <th>کلینیک</th>
+                <th>لغو</th>
+                </tr>
+                
+                <input id="delreserve" name="delreserve" type="hidden" value="">
+                <?php
+                    for($i=0; count($patReserves)>$i; $i++){
+                        $reserve = $patReserves[$i];
+                        echo "<tr>";
+                        echo "<td>".$reserve['date']."</td>";
+                        echo "<td>".$reserve['time']."</td>";
+                        echo "<td>".$reserve['doctor_name']."</td>";
+                        echo "<td>".$reserve['clinik_name']."</td>";
+                        echo "<td>";
+                        if(canCancelReserve($reserve)){
+                            echo '<input type="submit" value="لغو" id="bb" '
+                            . 'onclick="return cancelReserve(\''.$reserve['reserve_id'].'\');">'; 
+                        }
+                        echo"</td>";
+                        echo "</tr>";
+                    }
+                ?>
+            </table>
+        </form>
     </div>
 </body>
 
