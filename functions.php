@@ -257,3 +257,23 @@ function boldEcho($str,$color,$beforeBR=1,$afterBR=0){
     echo '<b><font color="'.$color.'">'.$str.'</font></b>';
     for($i=0; $afterBR>$i; $i++) echo '<br>';
 }
+
+function getApi(){
+    $service_url = 'https://www.amdoren.com/api/timezone.php?api_key=mgWAuNmP2trS3ieDFEC85FRNJ7n8fD&loc=Tehran';
+    $curl = curl_init($service_url);
+    curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+    $curl_response = curl_exec($curl);
+    if ($curl_response === false) {
+        $info = curl_getinfo($curl);
+        curl_close($curl);
+        die('error occured during curl exec. Additioanl info: ' . var_export($info));
+    }
+    curl_close($curl);
+    $decoded = json_decode($curl_response);
+    if (isset($decoded->response->status) && $decoded->response->status == 'ERROR') {
+        die('error occured: ' . $decoded->response->errormessage);
+    }
+
+    var_export($decoded->time);
+}
+?>
