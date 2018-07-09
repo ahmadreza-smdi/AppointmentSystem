@@ -2,10 +2,10 @@
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
-require_once ('config.php');
+require_once('config.php');
 include_once("css_links.php");
 include_once("js_links.php");
-include_once ('jdf.php');
+include_once('jdf.php');
 
 function db_connect(){
     global $host,$db,$user,$pass;
@@ -273,7 +273,7 @@ function getApi(){
     if (isset($decoded->response->status) && $decoded->response->status == 'ERROR') {
         die('error occured: ' . $decoded->response->errormessage);
     }
-
+    
     var_export($decoded->time);
 }
 ?>
