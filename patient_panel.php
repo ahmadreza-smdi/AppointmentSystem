@@ -120,7 +120,7 @@
                 <div class="list_forms">
                             <form method="post">
                                 <div class="b_1">
-                                    <p>کد ملی:</p>
+                                     <p>کد ملی:</p>
                                      <input class="b_2" type="text" id="inp_identity" name="inp_identity" value="<?php echo $patient['identity'] ?>" /><br>
                                 </div>
                                 <div class="b_1">
