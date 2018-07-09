@@ -25,25 +25,8 @@
                     <?php
                         if(!isset($_SESSION['identity'])){
                     ?>
-                    <ul class="nav navbar-nav navbar-right"
-                        style="
-                            text-align: center;
-                            width: 120px;
-                            color: black;
-                            border-radius:20px;
-                            height:35px;
-                            padding-bottom: 10px;
-                            /*margin-right: 6px;*/
-                            /*margin-right: 10%;*/
-                            margin-top: 7px;
-                            border-style:solid;
-                            border-width: 1px;
-                            border-width: 1px;
-                            border-radius: 50px;
-                            border-color: #001b6e;
-                            background-color: white;
-                             ">
-                        <li><a  class="nav navbar-nav navbar-right" style="margin-left: 2px; margin-bottom: 1em;font-size: 1.5em;font-family:Font_I;" href="lr.php">ورود/ثبت نام</a></li>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a  class="nav navbar-nav navbar-right" style="color:white;font-size: 1em;font-family:Font_I;" href="lr.php">ورود/ثبت نام</a></li>
                     </ul>
                     <?php
                         }else{?>
