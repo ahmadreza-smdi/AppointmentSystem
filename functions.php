@@ -80,9 +80,35 @@ function getPatient($identity){
     return $out;
 }
 
+function getDoctorClinik($doctorId){
+    $conn = db_connect();
+    $sql = "SELECT clinik_id, clinik_name, address, city_name "
+            . "FROM cliniks_doctors inner join cliniks on cliniks.id = cliniks_doctors.clinik_id "
+            . "inner join cities on cliniks.city_id = cities.id WHERE cliniks_doctors.doctor_id='$doctorId'";
+    $result = $conn->query($sql);
+    if($result===false) return false;
+    $out = mysqli_fetch_array($result);
+    
+    $conn->close();
+    return $out;    
+}
+
+function getClinik($id){
+    $conn = db_connect();
+    $sql = "SELECT * FROM cliniks inner join cities on cliniks.city_id = cities.id WHERE id='$id'";
+    $result = $conn->query($sql);
+    if($result===false) return false;
+    $out = mysqli_fetch_array($result);
+    
+    $conn->close();
+    return $out;
+}
+
 function getDoctor($identity){
     $conn = db_connect();
-    $sql = "SELECT * FROM doctors WHERE identity='$identity'";
+    $sql = "SELECT doctors.id as id, name, address, phone, password, expertise_name "
+            . "FROM doctors inner join expertise on doctors.expertise_id = expertise.id"
+            . " WHERE identity='$identity'";
     $result = $conn->query($sql);
     if($result===false) return false;
     $out = mysqli_fetch_array($result);
