@@ -1,0 +1,98 @@
+@font-face {
+    font-family: Font_I;
+    src: url('../fonts/glyphicons-halflings-regular.svg'),
+    url('../fonts/glyphicons-halflings-regular.svg');
+}
+.body{
+    text-align: center;
+    /*background-image: url("../pics/background.jpg");*/
+    /*!*background-size: 50%;*!*/
+    /*position: relative;*/
+    padding: 0px;
+    margin: 0px;
+    text-align: center;
+    float: right;
+    margin-right: 7.5%;
+    height: 100%;
+    width: 75%;
+}
+
+.reserve_main{
+   padding-top:150px;
+    width: 100%;
+    height: 100%;
+    background-image: url("../pics/background.jpg");
+    /*background-size: cover;*/
+    background-size: 50%;
+   ;
+}
+
+.container.flud{
+    margin-top: 15px;
+}
+.container{
+    z-index: 9999;
+    width: 100%;
+    padding-left: 0;
+    padding-right: 0;
+    position: fixed;
+    text-align: left;
+  }
+
+.list_text{
+    text-align: center;
+    height: 45px;
+    width: 200px;
+    border-style: dashed;
+    border-top-right-radius: 50px;
+    border-bottom-right-radius: 50px;
+    border-bottom-left-radius: 50px;
+    margin-right: 45%;
+    background-color: gold;
+    margin-bottom: 20px;  }
+.list_text span{
+   float: none;
+   padding-top: 5px;
+}
+
+.doctor_free_times{
+    /*float: right;*/
+    margin-right: 20%;
+}
+.sabt{
+}
+.sabt input{
+    color: #f2f2f2;
+    font-size: 35px;
+    text-align: center;
+    height: 45px;
+    width: 200px;
+    border-style: solid;
+    border-color: #001b6e;
+    border-radius: 50px;
+    margin-right: 45%;
+    background-color: slateblue;
+    margin-bottom: 20px;
+    float: left;
+    margin-left:55%;
+    margin-right: 45%;
+    /*padding-top: 5px;*/
+}
+
+/*.t1{*/
+    /*text-align: center;*/
+    /*border-top-right-radius: 10px;*/
+    /*border-style: dashed;*/
+/*}*/
+
+/*.t4{*/
+    /*border-style: dashed;*/
+    /*border-top-left-radius: 10px;*/
+/*}*/
+
+/*#customers{*/
+    /*text-align: center;*/
+/*}*/
+ /*.table th{*/
+     /*text-align: center;*/
+ /*}*/

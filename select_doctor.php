@@ -60,7 +60,7 @@
                 </div>
                 <div class="date">
                         <p style="color: white;font-size: 25px;margin-right: -250px;margin-bottom: -15">: زمان</p>
-                        <input type="text" id="pcal" class="pdate" name="date" readonly="true" style="border-radius:20px;font-size: 25px; margin-top: 20px;width: 80%;height: 35px" value="<?php echo $dateStr; ?>"><br>
+                        <input type="text" id="pcal" class="pdate" name="date" readonly="true" style="color:black;border-radius:20px;font-size: 25px; margin-top: 20px;width: 80%;height: 35px" value="<?php echo $dateStr; ?>"><br>
 
 
                         <script type="text/javascript">

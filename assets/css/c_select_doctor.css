@@ -4,7 +4,7 @@
     url('../fonts/glyphicons-halflings-regular.svg');
 }
 .body{
-    background-image: url("../pics/background.JPG");
+    background-image: url("../pics/background.jpg");
     background-size: 50%;
     position: relative;
     /*padding: 0px;*/
@@ -34,7 +34,7 @@
 
 /*...*/
 .find_box{
-    background-image: url("../pics/background.JPG");
+    background-image: url("../pics/background.jpg");
     background-size: 100%;
     height: 100%;
     width: 50%;
@@ -66,6 +66,7 @@
 }
 
 a.pcalBtn{
+    background-image: url("pcal.png");
     margin-right: 10%;
     margin-left:10px ;
     margin-bottom: 10px;

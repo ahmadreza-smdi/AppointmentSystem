@@ -110,7 +110,7 @@
     float: left;
     border-radius: 3px; ;
     border-style:solid;
-    border-width: medium;
+    /*border-width: medium;*/
     border-width: 1px;
     border-radius: 50px;
     border-color: #001b6e;
@@ -118,6 +118,20 @@
     color: black;
     font-family:Font_I;
     font-size: 50px;
+    /*text-decoration: underline;*/
+}
+/*.r_bottom a {*/
+    /*text-decoration: underline;*/
+/*}*/
+.r_bottom :hover{
+    border-width: 1px;
+    /*border-radius: 2px; ;*/
+    border-style:solid;
+
+    border-color: beige;
+    background-color: gold;
+    transform: rotate(2deg);
+    transition: 500ms;
 }
 .visit_logo{
     float: right;

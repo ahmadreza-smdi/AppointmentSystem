@@ -56,7 +56,6 @@
             <?php
             include_once("navbar.php")
             ?>
-
         </div>
         <div class="search_box">
             <div class="s_box">
