@@ -4,8 +4,9 @@
     url('../fonts/glyphicons-halflings-regular.svg');
 }
 .body{
-    background-image: url("../pics/background.JPG");
-    background-size: 50%;
+    /*background-image: url("../pics/background.JPG");*/
+    background-color: white;
+    /*background-size: 50%;*/
     position: relative;
 }
 
