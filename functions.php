@@ -3,8 +3,8 @@ ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 require_once ('config.php');
-require_once('jdf.php');
-date_default_timezone_set('Asia/Tehran');
+include_once("css_links.php");
+include_once("js_links.php");
 
 function db_connect(){
     global $host,$db,$user,$pass;
