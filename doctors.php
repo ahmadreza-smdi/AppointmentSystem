@@ -78,27 +78,14 @@
                 if ($patient==false)die;
             ?>
         </div>
-
-        <div class="comments" align='center'>
-            <hr>
-            <?php
-               $commm = getAllComments();
-               for($i=0; $i<count($commm); $i++){
-                echo '<p> '.'<b>' .$commm[$i]['name']. '</b>' .' </p>' ;
-                echo '<p> '.$commm[$i]['comment_text']. ' </p>' ;
-                echo '<p> '.'امتیاز:' .$commm[$i]['comment_score']. ' </p>' ;
-                echo '<hr>';
-               }
-            ?>
-        </div>
-
+        
         <div id='get_comments' align='center'>
             <form method='post' name='comm'>
                 <p>
                     <br>
                     <br>
-                    <p>نظر خود را وارد کنید</p>
-                    <textarea name="comment" id="" cols="30" rows="10"></textarea>
+                <p>نظر خود را وارد کنید</p>
+                <textarea name="comment" id="" cols="30" rows="10"></textarea>
                 </p>
                 <br>
                 <p>به این دکتر چه نمره ای می دهید؟</p>
@@ -118,5 +105,19 @@
                 <div><input name='sub' type="submit" value="ثبت نظر"></div>
             </form>
         </div>
+        <div class="comments" align='center'>
+            <hr>
+            <?php
+               $commm = getAllComments();
+               for($i=0; $i<count($commm); $i++){
+                echo '<p> '.'<b>' .$commm[$i]['name']. '</b>' .' </p>' ;
+                echo '<p> '.$commm[$i]['comment_text']. ' </p>' ;
+                echo '<p> '.'امتیاز:' .$commm[$i]['comment_score']. ' </p>' ;
+                echo '<hr>';
+               }
+            ?>
+        </div>
+
+
     </div>
 </body>
