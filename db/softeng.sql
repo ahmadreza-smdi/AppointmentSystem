@@ -115,6 +115,7 @@ CREATE TABLE `doctors` (
   `phone` varchar(45) COLLATE utf8_persian_ci NOT NULL,
   `password` varchar(45) COLLATE utf8_persian_ci NOT NULL,
   `expertise_id` int(11) NOT NULL,
+  `vispay` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `id_UNIQUE` (`id`),
   UNIQUE KEY `identity_UNIQUE` (`identity`),
@@ -130,7 +131,7 @@ CREATE TABLE `doctors` (
 
 LOCK TABLES `doctors` WRITE;
 /*!40000 ALTER TABLE `doctors` DISABLE KEYS */;
-INSERT INTO `doctors` VALUES (1,'037','فرید محمد خویی','قم - ننه عباس','0912','1375',138);
+INSERT INTO `doctors` VALUES (1,'037','فرید محمد خویی','قم - ننه عباس','0912','1375',138, 10000);
 /*!40000 ALTER TABLE `doctors` ENABLE KEYS */;
 UNLOCK TABLES;
 
