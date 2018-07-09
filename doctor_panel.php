@@ -14,6 +14,7 @@
         $name = $_POST['name'];
         $phone = $_POST['phone'];
         $address = $_POST['address'];
+        $vispay = $_POST['vispay'];
         $password = $_POST['password'];
         $newIdentity = $_POST['melli'];
 
@@ -87,6 +88,7 @@
             let name = document.getElementById('name').value;
             let phone = document.getElementById('phone').value;
             let adress = document.getElementById('address').value;
+            let vispay = document.getElementById('vispay').value;
             let pass = document.getElementById('password').value;
             let passConf = document.getElementById('password_conf').value;
 
@@ -94,9 +96,11 @@
             if(!name){alert("نام و نام خوانوادگی را وارد کنید!"); return false;}
             if(!phone){alert("شماره تماس را وارد کنید!"); return false;}
             if(!adress){alert("آدرس را وارد کنید!"); return false;}
+            if(!vispay){alert("هزینه ویزیت را وارد کنید!"); return false;}
 
             if(isNaN(melli)){ alert("کد ملی نامعتبر است!"); return false;}
-            if(isNaN(phone)){ alert("شماره تلفن نامعتبر است"); return false;}
+            if(isNaN(phone)){ alert("شماره تلفن نامعتبر است!"); return false;}
+            if(isNaN(vispay)){ alert("هزینه ویزیت نامعتبر است!"); return false;}
             if(!(pass === passConf)){ alert("عدم تطابق رمز عبور!"); return false;}
         }
         
@@ -130,23 +134,25 @@
     <form method="post">
         <div id="doctor_info">
             <label for="identity">کد ملی</label>
-            <input type="text" id="melli" name="melli" value="<?php echo $doctor['identity']; ?>">
-            <br/>
+            <input type="text" id="melli" name="melli" value="<?php echo $doctor['identity']; ?>"><br>
+            
             <label for="name">نام</label>
-            <input type="text" id="name" name="name" value="<?php echo $doctor['name']; ?>">
-            <br/>
+            <input type="text" id="name" name="name" value="<?php echo $doctor['name']; ?>"><br>
+            
             <label for="address">آدرس</label>
-            <input type="text" id="address" name="address" value="<?php  echo $doctor['address']; ?>">
-            <br/>
+            <input type="text" id="address" name="address" value="<?php  echo $doctor['address']; ?>"><br>
+            
             <label for="phone">شماره تلفن</label>
-            <input type="text" id="phone" name="phone" value="<?php echo $doctor['phone'] ?>">
-            <br/>
+            <input type="text" id="phone" name="phone" value="<?php echo $doctor['phone'] ?>"><br>
+            
+            <label for="phone">هزینه ویزیت</label>
+            <input type="text" id="vispay" name="vispay" value="<?php echo $doctor['vispay'] ?>"><br>
+            
             <label for="password">پسورد</label>
-            <input type="password" id="password" name="password">
-            <br/>
+            <input type="password" id="password" name="password"><br>
+            
             <label for="password">پسورد</label>
             <input type="password" id="password_conf" name="password_conf">
-            <br/>
         </div>
         
         <input type="submit" value="ثبت تغییرات" name="submit" onclick="return submitForm();">

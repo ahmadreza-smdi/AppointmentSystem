@@ -107,8 +107,8 @@ function getClinik($id){
 
 function getDoctor($identity){
     $conn = db_connect();
-    $sql = "SELECT doctors.id as id, name, address, phone, password, expertise_name, identity "
-            . "FROM doctors inner join expertise on doctors.expertise_id = expertise.id"
+    $sql = "SELECT doctors.id as id, name, address, phone, password, expertise_name, identity, vispay"
+            . " FROM doctors inner join expertise on doctors.expertise_id = expertise.id"
             . " WHERE identity='$identity'";
     $result = $conn->query($sql);
     if($result===false) return false;
