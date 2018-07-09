@@ -5,6 +5,7 @@ error_reporting(E_ALL);
 require_once ('config.php');
 include_once("css_links.php");
 include_once("js_links.php");
+include_once ('jdf.php');
 
 function db_connect(){
     global $host,$db,$user,$pass;
@@ -106,7 +107,7 @@ function getClinik($id){
 
 function getDoctor($identity){
     $conn = db_connect();
-    $sql = "SELECT doctors.id as id, name, address, phone, password, expertise_name "
+    $sql = "SELECT doctors.id as id, name, address, phone, password, expertise_name, identity "
             . "FROM doctors inner join expertise on doctors.expertise_id = expertise.id"
             . " WHERE identity='$identity'";
     $result = $conn->query($sql);

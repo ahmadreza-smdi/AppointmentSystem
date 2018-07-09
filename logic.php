@@ -1,6 +1,7 @@
 <?php
-    require_once ('functions.php');
     session_start();
+    require_once ('functions.php');
+    
     $job=$_REQUEST['job'];
     if($job == 'session_des'){
         session_des();

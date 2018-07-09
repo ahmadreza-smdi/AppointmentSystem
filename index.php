@@ -1,11 +1,13 @@
+<?php
+    session_start();
+    include_once("css_links.php");
+    include_once("js_links.php");
+?>
+
 <html>
     <header>
         <meta charset="UTF-8">
         <title> نوین ویزیت </title>
-        <?php
-            include_once("css_links.php");
-            include_once("js_links.php");
-        ?>
         <link rel="stylesheet" type="text/css" href="assets/css/c_index.css"/>
     </header>
     <body class="body">

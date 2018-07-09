@@ -1,3 +1,11 @@
+<?php
+    session_start();
+    include_once("functions.php");
+
+    $expertieses = getExpertises();
+    $cities = getCliniksCities();
+?>
+
 <head>
     <meta charset="UTF-8" />
     <title> جستجوی ‍پزشکان </title>
@@ -8,12 +16,6 @@
     <link rel="stylesheet" type="text/css" href="assets/css/c_search.css"/>
 
     <!-- <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">  -->
-    <?php
-        include_once("functions.php");
-
-        $expertieses = getExpertises();
-        $cities = getCliniksCities();
-    ?>
 
     <script language="javascript">
         var expArray = <?php echo json_encode($expertieses); ?> ;
