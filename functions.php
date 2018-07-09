@@ -104,7 +104,14 @@ function getFreeTime($id){
 
 function getReserve($id){
     $conn = db_connect();
-    $sql = "SELECT * FROM reserves WHERE id='$id'";
+    $sql = "SELECT reserves.id as reserve_id, doctors.id as doctor_id,"
+            . " doctors.name as doctor_name, cliniks.clinik_name, date, time"
+            . " FROM reserves inner join free_times on reserves.free_time_id = free_times.id"
+            . " inner join time_slots on free_times.time_slot_id = time_slots.id"
+            . " inner join cliniks_doctors on cliniks_doctors.doctor_id = free_times.doctor_id"
+            . " inner join cliniks on cliniks_doctors.clinik_id = cliniks.id"
+            . " inner join doctors on free_times.doctor_id = doctors.id"
+            . " WHERE reserves.id='$id'";
     $result = $conn->query($sql);
     if($result===false) return false;
     $out = mysqli_fetch_array($result);
@@ -138,7 +145,7 @@ function getPatientAllReserves($patientId){
             . " inner join cliniks_doctors on cliniks_doctors.doctor_id = free_times.doctor_id"
             . " inner join cliniks on cliniks_doctors.clinik_id = cliniks.id"
             . " inner join doctors on free_times.doctor_id = doctors.id"
-            . " WHERE patient_id='$patientId'";
+            . " WHERE patient_id='$patientId' ORDER BY date ASC";
     
     $result = $conn->query($sql);
     if($result===false) return false;
@@ -158,6 +165,52 @@ function reserveFreeTime($freeTimeId, $patientId){
     if($conn->query($sql)) return true;
     echo "Error: " . $sql . "<br>" . $conn->error;
     return false;
+}
+
+function cancelReserve($patientId, $reserveId){
+    $conn = db_connect();
+    $sql = "DELETE FROM reserves WHERE id='$reserveId' AND patient_id='$patientId'";
+    
+    if($conn->query($sql)){
+        echo 'رزرو شما با موفقیت لغو شد!' . '<br><br>';
+        return true;
+    }
+    echo "Error: " . $sql . "<br>" . $conn->error;
+    return false;
+}
+
+function canCancelReserve($reserve){
+    $day = tr_num(jdate('j'), 'en');
+    $month = tr_num(jdate('n'), 'en');
+    $year = "13" . tr_num(jdate('y'), 'en');
+
+    $pieces = explode("-", $reserve['date']);
+    $resYear = tr_num($pieces[0], 'en');
+    $resMonth = tr_num($pieces[1], 'en');
+    $resDay = tr_num($pieces[2], 'en');
+
+    if($resYear > $year || $resMonth > $month || $resDay > $day) return true;
+    return false;
+}
+
+function getJdateStr(){
+    $day_number = tr_num(jdate('j'), 'en');
+    $month_number = tr_num(jdate('n'), 'en');
+    $year_number = tr_num(jdate('y'), 'en');
+    $dateStr = $year_number . "/" . $month_number . "/" . $day_number;
+    return $dateStr;
+}
+
+function getDbDateFromJdateStr($jdateStr){
+    $pieces = explode("/", $jdateStr);
+    if(strlen($pieces[0]) == 2) $year = '13' . $pieces[0];
+    else $year = $pieces[0];
+    if($pieces[1]>9) $month = $pieces[1];
+    else $month = "0".$pieces[1];
+    if($pieces[2]>9) $day = $pieces[2];
+    else $day = "0".$pieces[2];
+    $reqDate = $year.'-'.$month.'-'.$day;
+    return $reqDate;
 }
 
 function boldEcho($str,$color,$beforeBR=1,$afterBR=0){
