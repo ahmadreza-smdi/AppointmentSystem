@@ -228,6 +228,42 @@ function getJdateStr(){
     return $dateStr;
 }
 
+function getDoctorEnableTimeSlots($dbDate, $doctorId){
+    $conn = db_connect();
+    $sql = "SELECT time_slots.id, time_slots.time"
+            . " FROM free_times inner join time_slots on free_times.time_slot_id = time_slots.id"
+            . " WHERE free_times.doctor_id='$doctorId' AND free_times.date='$dbDate'"
+            . " ORDER BY time_slots.id ASC";
+    
+    $result = $conn->query($sql);
+    if($result===false) return false;
+    
+    $out = Array();
+    $index = 0;
+    while ($row = mysqli_fetch_array($result)) $out[$index++] = $row;
+    $conn->close();
+    return $out;    
+}
+
+function getDoctorDisableTimeSlots($dbDate, $doctorId){
+    $conn = db_connect();
+    $sql = "SELECT time_slots.id, time_slots.time"
+            . " FROM time_slots"
+            . " WHERE time_slots.id not in (SELECT time_slots.id"
+            . " FROM free_times inner join time_slots on free_times.time_slot_id = time_slots.id"
+            . " WHERE free_times.doctor_id='$doctorId' AND free_times.date='$dbDate')"
+            . " ORDER BY time_slots.id ASC";
+    
+    $result = $conn->query($sql);
+    if($result===false) return false;
+    
+    $out = Array();
+    $index = 0;
+    while ($row = mysqli_fetch_array($result)) $out[$index++] = $row;
+    $conn->close();
+    return $out;    
+}
+
 function getDbDateFromJdateStr($jdateStr){
     $pieces = explode("/", $jdateStr);
     if(strlen($pieces[0]) == 2) $year = '13' . $pieces[0];
