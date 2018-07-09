@@ -2,8 +2,8 @@
     require_once("functions.php");
     session_start();
 ?>
-<nav class="navbar navbar-default">
-                <div class="container-fluid">
+<nav class="navbar navbar-default" style="background-color:gold; z-index: 9999">
+                <div class="container-fluid" style="padding-right: 10%; padding-left: 10%; margin-right: auto; margin-left: auto; margin-top: 5px; margin-bottom: 5px; z-index: 9999">
                     <!-- Brand and toggle get grouped for better mobile display -->
                     <div class="navbar-header">
                     <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">

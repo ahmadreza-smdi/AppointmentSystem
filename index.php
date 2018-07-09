@@ -13,7 +13,6 @@
             <?php
                 include_once("navbar.php")
             ?>
-
         </div>
 
         <div class="reserve">

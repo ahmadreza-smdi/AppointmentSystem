@@ -10,25 +10,16 @@
 }
 
 .container{
-    margin-top: 40px;
-    text-align: right;
-    /*width: 110%;*/
-    /*background-color: #ff6c0c;*/
-    /*background-attachment: fixed;*/
-    /*background-position: top;*/
-    position: fixed;
-    /*opacity: 0.5;*/
-    /*height: 400px;*/
+    margin-top: 50px;
     z-index: 9999;
-    /*background-position: center,center;*/
-    /*width: 75%;*/
+    width: 100%;
     padding-left: 0;
     padding-right: 0;
-    width: 100%;
-    /*padding: 10px;*/
     position: fixed;
-    left: 50%;
-    transform: translate(-50%, 0);
+    /*text-align: left;*/
+    /*left: -50%;*/
+    /*transform: translate(-50%, 0);*/
+    /*background-position: center,center;*/
     /*box-shadow: 5px 20px 18px #888888;*/
 }
 
