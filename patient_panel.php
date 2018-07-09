@@ -9,7 +9,6 @@
         $identity = $_SESSION['identity'];
         $patient = getPatient($identity);
         if($patient===false) header("location:index.php");
-        $patReserves = getPatientAllReserves($patient['id']);
     ?>
     
     <style>
@@ -63,6 +62,12 @@
             if(isNaN(phone)){ alert("شماره تلفن نامعتبر است"); return false;}
             if(!(pass === passConf)){ alert("عدم تطابق رمز عبور!"); return false;}
         }
+        
+        function cancelReserve(reserveId){
+            if(confirm("آیا مطمئن هستید؟") == false) return false;
+            document.getElementById('delreserve').value = reserveId;
+            return true;
+        }
     </script>
 
 
@@ -95,6 +100,12 @@
                 boldEcho("خطا در بروزرسانی!", "red",0,2);
             }
         }
+        
+        else if(isset($_POST['delreserve'])){
+            $reserveId = $_POST['delreserve'];
+            $patientId = $patient['id'];
+            cancelReserve($patientId, $reserveId);
+        }
     ?>
 
     <span style="font-weight: bold; font-size: 20px;">تغییر اطلاعات</span><br>
@@ -112,31 +123,44 @@
         <input type="submit" value="ثبت تغییرات" name="submit" onclick="return submitForm();">
     </form>
     
-    <?php if($patReserves === false || count($patReserves)==0) die; ?>
+    <?php
+        $patReserves = getPatientAllReserves($patient['id']);
+        if($patReserves === false || count($patReserves)==0) die;
+    ?>
     
     <br>
     <span style="font-weight: bold; font-size: 20px;">لیست رزرو های شما تا کنون</span><br>
     <div id="patient_reserved_times">
-        <table id="customers" style="width: 70%;">
-            <tr>
-            <th>تاریخ</th>
-            <th>زمان</th>
-            <th>نام پزشک</th>
-            <th>کلینیک</th>
-            </tr>
-
-            <?php
-                for($i=0; count($patReserves)>$i; $i++){
-                    $reserve = $patReserves[$i];
-                    echo "<tr>";
-                    echo "<td>".$reserve['date']."</td>";
-                    echo "<td>".$reserve['time']."</td>";
-                    echo "<td>".$reserve['doctor_name']."</td>";
-                    echo "<td>".$reserve['clinik_name']."</td>";
-                    echo "</tr>";
-                }
-            ?>
-        </table>
+        <form method="post">
+            <table id="customers" style="width: 70%;">
+                <tr>
+                <th>تاریخ</th>
+                <th>زمان</th>
+                <th>نام پزشک</th>
+                <th>کلینیک</th>
+                <th>لغو</th>
+                </tr>
+                
+                <input id="delreserve" name="delreserve" type="hidden" value="">
+                <?php
+                    for($i=0; count($patReserves)>$i; $i++){
+                        $reserve = $patReserves[$i];
+                        echo "<tr>";
+                        echo "<td>".$reserve['date']."</td>";
+                        echo "<td>".$reserve['time']."</td>";
+                        echo "<td>".$reserve['doctor_name']."</td>";
+                        echo "<td>".$reserve['clinik_name']."</td>";
+                        echo "<td>";
+                        if(canCancelReserve($reserve)){
+                            echo '<input type="submit" value="لغو" id="bb" '
+                            . 'onclick="return cancelReserve(\''.$reserve['reserve_id'].'\');">'; 
+                        }
+                        echo"</td>";
+                        echo "</tr>";
+                    }
+                ?>
+            </table>
+        </form>
     </div>
 </body>
 
