@@ -276,6 +276,36 @@ function getDbDateFromJdateStr($jdateStr){
     return $reqDate;
 }
 
+function addDoctorFreeTimes($doctorId, $dbdate, $timeSlotsStr){
+    $pieces = explode("-", $timeSlotsStr);
+    for($i=0; count($pieces)>$i; $i++) 
+        addDoctorFreeTime ($doctorId, $dbdate, $pieces[$i]);
+}
+
+function deleteDoctorFreeTimes($doctorId, $dbdate, $timeSlotsStr){
+    $pieces = explode("-", $timeSlotsStr);
+    for($i=0; count($pieces)>$i; $i++) 
+        deleteDoctorFreeTime ($doctorId, $dbdate, $pieces[$i]);
+}
+
+function addDoctorFreeTime($doctorId, $dbdate, $tsId){
+    $conn = db_connect();
+    $sql = "INSERT INTO free_times (date, doctor_id, time_slot_id) VALUES ('$dbdate', '$doctorId', '$tsId')";
+    
+    if($conn->query($sql)) return true;
+    echo "Error: " . $sql . "<br>" . $conn->error;
+    return false;    
+}
+
+function deleteDoctorFreeTime($doctorId, $dbdate, $tsId){
+    $conn = db_connect();
+    $sql = "DELETE FROM free_times WHERE date='$dbdate' AND doctor_id='$doctorId' AND time_slot_id='$tsId'";
+    
+    if($conn->query($sql)) return true;
+    echo "Error: " . $sql . "<br>" . $conn->error;
+    return false;    
+}
+
 function boldEcho($str,$color,$beforeBR=1,$afterBR=0){
     for($i=0; $beforeBR>$i; $i++) echo '<br>';
     echo '<b><font color="'.$color.'">'.$str.'</font></b>';

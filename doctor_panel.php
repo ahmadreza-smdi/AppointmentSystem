@@ -32,6 +32,14 @@
             boldEcho("خطا در بروزرسانی!", "red",0,2);
         }
     }
+    
+    if(isset($_POST['submit_addfree'])){
+        addDoctorFreeTimes($doctor['id'], $_POST['adddate'], $_POST['addfree']);
+    }
+    
+    if(isset($_POST['submit_delfree'])){
+        deleteDoctorFreeTimes($doctor['id'], $_POST['deldate'], $_POST['delfree']);
+    }
 ?>
 <head>
 <meta charset="UTF-8" />
@@ -101,7 +109,7 @@
                 sum += (cb.value.toString());
             }
             document.getElementById('addfree').value = sum;
-            return false;
+            return true;
         }
         
         function delFree(){
@@ -113,7 +121,7 @@
                 sum += (cb.value.toString());
             }
             document.getElementById('delfree').value = sum;
-            return false;            
+            return true;            
         }
     </script>
 </head>
@@ -179,9 +187,6 @@
         $dbDate = getDbDateFromJdateStr($date);
         $enableTimes = getDoctorEnableTimeSlots($dbDate, $doctor['id']);
         $disableTimes = getDoctorDisableTimeSlots($dbDate, $doctor['id']);
-        print_r($enableTimes);
-        echo '<br>';
-        print_r($disableTimes);
     ?>
 
     
@@ -212,7 +217,7 @@
                 ?>
             </table>
             
-            <input type="submit" value="ثبت" name="submit_add" 
+            <input type="submit" value="ثبت" name="submit_addfree" 
                    style="padding-left: 10px; padding-right: 10px;" onclick="return addFree();">
         </form>
     </div>
@@ -244,7 +249,7 @@
                 ?>
             </table>
             
-            <input type="submit" value="ثبت" name="submit_delete" 
+            <input type="submit" value="ثبت" name="submit_delfree" 
                    style="padding-left: 10px; padding-right: 10px;" 
                    onclick="return delFree();">
         </form>
