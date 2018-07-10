@@ -64,13 +64,15 @@
                 if(!name){alert("نام و نام خوانوادگی را وارد کنید!"); return false;}
                 if(!phone){alert("شماره تماس را وارد کنید!"); return false;}
                 if(!address){alert("آدرس را وارد کنید!"); return false;}
-                if(!pass){alert("پسورد را وارد کنید!"); return false;}*/
+                if(!pass){alert("پسورد را وارد کنید!"); return false;}
                 
                 if(isNaN(identity)){ alert("کد ملی نامعتبر است!"); return false;}
                 if(isNaN(phone)){ alert("شماره تلفن نامعتبر است!"); return false;}
                 if(!(pass === passConf)){ alert("عدم تطابق رمز عبور!"); return false;}
                 
                 if(type=="doctor"){
+                    if(!vispay){alert("هزینه ویزیت را وارد کنید!"); return false;}
+                    
                     let expArray = <?php echo json_encode($expertieses); ?> ;
                     let findId = false;
                     for(let i=0; expArray.length>i; i++)
@@ -80,7 +82,7 @@
                         alert("تخصص مورد نظر یافت نشد!");
                         return false;
                     }
-                    else document.getElementById('exp_id').value = findId; 
+                    else document.getElementById('r_exp_id').value = findId; 
                 }
                 
                 else{
@@ -135,7 +137,7 @@
                                 </p>
                                 
                                 <p class="signin button"> 
-                                    <input id="logsub" name="logsub" type="submit" value="ورود" onclick="loginSubmit();"/> 
+                                    <input id="logsub" name="logsub" type="submit" value="ورود" onclick="return loginSubmit();"/> 
 				</p>
                                 <p class="change_link">
 									هنوز ثبت نام نکرده ام ?
@@ -151,28 +153,28 @@
                                 <h1> ثبت نام </h1> 
                                 <p> 
                                 <label for="r_identity" class="uname" >شماره ملی</label>
-                                <input id="r_identity" name="r_identity" required="required" type="text" placeholder="شماره ملی خود را وارد کنید" />
+                                <input id="r_identity" name="r_identity" type="text" placeholder="شماره ملی خود را وارد کنید" />
                                 </p>
                                 
                                 <p> 
                                     <label for="r_name" class="uname"  > نام ونام خانوادگی</label>
-                                    <input id="r_name" name="r_name" required="required" type="text" placeholder="نام و نام خانوادگی خود را وارد کنید"/> 
+                                    <input id="r_name" name="r_name" type="text" placeholder="نام و نام خانوادگی خود را وارد کنید"/> 
                                 </p>
                                 <p> 
                                     <label for="r_phone" class="uname" >شماره تلفن </label>
-                                    <input id="r_phone" name="r_phone" required="required" type="text" placeholder="شماره تلفن خود را وارد نمایید"/>
+                                    <input id="r_phone" name="r_phone" type="text" placeholder="شماره تلفن خود را وارد نمایید"/>
                                 </p>
                                 <p> 
                                     <label for="ًr_address" class="uname" >آدرس </label>
-                                    <input id="r_address" name="r_address" required="required" type="text" placeholder="آدرس خود را وارد نمایید"/>
+                                    <input id="r_address" name="r_address" type="text" placeholder="آدرس خود را وارد نمایید"/>
                                 </p>
                                 <p> 
                                     <label for="r_password" class="youpasswd" >رمز عبور</label>
-                                    <input id="r_password" name="r_password" required="required" type="password" placeholder=" رمز عبور خود را وارد نمایید"/>
+                                    <input id="r_password" name="r_password" type="password" placeholder=" رمز عبور خود را وارد نمایید"/>
                                 </p>
                                 <p> 
                                     <label for="r_password_confirm" class="youpasswd" >تایید رمز عبور </label>
-                                    <input id="r_password_confirm" name="ًr_password_confirm" required="required" type="password" placeholder=" یک بار دیگر رمز را وارد نمایید"/>
+                                    <input id="r_password_confirm" name="ًr_password_confirm" type="password" placeholder=" یک بار دیگر رمز را وارد نمایید"/>
                                 </p>
                                 
                                 <div id="regblood" style="margin-top: 10px;">
@@ -192,7 +194,7 @@
                                 <div id="regpay" style="margin-top: 15px; display: none">
                                     <p> 
                                         <label for="r_blood_type" class="uname" >هزینه ویزیت </label>
-                                        <input id="r_vispay" name="r_vispay" required="required" type="text" placeholder="هزینه ویزیت را وارد نمایید "/>
+                                        <input id="r_vispay" name="r_vispay" type="text" placeholder="هزینه ویزیت را وارد نمایید "/>
                                     </p>
                                 </div>
                                 
@@ -207,21 +209,21 @@
                                              }
                                          ?>
                                          </datalist>
-                                         <input type="hidden" id="exp_id" name="exp_id"  />
+                                         <input type="hidden" id="r_exp_id" name="r_exp_id"  />
                                     </p>
                                 </div>
                                 
                                 <p style="margin-top: 15px;"> 
                                     <label for="r_type" class="uname" >بیمار</label>
-                                    <input id="r_type_pat" name="r_type" value="patient" required="required" checked="true" type="radio" onchange="radioChanged();" />
+                                    <input id="r_type_pat" name="r_type" value="patient" checked="true" type="radio" onchange="radioChanged();" />
                                 </p>
                                 <p>
                                     <label for="r_type" class="uname" >دکتر</label>
-                                    <input id="r_type_doc" name="r_type" value="doctor" required="required" type="radio" onchange="radioChanged();" />
+                                    <input id="r_type_doc" name="r_type" value="doctor" type="radio" onchange="radioChanged();" />
                                 </p>
                                 
                                 <p class="signin button"> 
-                                    <input type="submit" id="regsub" name="regsub" value="ثبت نام" onclick="registerSubmit();"/> 
+                                    <input type="submit" id="regsub" name="regsub" value="ثبت نام" onclick="return registerSubmit();"/> 
                                 </p>
                                 
                                 <p class="change_link">  
