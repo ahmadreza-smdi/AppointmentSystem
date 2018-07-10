@@ -78,45 +78,45 @@
                 if ($patient==false)die;
             ?>
         </div>
-        
-        <div id='get_comments' align='center'>
-            <form method='post' name='comm'>
-                <p>
-                    <br>
-                    <br>
-                <p>نظر خود را وارد کنید</p>
-                <textarea name="comment" id="" cols="30" rows="10"></textarea>
-                </p>
-                <br>
-                <p>به این دکتر چه نمره ای می دهید؟</p>
-                <select name="menu">
-                    <option value="0"></option>
-                    <option value="1">۱</option>
-                    <option value="2">۲</option>
-                    <option value="3">۳</option>
-                    <option value="4">۴</option>
-                    <option value="5">۵</option>
-                    <option value="6">۶</option>
-                    <option value="7">۷</option>
-                    <option value="8">۸</option>
-                    <option value="9">۹</option>
-                    <option value="10">۱۰</option>
-                </select>
-                <div><input name='sub' type="submit" value="ثبت نظر"></div>
-            </form>
-        </div>
         <div class="comments" align='center'>
             <hr>
             <?php
-               $commm = getAllComments();
-               for($i=0; $i<count($commm); $i++){
+            $commm = getAllComments();
+            for($i=0; $i<count($commm); $i++){
                 echo '<p> '.'<b>' .$commm[$i]['name']. '</b>' .' </p>' ;
                 echo '<p> '.$commm[$i]['comment_text']. ' </p>' ;
                 echo '<p> '.'امتیاز:' .$commm[$i]['comment_score']. ' </p>' ;
                 echo '<hr>';
-               }
+            }
             ?>
         </div>
+        <div class="patient_table" align='center'>
+            <form method='post' name='comm'>
+                <p><br><br>
+                    <p class="b_6">نظر خود را وارد کنید</p>
+                    <textarea  class="comment_box" name="comment" id="" cols="30" rows="10"></textarea>
+                </p>
+                <br>
+                <p class="b_7">به این دکتر چه نمره ای می دهید؟</p>
+                <div class="find_box_content">
+                    <select class="select" name="menu">
+                        <option value="0"></option>
+                        <option value="1">۱</option>
+                        <option value="2">۲</option>
+                        <option value="3">۳</option>
+                        <option value="4">۴</option>
+                        <option value="5">۵</option>
+                        <option value="6">۶</option>
+                        <option value="7">۷</option>
+                        <option value="8">۸</option>
+                        <option value="9">۹</option>
+                        <option value="10">۱۰</option>
+                    </select>
+                    <div><input class="b_8" name='sub' type="submit" value="ثبت نظر"></div>
+                </div>
+            </form>
+        </div>
+
 
 
     </div>
