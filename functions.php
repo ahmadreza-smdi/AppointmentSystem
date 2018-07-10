@@ -56,9 +56,13 @@ function getCliniksCities(){
     return $out;
 }
 
-function select_doctor($exp_id){
+function select_doctor($exp_id,$city_name,$insurance_id=0){
     $link = db_connect();
-    $query = "select * from doctors where expertise_id='".$exp_id."'";
+    if($insurance_id){
+        $query = "select doctors.id,doctors.identity,doctors.name,doctors.address,doctors.phone from doctors INNER JOIN cliniks_doctors INNER JOIN cliniks INNER JOIN cities INNER JOIN doctors_insurances ON (doctors.id = cliniks_doctors.doctor_id AND cliniks_doctors.clinik_id = cliniks.id AND cliniks.city_id = cities.id AND doctors_insurances.doctor_id = doctors.id ) where expertise_id='".$exp_id."' AND cities.city_name='".$city_name."' AND doctors_insurances.insurance_id ='".$insurance_id."'";
+    }else{
+        $query = "select doctors.id,doctors.identity,doctors.name,doctors.address,doctors.phone from doctors INNER JOIN cliniks_doctors INNER JOIN cliniks INNER JOIN cities ON (doctors.id = cliniks_doctors.doctor_id AND cliniks_doctors.clinik_id = cliniks.id AND cliniks.city_id = cities.id) where expertise_id='".$exp_id."' AND cities.city_name ='".$city_name."'";
+    }
     $res = $link->query($query);
     return $res;
 }
@@ -206,6 +210,43 @@ function getPatientAllReserves($patientId){
     $index = 0;
     while ($row = mysqli_fetch_array($result)) $out[$index++] = $row;
     
+    $conn->close();
+    return $out;
+}
+
+function getNewestDoctors(){
+    $conn = db_connect();
+    $sql_newst_doctors = "SELECT doctors.id,doctors.name,doctors.address,doctors.phone FROM doctors ORDER BY id DESC";
+    $result = $conn->query($sql_newst_doctors);
+    if($result===false) return false;
+    $out = Array();
+    $index = 0;
+    while ($row = mysqli_fetch_array($result)) $out[$index++] = $row;
+    $conn->close();
+    return $out;
+}
+
+
+function getMostPopularDoctors(){
+    $conn = db_connect();
+    $sql_mostـpopular_doctors = "SELECT doctors_comments.doctor_id as id, AVG(doctors_comments.comment_score) as avg_score,doctors.name,doctors.address,doctors.phone FROM doctors_comments INNER JOIN doctors ON doctors_comments.doctor_id = doctors.id GROUP BY doctors_comments.doctor_id ORDER BY avg_score DESC";
+    $result = $conn->query($sql_mostـpopular_doctors);
+    if($result===false) return false;
+    $out = Array();
+    $index = 0;
+    while ($row = mysqli_fetch_array($result)) $out[$index++] = $row;
+    $conn->close();
+    return $out;
+}
+
+function getInsurances(){
+    $conn = db_connect();
+    $sql_all_insurances = "SELECT insurances.id,insurances.insurance_name FROM insurances";
+    $result = $conn->query($sql_all_insurances);
+    if($result===false) return false;
+    $out = Array();
+    $index = 0;
+    while ($row = mysqli_fetch_array($result)) $out[$index++] = $row;
     $conn->close();
     return $out;
 }

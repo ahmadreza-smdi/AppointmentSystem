@@ -2,10 +2,16 @@
     session_start();
     require_once('functions.php');
     
-    if(isset($_REQUEST['exp_id']) && isset($_REQUEST['city'])){
+    if(isset($_REQUEST['exp_id']) && isset($_REQUEST['city_name'])){
         $exp_id = $_REQUEST['exp_id'];
-        $city = $_REQUEST['city'];
-        $res = select_doctor($exp_id,$city);
+        $city_name = $_REQUEST['city_name'];
+        $insurance_id = $_REQUEST['insurance_id'];
+        if ($insurance_id) {
+            $res = select_doctor($exp_id,$city_name,$insurance_id);
+        }
+        else{
+            $res = select_doctor($exp_id,$city_name);
+        }
     }
     else{
         $res = getAllDoctors();
