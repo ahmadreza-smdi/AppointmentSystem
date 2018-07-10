@@ -75,14 +75,16 @@
     position: relative;
     float: right;
 }
+
 .control{
-color: white;
-font-size: 30px;
+    color: white;
+    font-size: 30px;
 }
+
 .date{
-color: white;
-font-size: 30px;
-border-radius: 50px;
+    color: white;
+    font-size: 30px;
+    border-radius: 50px;
 }
 
 
