@@ -190,6 +190,8 @@ border-radius: 50px;
     height: 40px;
 }
 .b_2_p{
+    text-align:right ;
+    padding:5px;
     padding-right: 15px;
     border-radius:20px;
     font-size: 20px;
@@ -200,6 +202,8 @@ border-radius: 50px;
     height: 40px;
 }
 .b_2{
+    text-align:right ;
+    padding:5px;
     padding-right: 15px;
     border-radius:20px;
     font-size: 20px;
@@ -210,6 +214,7 @@ border-radius: 50px;
     height: 40px;
 }
 .b_1 p{
+    padding:5px;
     font-size: 20px;
     color: white;
     text-align: center;

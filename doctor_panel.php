@@ -43,6 +43,7 @@
     }
 ?>
 <head>
+    <title> پنل کاربری پزشک</title>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <title>Login and Registration Form with HTML5 and CSS3</title>
@@ -187,12 +188,12 @@
                             </form> <br>
                                 <div class="b_1">
                                     <p for="phone">تخصص: </p>
-                                    <div class="b_2" style="margin-top: 20px ; border-style: solid; border-color: gold; background-color:#f2f2f2 "> <?php echo $doctor['expertise_name']; ?> </div>
+                                    <div class="b_2" style="padding:5px; margin-top: 20px ; border-style: solid; border-color: gold; background-color:#f2f2f2 "> <?php echo $doctor['expertise_name']; ?> </div>
                                 </div>
                                 <br>
                                 <div class="b_1">
                                     <p for="phone">کلینیک: </p>
-                                    <div class="b_2" style="padding:5px;height:100px;margin-top: 20px ; border-style: solid; border-color: gold; background-color:#f2f2f2 ">
+                                    <div class="b_2" style="padding:5px; height:100px;margin-top: 20px ; border-style: solid; border-color: gold; background-color:#f2f2f2 ">
                                         <?php
                                         $clinik = getDoctorClinik($doctor['id']);
                                         if(($clinik!=false)){
