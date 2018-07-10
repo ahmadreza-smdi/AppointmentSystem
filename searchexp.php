@@ -4,6 +4,7 @@
 
     $expertieses = getExpertises();
     $cities = getCliniksCities();
+    $insurances = getInsurances();
 ?>
 
 <head>
@@ -20,11 +21,11 @@
     <script language="javascript">
         var expArray = <?php echo json_encode($expertieses); ?> ;
         var citiesArray = <?php echo json_encode($cities); ?> ;
-
+        var insurancesArray = <?php echo json_encode($insurances); ?>;
         function submitForm(){
             let expInp = document.getElementById('txt_exp').value;
             let cityInp = document.getElementById('txt_city').value;
-
+            let insuranceInp = document.getElementById('txt_insurance').value;
             let findId = false;
             for(let i=0; expArray.length>i; i++)
                 if(expInp === expArray[i]['expertise_name'])
@@ -43,7 +44,18 @@
                 alert("شهر مورد نظر یافت نشد!");
                 return false;
             }
-            else document.getElementById('city').value = findCity;
+            else document.getElementById('city_name').value = findCity;
+            if( document.getElementById('txt_insurance').value ){
+                let findInsurance = false;
+                for(let i=0; insurancesArray.length>i; i++)
+                    if(insuranceInp === insurancesArray[i]["insurance_name"])
+                        findInsurance=insurancesArray[i]["id"];
+                if(findInsurance===false){
+                    alert("نام بیمه مورد نظر یافت نشد!");
+                    return false;
+                }
+                else document.getElementById('insurance_id').value = findInsurance;
+            }
         }
     </script>
 
@@ -56,7 +68,6 @@
             <?php
             include_once("navbar.php")
             ?>
-
         </div>
         <div class="search_box">
             <div class="s_box">
@@ -77,7 +88,7 @@
 
 
                     <div class="city">
-                        <input type="hidden" id="city" name="city" />
+                        <input type="hidden" id="city_name" name="city_name" />
                         <p>* شهر :</p>
                         <input id="txt_city" type="text" list="list_city" autocomplete="off" style="color: black;border-radius:20px ;height:35px;font-size: 65%;margin-right: 10%" /><br>
                         <datalist id="list_city" name="list_city">
@@ -87,8 +98,18 @@
                             }
                             ?>
                         </datalist>
+                        
+                        <input type="hidden" id="insurance_id" name="insurance_id" />
+                        <p>* بیمه :</p>
+                        <input id="txt_insurance" type="text" list="list_insurance" autocomplete="off" style="color: black;border-radius:20px ;height:35px;font-size: 65%;margin-right: 10%" /><br>
+                        <datalist id="list_insurance" name="list_insurance">
+                            <?php
+                            foreach($insurances as $insurance){
+                                echo '<option value="'.$insurance['insurance_name'].'">'.$insurance['insurance_name'].'</option>';
+                            }
+                            ?>
+                        </datalist>
                     </div>
-
 
                     <div s_bottom>
                     <input type="submit" value="جستجوی پزشکان" style="border-radius:20px;font-size: 25px; color:white; margin-top: 20px; height:35px;width:100%; font-size: 100%;margin-right: 10%;background-color: darkred;" onclick="return submitForm(); ">

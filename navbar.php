@@ -20,7 +20,7 @@
                         </div>
                         <button type="submit" class="btn btn-default">جستجو</button>
                     </form>
-                    
+
                     <?php
                         if(!isset($_SESSION['identity'])){
                     ?>
@@ -34,7 +34,7 @@
                         </ul>
                        <?php }
                     ?>
-                    <?php 
+                    <?php
                         if(isset($_SESSION['type']) && $_SESSION['type']=='patient'){
                     ?>
                     <ul class="nav navbar-nav navbar-right">
@@ -43,7 +43,12 @@
                     <ul class="nav navbar-nav navbar-right">
                         <li><a href="searchexp.php">رزرو وقت دکتر</a></li>
                     </ul>
-                    <?php }else{
+
+                    <div class="btn btn-default" style="margin-top: 8px;float: left">
+                        <div> <?php getApi() ?> </div>
+                    </div>
+
+                     <?php }else{
                     ?>
                     <ul class="nav navbar-nav navbar-right">
                         <li><a  style="color: white " href="doctor_panel.php">پنل کاربری</a></li>

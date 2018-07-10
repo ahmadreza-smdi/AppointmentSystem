@@ -56,9 +56,13 @@ function getCliniksCities(){
     return $out;
 }
 
-function select_doctor($exp_id){
+function select_doctor($exp_id,$city_name,$insurance_id=0){
     $link = db_connect();
-    $query = "select * from doctors where expertise_id='".$exp_id."'";
+    if($insurance_id){
+        $query = "select doctors.id,doctors.identity,doctors.name,doctors.address,doctors.phone from doctors INNER JOIN cliniks_doctors INNER JOIN cliniks INNER JOIN cities INNER JOIN doctors_insurances ON (doctors.id = cliniks_doctors.doctor_id AND cliniks_doctors.clinik_id = cliniks.id AND cliniks.city_id = cities.id AND doctors_insurances.doctor_id = doctors.id ) where expertise_id='".$exp_id."' AND cities.city_name='".$city_name."' AND doctors_insurances.insurance_id ='".$insurance_id."'";
+    }else{
+        $query = "select doctors.id,doctors.identity,doctors.name,doctors.address,doctors.phone from doctors INNER JOIN cliniks_doctors INNER JOIN cliniks INNER JOIN cities ON (doctors.id = cliniks_doctors.doctor_id AND cliniks_doctors.clinik_id = cliniks.id AND cliniks.city_id = cities.id) where expertise_id='".$exp_id."' AND cities.city_name ='".$city_name."'";
+    }
     $res = $link->query($query);
     return $res;
 }
@@ -107,9 +111,22 @@ function getClinik($id){
 
 function getDoctor($identity){
     $conn = db_connect();
-    $sql = "SELECT doctors.id as id, name, address, phone, password, expertise_name, identity "
-            . "FROM doctors inner join expertise on doctors.expertise_id = expertise.id"
+    $sql = "SELECT doctors.id as id, name, address, phone, password, expertise_name, identity, vispay"
+            . " FROM doctors inner join expertise on doctors.expertise_id = expertise.id"
             . " WHERE identity='$identity'";
+    $result = $conn->query($sql);
+    if($result===false) return false;
+    $out = mysqli_fetch_array($result);
+    
+    $conn->close();
+    return $out;
+}
+
+function getDoctorWithId($id){
+    $conn = db_connect();
+    $sql = "SELECT doctors.id as id, name, address, phone, password, expertise_name, identity, vispay"
+            . " FROM doctors inner join expertise on doctors.expertise_id = expertise.id"
+            . " WHERE doctors.id='$id'";
     $result = $conn->query($sql);
     if($result===false) return false;
     $out = mysqli_fetch_array($result);
@@ -197,6 +214,43 @@ function getPatientAllReserves($patientId){
     return $out;
 }
 
+function getNewestDoctors(){
+    $conn = db_connect();
+    $sql_newst_doctors = "SELECT doctors.id,doctors.name,doctors.address,doctors.phone FROM doctors ORDER BY id DESC";
+    $result = $conn->query($sql_newst_doctors);
+    if($result===false) return false;
+    $out = Array();
+    $index = 0;
+    while ($row = mysqli_fetch_array($result)) $out[$index++] = $row;
+    $conn->close();
+    return $out;
+}
+
+
+function getMostPopularDoctors(){
+    $conn = db_connect();
+    $sql_mostـpopular_doctors = "SELECT doctors_comments.doctor_id as id, AVG(doctors_comments.comment_score) as avg_score,doctors.name,doctors.address,doctors.phone FROM doctors_comments INNER JOIN doctors ON doctors_comments.doctor_id = doctors.id GROUP BY doctors_comments.doctor_id ORDER BY avg_score DESC";
+    $result = $conn->query($sql_mostـpopular_doctors);
+    if($result===false) return false;
+    $out = Array();
+    $index = 0;
+    while ($row = mysqli_fetch_array($result)) $out[$index++] = $row;
+    $conn->close();
+    return $out;
+}
+
+function getInsurances(){
+    $conn = db_connect();
+    $sql_all_insurances = "SELECT insurances.id,insurances.insurance_name FROM insurances";
+    $result = $conn->query($sql_all_insurances);
+    if($result===false) return false;
+    $out = Array();
+    $index = 0;
+    while ($row = mysqli_fetch_array($result)) $out[$index++] = $row;
+    $conn->close();
+    return $out;
+}
+
 function reserveFreeTime($freeTimeId, $patientId){
     $conn = db_connect();
     $sql = "INSERT INTO reserves (patient_id, free_time_id) VALUES ('$patientId', '$freeTimeId')";
@@ -240,6 +294,42 @@ function getJdateStr(){
     return $dateStr;
 }
 
+function getDoctorEnableTimeSlots($dbDate, $doctorId){
+    $conn = db_connect();
+    $sql = "SELECT time_slots.id, time_slots.time"
+            . " FROM free_times inner join time_slots on free_times.time_slot_id = time_slots.id"
+            . " WHERE free_times.doctor_id='$doctorId' AND free_times.date='$dbDate'"
+            . " ORDER BY time_slots.id ASC";
+    
+    $result = $conn->query($sql);
+    if($result===false) return false;
+    
+    $out = Array();
+    $index = 0;
+    while ($row = mysqli_fetch_array($result)) $out[$index++] = $row;
+    $conn->close();
+    return $out;    
+}
+
+function getDoctorDisableTimeSlots($dbDate, $doctorId){
+    $conn = db_connect();
+    $sql = "SELECT time_slots.id, time_slots.time"
+            . " FROM time_slots"
+            . " WHERE time_slots.id not in (SELECT time_slots.id"
+            . " FROM free_times inner join time_slots on free_times.time_slot_id = time_slots.id"
+            . " WHERE free_times.doctor_id='$doctorId' AND free_times.date='$dbDate')"
+            . " ORDER BY time_slots.id ASC";
+    
+    $result = $conn->query($sql);
+    if($result===false) return false;
+    
+    $out = Array();
+    $index = 0;
+    while ($row = mysqli_fetch_array($result)) $out[$index++] = $row;
+    $conn->close();
+    return $out;    
+}
+
 function getDbDateFromJdateStr($jdateStr){
     $pieces = explode("/", $jdateStr);
     if(strlen($pieces[0]) == 2) $year = '13' . $pieces[0];
@@ -250,6 +340,36 @@ function getDbDateFromJdateStr($jdateStr){
     else $day = "0".$pieces[2];
     $reqDate = $year.'-'.$month.'-'.$day;
     return $reqDate;
+}
+
+function addDoctorFreeTimes($doctorId, $dbdate, $timeSlotsStr){
+    $pieces = explode("-", $timeSlotsStr);
+    for($i=0; count($pieces)>$i; $i++) 
+        addDoctorFreeTime ($doctorId, $dbdate, $pieces[$i]);
+}
+
+function deleteDoctorFreeTimes($doctorId, $dbdate, $timeSlotsStr){
+    $pieces = explode("-", $timeSlotsStr);
+    for($i=0; count($pieces)>$i; $i++) 
+        deleteDoctorFreeTime ($doctorId, $dbdate, $pieces[$i]);
+}
+
+function addDoctorFreeTime($doctorId, $dbdate, $tsId){
+    $conn = db_connect();
+    $sql = "INSERT INTO free_times (date, doctor_id, time_slot_id) VALUES ('$dbdate', '$doctorId', '$tsId')";
+    
+    if($conn->query($sql)) return true;
+    echo "Error: " . $sql . "<br>" . $conn->error;
+    return false;    
+}
+
+function deleteDoctorFreeTime($doctorId, $dbdate, $tsId){
+    $conn = db_connect();
+    $sql = "DELETE FROM free_times WHERE date='$dbdate' AND doctor_id='$doctorId' AND time_slot_id='$tsId'";
+    
+    if($conn->query($sql)) return true;
+    echo "Error: " . $sql . "<br>" . $conn->error;
+    return false;    
 }
 
 function boldEcho($str,$color,$beforeBR=1,$afterBR=0){

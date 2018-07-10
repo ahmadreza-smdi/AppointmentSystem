@@ -115,6 +115,7 @@ CREATE TABLE `doctors` (
   `phone` varchar(45) COLLATE utf8_persian_ci NOT NULL,
   `password` varchar(45) COLLATE utf8_persian_ci NOT NULL,
   `expertise_id` int(11) NOT NULL,
+  `vispay` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `id_UNIQUE` (`id`),
   UNIQUE KEY `identity_UNIQUE` (`identity`),
@@ -130,7 +131,7 @@ CREATE TABLE `doctors` (
 
 LOCK TABLES `doctors` WRITE;
 /*!40000 ALTER TABLE `doctors` DISABLE KEYS */;
-INSERT INTO `doctors` VALUES (1,'037','فرید محمد خویی','قم - ننه عباس','0912','1375',138);
+INSERT INTO `doctors` VALUES (1,'037','فرید محمد خویی','قم - ننه عباس','0912','1375',138, 10000);
 /*!40000 ALTER TABLE `doctors` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -178,7 +179,7 @@ CREATE TABLE `free_times` (
   KEY `fk_doctors_id_2_idx` (`doctor_id`),
   CONSTRAINT `fk_doctors_id_2` FOREIGN KEY (`doctor_id`) REFERENCES `doctors` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_free_slot_id_1` FOREIGN KEY (`time_slot_id`) REFERENCES `time_slots` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT tsunique UNIQUE (doctor_id, time_slot_id)
+  CONSTRAINT tsunique UNIQUE (`date`, `doctor_id`, `time_slot_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_persian_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -312,8 +313,35 @@ CREATE TABLE `doctors_comments` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 
+DROP TABLE IF EXISTS `insurances`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `insurances` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `insurance_name` varchar(50) COLLATE utf8_persian_ci NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `id_UNIQUE` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_persian_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 
+
+DROP TABLE IF EXISTS `doctors_insurances`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `doctors_insurances` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `insurance_id` int(11) NOT NULL,
+  `doctor_id` int(11) NOT NULL,
+  
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `id_UNIQUE` (`id`),
+  KEY `fk_insurance_id_10_idx` (`insurance_id`),
+  KEY `fk_doctor_id_10_idx` (`doctor_id`),
+  CONSTRAINT `fk_insurance_id_10` FOREIGN KEY (`insurance_id`) REFERENCES `insurances` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_doctor_id_3` FOREIGN KEY (`doctor_id`) REFERENCES `doctors` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_persian_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 
 -- Dump completed on 2018-05-17 12:26:13
