@@ -110,6 +110,7 @@ function getClinik($id){
 }
 
 function getDoctor($identity){
+//    echo 'ffffffffffffffffff'.'<br>';
     $conn = db_connect();
     $sql = "SELECT doctors.id as id, name, address, phone, password, expertise_name, identity, vispay"
             . " FROM doctors inner join expertise on doctors.expertise_id = expertise.id"

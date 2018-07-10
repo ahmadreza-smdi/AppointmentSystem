@@ -113,6 +113,7 @@
                     cancelReserve($patientId, $reserveId);
                 }
             ?>
+
             <div class="find_box_content">
                 <div class="b_4">
                     <span>تغییر اطلاعات</span><br>
@@ -159,7 +160,7 @@
             </div>
         </div>
         <div class="pic_find">
-            <img src="assets/pics/paint_account.png">
+            <img src="assets/pics/patient_account.png">
             <h2>پنل کاربری بیمار</h2>
         </div>
 

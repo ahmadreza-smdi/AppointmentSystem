@@ -7,7 +7,7 @@ amib@amib.ir
 body {
 	direction: rtl;
 	font: 12px Tahoma;
-	background-color: #FFFFCC;
+	/*background-color: #FFFFCC;*/
 }
 
 body, input {
@@ -15,8 +15,8 @@ body, input {
 }
 
 label {
-	font-weight: bold;
-	line-height: 2em;
+	/*font-weight: bold;*/
+	/*line-height: 2em;*/
 }
 
 input {
