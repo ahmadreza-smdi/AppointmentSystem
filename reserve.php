@@ -8,13 +8,13 @@
 
     if(isset($_REQUEST['doctor']) && isset($_REQUEST['date'])){
         $doctorId = $_REQUEST['doctor'];
+        $doctor = getDoctorWithId($doctorId);
         $date = $_REQUEST['date'];
     }
     else if(isset($_REQUEST['submit_reserve']) && !($patient===false) && isset($_REQUEST['free_time'])){
-        echo "Kire Khar " . $_REQUEST['free_time'] . ' - ' . $patient['id'] . '-';
         $res = reserveFreeTime($_REQUEST['free_time'], $patient['id']);
         if($res===true) header("location:patient_panel.php");
-        //else die;
+        else die;
     }
     else header("location:index.php");
 
@@ -91,7 +91,8 @@
 </div>
 <div class="reserve_main">
         <div class="list_text">
-            <span style="font-weight: bold; font-size: 20px; margin-top:50x">لیست نوبت های موجود</span>
+            <span style="font-weight: bold; font-size: 20px; margin-top:100x">
+                <?php echo 'هزینه: '; echo $doctor['vispay']; echo ' تومان' ?></span>
         </div>
         <div class="doctor_free_times">
             <form method="post" action="reserve.php">
