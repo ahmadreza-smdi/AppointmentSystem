@@ -1,10 +1,12 @@
 
 
 @font-face {
-    font-family: 'Raleway', sans-serif;
+	font-family: Font_I;
+	src: url('../fonts/Lalezar-Regular'),
+	url('../fonts/Lalezar-Regular.woff');
 }
 /* CSS reset */
-body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,input,textarea,p,blockquote,th,td { 
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,input,textarea,p,blockquote,th,td {
 	margin:0;
 	padding:0;
 }
@@ -157,11 +159,11 @@ a{
 }
 
 /* remove codrops styles and reset the whole thing */
-@import url('https://fonts.googleapis.com/css?family=Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i');
-body{background:url(http://www.businessnewsdaily.com/images/i/000/007/874/original/free-business-plan-templates.jpg);
-background-attachment:fixed;
-background-size:cover;
-}
+/*@import url('https://fonts.googleapis.com/css?family=Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i');*/
+/*body{background:url(http://www.businessnewsdaily.com/images/i/000/007/874/original/free-business-plan-templates.jpg);*/
+/*background-attachment:fixed;*/
+/*background-size:cover;*/
+/*}*/
 #container_demo{
 	 text-align: left;
 	 margin: 0;
@@ -201,11 +203,11 @@ a.hiddenanchor{
 }
 /** For the moment only webkit supports the background-clip:text; */
 #wrapper h1{
-    background: -webkit-repeating-linear-gradient(-45deg, 
-	rgb(18, 83, 93) , 
-	rgb(18, 83, 93) 20px, 
-	rgb(64, 111, 118) 20px, 
-	rgb(64, 111, 118) 40px, 
+    background: -webkit-repeating-linear-gradient(-45deg,
+	rgb(18, 83, 93) ,
+	rgb(18, 83, 93) 20px,
+	rgb(64, 111, 118) 20px,
+	rgb(64, 111, 118) 40px,
 	rgb(18, 83, 93) 40px);
 	-webkit-text-fill-color: transparent;
 	-webkit-background-clip: text;

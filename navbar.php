@@ -14,9 +14,9 @@
                     <a class="navbar-brand" style="color: white " href="index.php">خانه </a>
                     </div>
 
-                    <form class="navbar-form navbar-left">
-                        <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Search">
+                    <form class="navbar-form navbar-left" dire>
+                        <div class="form-group" style="direction: rtl;">
+                        <input type="text" class="form-control" placeholder="عبارت مدنظر خود را وارد کنید..." style="float: right">
                         </div>
                         <button type="submit" class="btn btn-default">جستجو</button>
                     </form>

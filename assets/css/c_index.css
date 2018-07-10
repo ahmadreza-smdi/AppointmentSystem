@@ -1,9 +1,11 @@
 @font-face {
     font-family: Font_I;
-    src: url('../fonts/glyphicons-halflings-regular.svg'),
-    url('../fonts/glyphicons-halflings-regular.svg');
+    src: url('../fonts/Lalezar-Regular'),
+    url('../fonts/Lalezar-Regular.woff');
 }
 .body{
+
+    font-family:Font_I;
     /*background-image: url("../pics/background.JPG");*/
     background-color: white;
     /*background-size: 50%;*/
@@ -39,78 +41,157 @@
     /*margin-bottom: -50px;*/
 
     /*border-bottom: outset white;*/
-}
-.bottom_reserve {
-    height:400px;
-    font-size:36px;
-}
 .bottom_3{
-    /*background-color: beige;*/
-    height:400px;
-    /*font-size:36px;*/
+/*background-color: beige;*/
+height:400px;
+}
+/*font-size:36px;*/
 }
 .bottom_3_set{
-    width: 80%;
+width: 100%;
+height:400px;
+/*background-color: black;*/
+margin-left: 20%;
+margin-top: 30px;
+}
+.bottom_4_set{
+    width: 100%;
     height:400px;
     /*background-color: black;*/
-    margin-left: 10%;
+    /*margin-left: 20%;*/
     margin-top: 30px;
 }
-.p_11{
+.p_111{
     text-align: center;
     height:20px;
-    width: 30%;
+    width: 19%;
     display:inline-block;
     color: black;
+}
+.p_222{
+    text-align: center;
+    height:20px;
+    width: 19%;
+    display:inline-block;
+    color: black;
+}
+.p_333{
+    text-align: center;
+    height:20px;
+    width: 19%;
+    display:inline-block;
+    color: black;
+}
+.about_us{
+    /*width: 24%;*/
+    /*display: flex;*/
+    /*flex-direction: column;*/
+    /*justify-content: center;*/
+    text-align: center;
+    height: 100px;
+    width: 300px;
+    float: left;
+    margin-left: 50%;
+    border-radius: 3px; ;
+    border-style:solid;
+    border-width: 1px;
+    border-radius: 50px;
+    border-color: #001b6e;
+    background-color: white;
+    color: black;
+    font-family:Font_I;
+    font-size: 50px;
+}
+.p_444{
+    text-align: center;
+    height:20px;
+    width: 19%;
+    display:inline-block;
+    color: black;
+}
+.p_555{
+    text-align: center;
+    height:20px;
+    width: 19%;
+    display:inline-block;
+    color: black;
+}
+.p_11{
+text-align: center;
+height:20px;
+width: 30%;
+display:inline-block;
+color: black;
 }
 .p_12{
-    text-align: center;
-    height:20px;
-    width: 30%;
-    display:inline-block;
-    color: black;
+text-align: center;
+height:20px;
+width: 30%;
+display:inline-block;
+color: black;
 }
 .p_13{
-    text-align: center;
-    height:20px;
-    width: 30%;
-    display:inline-block;
-    color: black;
+text-align: center;
+height:20px;
+width: 30%;
+display:inline-block;
+color: black;
 }
 .bottom_about{
-    height:400px;
-    font-size:36px;
+height:400px;
+font-size:36px;
 }
 
 .parallax {
-    background-image: url("../pics/2.jpg");
-    min-height: 500px;
-    background-attachment: fixed;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
+background-image: url("../pics/2.jpg");
+min-height: 500px;
+background-attachment: fixed;
+background-position: center;
+background-repeat: no-repeat;
+background-size: cover;
 }
 .parallax2 {
-    background-image: url("../pics/3.jpg");
-    min-height: 500px;
-    background-attachment: fixed;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
+background-image: url("../pics/3.jpg");
+min-height: 500px;
+background-attachment: fixed;
+background-position: center;
+background-repeat: no-repeat;
+background-size: cover;
+    opacity:0.7;
 }
-.r_bottom{
+
+
+/*++++++++++++*/
+.bottom_reserve {
+height:400px;
+font-size:36px;
+}
+
+.bottom_3{
+    width: 75%;
+}
+
+.visit_logo{
     display: flex;
     flex-direction: column;
     justify-content: center;
-    margin-top: 150px;
-    margin-left: 30%;
+    background-image: url("../pics/visit.png");
+    height: 250px;
+    background-repeat: no-repeat;
+}
+
+
+.r_best{
+    width: 24%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     text-align: center;
     height: 100px;
     width: 300px;
     float: left;
     border-radius: 3px; ;
     border-style:solid;
-    /*border-width: medium;*/
     border-width: 1px;
     border-radius: 50px;
     border-color: #001b6e;
@@ -120,28 +201,40 @@
     font-size: 50px;
     /*text-decoration: underline;*/
 }
+
+
+.r_bottom{
+width: 24%;
+display: flex;
+flex-direction: column;
+justify-content: center;
+text-align: center;
+height: 100px;
+width: 300px;
+float: left;
+border-radius: 3px; ;
+border-style:solid;
+border-width: 1px;
+border-radius: 50px;
+border-color: #001b6e;
+background-color: white;
+color: black;
+font-family:Font_I;
+font-size: 50px;
+/*text-decoration: underline;*/
+}
 /*.r_bottom a {*/
-    /*text-decoration: underline;*/
+/*text-decoration: underline;*/
 /*}*/
 .r_bottom :hover{
-    border-width: 1px;
-    /*border-radius: 2px; ;*/
-    border-style:solid;
+transform: rotate(2deg);
+transition: 500ms;
+}
+.r_best :hover{
+transform: rotate(2deg);
+transition: 500ms;
+}
 
-    border-color: beige;
-    background-color: gold;
-    transform: rotate(2deg);
-    transition: 500ms;
-}
-.visit_logo{
-    float: right;
-    margin-right: 30%;
-    margin-top: 50px;
-    background-image: url("../pics/visit.png");
-    height: 250px;
-    width: 350px;
-    background-repeat: no-repeat;
-}
 .bottom_about{
     color: white;
 }

@@ -1,3 +1,8 @@
+@font-face {
+	font-family: Font_I;
+	src: url('../fonts/Lalezar-Regular'),
+	url('../fonts/Lalezar-Regular.woff');
+}
 /*
 JS Persian Calendar - by AMIB
 http://amib.ir/weblog
@@ -5,9 +10,10 @@ amib@amib.ir
 */
 
 body {
+	font-family:Font_I;
 	direction: rtl;
 	font: 12px Tahoma;
-	background-color: #FFFFCC;
+	/*background-color: #FFFFCC;*/
 }
 
 body, input {
@@ -15,8 +21,8 @@ body, input {
 }
 
 label {
-	font-weight: bold;
-	line-height: 2em;
+	/*font-weight: bold;*/
+	/*line-height: 2em;*/
 }
 
 input {

@@ -1,0 +1,50 @@
+@font-face {
+    font-family: Font_I;
+    src: url('../fonts/glyphicons-halflings-regular.svg'),
+    url('../fonts/glyphicons-halflings-regular.svg');
+}
+.body{
+    background-image: url("../pics/background.jpg");
+    background-size: 50%;
+    position: relative;
+    /*padding: 0px;*/
+    /*margin: 0px;*/
+}
+
+
+.b_5{
+    /*text-align: center;*/
+    height: 45px;
+    width: 220px;
+    border-style: dashed;
+    border-top-right-radius: 50px;
+    border-bottom-right-radius: 50px;
+    border-bottom-left-radius: 50px;
+    background-color: gold;
+    margin-bottom: 20px;
+    font-size: 20px;
+    font-weight: bold;
+    /*marggin-left: 45%;*/
+    margin-top: 10px;
+    margin-right: 1%;
+    float: right;
+    /*margin-left: 45%;*/
+}
+.b_5 span{
+    float: none;
+    padding-top: 5px;
+    /*margin-right: 45%;*/
+}
+
+.patient_table {
+    float: left;
+    margin-left: 15%;
+    margin-top: 10px;
+    padding-top: 50px;
+    height: 400px;
+    background-color: darkgray;
+    width: 100%;
+}
+/*.t{*/
+    /**/
+/*}*/
