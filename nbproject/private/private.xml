@@ -4,14 +4,9 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/opt/lampp/htdocs/narm/functions.php</file>
-            <file>file:/opt/lampp/htdocs/narm/navbar.php</file>
-            <file>file:/opt/lampp/htdocs/narm/config.php</file>
-            <file>file:/opt/lampp/htdocs/narm/searchexp.php</file>
-            <file>file:/opt/lampp/htdocs/narm/db/softeng.sql</file>
-            <file>file:/opt/lampp/htdocs/narm/index.php</file>
             <file>file:/opt/lampp/htdocs/narm/select_doctor.php</file>
-            <file>file:/opt/lampp/htdocs/narm/patient_panel.php</file>
             <file>file:/opt/lampp/htdocs/narm/reserve.php</file>
+            <file>file:/opt/lampp/htdocs/narm/doctor_panel.php</file>
         </group>
     </open-files>
 </project-private>
