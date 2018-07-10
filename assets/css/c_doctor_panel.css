@@ -1,8 +1,9 @@
 @font-face {
-    font-family: Font_I;
+    font-family: myfont;
     src: url('../fonts/glyphicons-halflings-regular.svg'),
     url('../fonts/glyphicons-halflings-regular.svg');
 }
+
 .body{
     font-family: Font_I;
     background-image: url("../pics/background.jpg");

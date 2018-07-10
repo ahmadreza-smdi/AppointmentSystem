@@ -147,7 +147,7 @@
                 <div id="doctor_clinik_info">
                     <div class="list_forms">
                         <div class="b_4">
-                            <span>اطلاعات پزشک</span><br>
+                            <span style="font-family:Font_I;">اطلاعات پزشک</span><br>
                         </div>
                         <form method="post">
                             <div id="doctor_info">
