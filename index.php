@@ -13,7 +13,7 @@
     <body class="body">
         <div class="container" >
             <?php
-                include_once("navbar.php")
+                include_once("navbar.php");
             ?>
         </div>
 
