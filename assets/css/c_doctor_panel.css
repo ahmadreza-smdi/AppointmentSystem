@@ -4,6 +4,7 @@
     url('../fonts/glyphicons-halflings-regular.svg');
 }
 .body{
+    font-family: Font_I;
     background-image: url("../pics/background.jpg");
     background-size: 50%;
     position: relative;
@@ -37,7 +38,6 @@
 
 /*...*/
 .find_box{
-
     width: 100%;
     padding: 0px;
     margin-top: 0px;
@@ -46,8 +46,6 @@
     margin-top: 0.5px;
     position: absolute;
     left: 0px;
-
-
 }
 
 .f_box{
@@ -57,6 +55,7 @@
     margin-top: 15%;
 
 }
+
 .find_box_content{
     background-image: url("../pics/background.jpg");
     /*background-size: 100%;*/
@@ -86,6 +85,7 @@
     font-size: 30px;
     /*color: white;*/
 }
+
 .list_forms{
     margin-top: 150px;
     margin-right: 100px;
@@ -95,14 +95,16 @@
     position: relative;
     float: right;
 }
+
 .control{
-color: white;
-font-size: 30px;
+    color: white;
+    font-size: 30px;
 }
+
 .date{
-color: white;
-font-size: 30px;
-border-radius: 50px;
+    color: white;
+    font-size: 30px;
+    border-radius: 50px;
 }
 
 
@@ -127,6 +129,12 @@ border-radius: 50px;
     top: 0px;
 
 }
+
+.ptitr{
+    margin-top: 20px;
+    margin-left: 30px;
+}
+
 .pic_find img{
     height:256px;
     width:256px;
@@ -165,7 +173,7 @@ border-radius: 50px;
     border-top-right-radius: 50px;
     border-bottom-right-radius: 50px;
     border-bottom-left-radius: 50px;
-    margin-top: 130px;
+    margin-top: 150px;
     margin-right: auto;
     background-color: gold;
     margin-bottom: 20px;
@@ -196,7 +204,7 @@ border-radius: 50px;
     padding-right: 15px;
     border-radius:20px;
     font-size: 20px;
-    margin-top: 20px ;
+    margin-top: 10px ;
     float: right;
     margin-right: 300px;
     width: 50%;

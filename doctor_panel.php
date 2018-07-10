@@ -5,7 +5,7 @@
     if(empty($_SESSION['identity'])) header("location:index.php");
     $identity = $_SESSION['identity'];
     $doctor = getDoctor($identity);
-    //if($doctor===false) header("location:index.php");
+    if($doctor===false) header("location:index.php");
     
     $dateStr = getJdateStr();
     
@@ -152,47 +152,47 @@
                         <form method="post">
                             <div id="doctor_info">
                                 <div class="b_1">
-                                    <p for="identity">کد ملی</p>
-                                    <input class="b_2" type="text" id="melli" name="melli" value="<?php echo $doctor['identity']; ?>"><br>
+                                    <p for="identity" class="ptitr">کد ملی</p>
+                                    <input class="b_2_p" type="text" id="melli" name="melli" value="<?php echo $doctor['identity']; ?>"><br>
                                 </div>
                                 <div class="b_1">
-                                    <p for="name">نام</p>
-                                    <input class="b_2" type="text" id="name" name="name" value="<?php echo $doctor['name']; ?>"><br>
+                                    <p for="name" class="ptitr">نام</p>
+                                    <input class="b_2_p" type="text" id="name" name="name" value="<?php echo $doctor['name']; ?>"><br>
                                 </div>
                                 <div class="b_1">
-                                    <p for="address">آدرس</p>
-                                    <input class="b_2" type="text" id="address" name="address" value="<?php  echo $doctor['address']; ?>"><br>
+                                    <p for="address" class="ptitr">آدرس</p>
+                                    <input class="b_2_p" type="text" id="address" name="address" value="<?php  echo $doctor['address']; ?>"><br>
                                 </div>
                                 <div class="b_1">
-                                    <p for="phone">شماره تلفن</p>
-                                    <input class="b_2" type="text" id="phone" name="phone" value="<?php echo $doctor['phone'] ?>"><br>
+                                    <p for="phone" class="ptitr">شماره تلفن</p>
+                                    <input class="b_2_p" type="text" id="phone" name="phone" value="<?php echo $doctor['phone'] ?>"><br>
                                 </div>
                                 <div class="b_1">
-                                    <p for="phone">هزینه ویزیت</p>
-                                    <input class="b_2" type="text" id="vispay" name="vispay" value="<?php echo $doctor['vispay'] ?>"><br>
+                                    <p for="phone" class="ptitr">هزینه ویزیت</p>
+                                    <input class="b_2_p" type="text" id="vispay" name="vispay" value="<?php echo $doctor['vispay'] ?>"><br>
                                 </div>
                                 <div class="b_1">
-                                    <p for="password">رمز عبور </p>
+                                    <p for="password" class="ptitr">رمز عبور </p>
                                     <input class="b_2_p" type="password" id="password" name="password"><br>
                                 </div>
                                 <div class="b_1">
-                                    <p for="password">تایید رمز عبور</p>
+                                    <p for="password" class="ptitr">تایید رمز عبور</p>
                                     <input class="b_2_p" type="password" id="password_conf" name="password_conf">
                                 </div>
                             </div>
                             <div class="submit">
-                                <input class="b_2_p" style="background-color: darkred ;color: white" type="submit" value="ثبت تغییرات" name="submit" onclick="return submitForm();">
+                                <input class="b_2_p" style="background-color: darkred ;color: white; margin-top: 20px; text-align: center;" type="submit" value="ثبت تغییرات" name="submit" onclick="return submitForm();">
                             </div>
                         </form> <br>
                         
                         <div class="b_1">
-                            <p for="phone">تخصص: </p>
+                            <p for="phone" class="ptitr">تخصص: </p>
                             <div class="b_2" style="padding:5px; margin-top: 20px ; border-style: solid; border-color: gold; background-color:#f2f2f2 "> <?php echo $doctor['expertise_name']; ?> </div>
                         </div>
                         
                         <br>
                         <div class="b_1">
-                            <p for="phone">کلینیک: </p>
+                            <p for="phone" class="ptitr">کلینیک: </p>
                             <div class="b_2" style="padding:5px; height:100px;margin-top: 20px ; border-style: solid; border-color: gold; background-color:#f2f2f2 ">
                                 <?php
                                 $clinik = getDoctorClinik($doctor['id']);
@@ -206,8 +206,8 @@
                         
                         <form method="get">
                             <div class="b_1 date">
-                                <p>زمان: </p>
-                                <input class="b_2" type="text" id="pcal" name="date" class="pdate" readonly="true" value="<?php echo $dateStr; ?>"><br>
+                                <p class="ptitr">زمان: </p>
+                                <input class="b_2" type="text" id="pcal" name="date" class="pdate" readonly="true" style="background-color: #262626; text-align: center;" value="<?php echo $dateStr; ?>"><br>
 
 
                                 <script type="text/javascript">
@@ -215,7 +215,7 @@
                                 </script>
                             </div>
 
-                            <input type="submit" value="ثبت" name="submdate"  class="b_2_p"  style="background-color: darkred ;color: white">
+                            <input type="submit" value="ثبت" name="submdate"  class="b_2_p"  style="background-color: darkred ;color: white; margin-top: 20px; text-align: center;">
                         </form>
                     </div>
                 </div>
@@ -235,7 +235,10 @@
         
         <div class="pic_find">
             <?php
-                if(!isset($_REQUEST['submdate'])) die;
+                if(!isset($_REQUEST['submdate'])){
+                    echo '<img src="assets/pics/doctor_account.png">';
+                    die;
+                }
                 $date = $_REQUEST['date'];
                 $dbDate = getDbDateFromJdateStr($date);
                 $enableTimes = getDoctorEnableTimeSlots($dbDate, $doctor['id']);
@@ -244,7 +247,8 @@
 
             <div id="doctor_disable_times" style="width: 70%; margin: auto;">
                 <form method="post">
-                    <table class="customers" style="margin-top: 280px;">
+                    <p class="ptable" style="margin-top: 280px; font-size: 25px; font-weight: bold;">زمان های فعال</p>
+                    <table class="customers">
                         <tr>
                         <th>تاریخ</th>
                         <th>زمان</th>
@@ -276,7 +280,8 @@
 
             <div id="doctor_enable_times" style="width: 70%; margin: auto;">
                 <form method="post">
-                    <table class="customers" style="margin-top: 5%;">
+                    <p style="margin-top: 5%; font-size: 25px; font-weight: bold;">زمان های غیرفعال</p>
+                    <table class="customers">
                         <tr>
                         <th>تاریخ</th>
                         <th>زمان</th>
