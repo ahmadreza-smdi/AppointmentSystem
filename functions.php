@@ -118,6 +118,19 @@ function getDoctor($identity){
     return $out;
 }
 
+function getDoctorWithId($id){
+    $conn = db_connect();
+    $sql = "SELECT doctors.id as id, name, address, phone, password, expertise_name, identity, vispay"
+            . " FROM doctors inner join expertise on doctors.expertise_id = expertise.id"
+            . " WHERE doctors.id='$id'";
+    $result = $conn->query($sql);
+    if($result===false) return false;
+    $out = mysqli_fetch_array($result);
+    
+    $conn->close();
+    return $out;
+}
+
 function getFreeTime($id){
     $conn = db_connect();
     $sql = "SELECT * FROM free_times WHERE id='$id'";
