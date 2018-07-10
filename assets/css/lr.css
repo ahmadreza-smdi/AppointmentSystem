@@ -1,7 +1,9 @@
 
 
 @font-face {
-    font-family: 'Raleway', sans-serif;
+	font-family: Font_I;
+	src: url('../fonts/Lalezar-Regular'),
+	url('../fonts/Lalezar-Regular.woff');
 }
 /* CSS reset */
 body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,input,textarea,p,blockquote,th,td {

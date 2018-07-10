@@ -1,3 +1,8 @@
+@font-face {
+	font-family: Font_I;
+	src: url('../fonts/Lalezar-Regular'),
+	url('../fonts/Lalezar-Regular.woff');
+}
 /*
 JS Persian Calendar - by AMIB
 http://amib.ir/weblog

@@ -1,9 +1,10 @@
 @font-face {
     font-family: Font_I;
-    src: url('../fonts/glyphicons-halflings-regular.svg'),
-    url('../fonts/glyphicons-halflings-regular.svg');
+    src: url('../fonts/Lalezar-Regular'),
+    url('../fonts/Lalezar-Regular.woff');
 }
 .body{
+    font-family:Font_I;
     text-align: center;
     /*background-image: url("../pics/background.jpg");*/
     /*!*background-size: 50%;*!*/
