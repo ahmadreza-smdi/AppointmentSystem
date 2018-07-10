@@ -42,6 +42,11 @@
     </style>
 </head>
 <body>
+<div class="container" >
+    <?php
+    include_once("navbar.php");
+    ?>
+</div>
 <div class="t" align="center">
         <div class="b_5">
             <span style="font-weight: bold; font-size: 20px;">جدیدترین پزشکان</span><br>
@@ -103,15 +108,3 @@
 </div>
 </body>
 
-.patient_table{
-margin-top: 10px;
-padding-top: 50px;
-height: 400px;
-background-color: darkgray;
-width: 100%;
-}
-
-#customers{
-/*float: right;*/
-margin-right: 15%;
-}

@@ -5,18 +5,18 @@
                 <div class="container-fluid" style="padding-right: 10%; padding-left: 10%; margin-right: auto; margin-left: auto; margin-top: 5px; margin-bottom: 5px; z-index: 9999">
                     <!-- Brand and toggle get grouped for better mobile display -->
                     <div class="navbar-header">
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand" style="color: white " href="index.php">خانه </a>
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="navbar-brand" style="color: white " href="index.php">خانه </a>
                     </div>
 
                     <form class="navbar-form navbar-left" dire>
                         <div class="form-group" style="direction: rtl;">
-                        <input type="text" class="form-control" placeholder="عبارت مدنظر خود را وارد کنید..." style="float: right">
+                            <input type="text" class="form-control" placeholder="عبارت مدنظر خود را وارد کنید..." style="float: right">
                         </div>
                         <button type="submit" class="btn btn-default">جستجو</button>
                     </form>
@@ -35,7 +35,8 @@
                        <?php }
                     ?>
                     <?php
-                        if(isset($_SESSION['type']) && $_SESSION['type']=='patient'){
+                        if(isset($_SESSION['type']) && $_SESSION['type']=='patient') {
+                        }
                     ?>
                     <ul class="nav navbar-nav navbar-right">
                         <li><a href="patient_panel.php">پنل کاربری</a></li>
@@ -45,16 +46,13 @@
                     </ul>
 
                     <div class="btn btn-default" style="margin-top: 8px;float: left">
-                        <div> <?php getApi() ?> </div>
+                        <div> <?php getApi(); ?> </div>
                     </div>
 
-                     <?php }else{
-                    ?>
                     <ul class="nav navbar-nav navbar-right">
                         <li><a  style="color: white " href="doctor_panel.php">پنل کاربری</a></li>
                     </ul>
-                    <?php }
-                    ?>
+
                     </div><!-- /.navbar-collapse -->
                 </div><!-- /.container-fluid -->
-            </nav>
+</nav>
