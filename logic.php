@@ -13,16 +13,35 @@
         $address = $_REQUEST['r_address'];
         $name = $_REQUEST['r_name'];
         $password = $_REQUEST['r_password'];
+        
         $blood_type = $_REQUEST['r_blood_type'];
+        $disease = $_REQUEST['r_disease'];
+        
+        $vispay = $_REQUEST['r_vispay'];
+        $expId = $_REQUEST['r_exp_id'];
+        
         $type = $_REQUEST['r_type'];
         $link=db_connect();
+        
         if($type == 'doctor'){
             $query1="select * from doctors where identity='".mysqli_real_escape_string($link,$identity)."'";
-            $query2="insert into doctors set identity='".mysqli_real_escape_string($link,$identity)."',name='".mysqli_real_escape_string($link,$name)."',address='".mysqli_real_escape_string($link,$address)."',phone='".mysqli_real_escape_string($link,$phone)."',password='".mysqli_real_escape_string($link,$password)."'";
+            $query2="insert into doctors set identity='".mysqli_real_escape_string($link,$identity).
+                    "',vispay='".mysqli_real_escape_string($link,$vispay).
+                    "',expertise_id='".mysqli_real_escape_string($link,$expId).
+                    "',name='".mysqli_real_escape_string($link,$name).
+                    "',address='".mysqli_real_escape_string($link,$address).
+                    "',phone='".mysqli_real_escape_string($link,$phone).
+                    "',password='".mysqli_real_escape_string($link,$password)."'";
         }
         else{
             $query1="select * from patients where identity='".mysqli_real_escape_string($link,$identity)."'";
-            $query2="insert into patients set identity='".mysqli_real_escape_string($link,$identity)."',blood_type='".mysqli_real_escape_string($link,$blood_type)."',name='".mysqli_real_escape_string($link,$name)."',address='".mysqli_real_escape_string($link,$address)."',phone='".mysqli_real_escape_string($link,$phone)."',password='".mysqli_real_escape_string($link,$password)."'";
+            $query2="insert into patients set identity='".mysqli_real_escape_string($link,$identity).
+                    "',blood_type='".mysqli_real_escape_string($link,$blood_type).
+                    "',disease='".mysqli_real_escape_string($link,$disease).
+                    "',name='".mysqli_real_escape_string($link,$name).
+                    "',address='".mysqli_real_escape_string($link,$address).
+                    "',phone='".mysqli_real_escape_string($link,$phone).
+                    "',password='".mysqli_real_escape_string($link,$password)."'";
         }
         $res=$link->query($query1);
         if(mysqli_num_rows($res)==0){
@@ -30,7 +49,9 @@
                 header('location:index.php?msg=well done');
             }
             else{
-                header('location:lr.php?msg=faild');
+                //header('location:lr.php?msg=faild');
+                echo "Error: " . $query2 . "<br>" . $link->error;
+                die;
             }
         }
         else{
