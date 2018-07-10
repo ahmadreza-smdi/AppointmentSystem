@@ -379,7 +379,7 @@ function boldEcho($str,$color,$beforeBR=1,$afterBR=0){
 }
 
 function getApi(){
-    $service_url = 'https://www.amdoren.com/api/timezone.php?api_key=mgWAuNmP2trS3ieDFEC85FRNJ7n8fD&loc=Tehran';
+    $service_url = 'https://www.amdoren.com/api/timezone.php?api_key=mEBc7PAURFANUfjmiyxg7J9qLDvfp5&loc=Tehran';
     $curl = curl_init($service_url);
     curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
     $curl_response = curl_exec($curl);
@@ -396,6 +396,4 @@ function getApi(){
     
     var_export($decoded->time);
 }
-
-$new = mEBc7PAURFANUfjmiyxg7J9qLDvfp5
 ?>
