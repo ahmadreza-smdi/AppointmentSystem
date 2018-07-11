@@ -56,15 +56,22 @@ function getCliniksCities(){
     return $out;
 }
 
-function select_doctor($exp_id,$city_name,$insurance_id=0){
-    $link = db_connect();
+function selectDoctor($exp_id,$city_name,$insurance_id=0){
+    $conn = db_connect();
     if($insurance_id){
-        $query = "select doctors.id,doctors.identity,doctors.name,doctors.address,doctors.phone from doctors INNER JOIN cliniks_doctors INNER JOIN cliniks INNER JOIN cities INNER JOIN doctors_insurances ON (doctors.id = cliniks_doctors.doctor_id AND cliniks_doctors.clinik_id = cliniks.id AND cliniks.city_id = cities.id AND doctors_insurances.doctor_id = doctors.id ) where expertise_id='".$exp_id."' AND cities.city_name='".$city_name."' AND doctors_insurances.insurance_id ='".$insurance_id."'";
+        $sql = "select doctors.id,doctors.identity,doctors.name,doctors.address,doctors.phone from doctors INNER JOIN cliniks_doctors INNER JOIN cliniks INNER JOIN cities INNER JOIN doctors_insurances ON (doctors.id = cliniks_doctors.doctor_id AND cliniks_doctors.clinik_id = cliniks.id AND cliniks.city_id = cities.id AND doctors_insurances.doctor_id = doctors.id ) where expertise_id='".$exp_id."' AND cities.city_name='".$city_name."' AND doctors_insurances.insurance_id ='".$insurance_id."'";
     }else{
-        $query = "select doctors.id,doctors.identity,doctors.name,doctors.address,doctors.phone from doctors INNER JOIN cliniks_doctors INNER JOIN cliniks INNER JOIN cities ON (doctors.id = cliniks_doctors.doctor_id AND cliniks_doctors.clinik_id = cliniks.id AND cliniks.city_id = cities.id) where expertise_id='".$exp_id."' AND cities.city_name ='".$city_name."'";
+        $sql = "select doctors.id,doctors.identity,doctors.name,doctors.address,doctors.phone from doctors INNER JOIN cliniks_doctors INNER JOIN cliniks INNER JOIN cities ON (doctors.id = cliniks_doctors.doctor_id AND cliniks_doctors.clinik_id = cliniks.id AND cliniks.city_id = cities.id) where expertise_id='".$exp_id."' AND cities.city_name ='".$city_name."'";
     }
-    $res = $link->query($query);
-    return $res;
+    
+    $result = $conn->query($sql);  
+    if($result===false) return false;
+    
+    $out = Array();
+    $index = 0;
+    while ($row = mysqli_fetch_array($result)) $out[$index++] = $row;
+    $conn->close();
+    return $out;
 }
 
 function getAllDoctors(){
@@ -110,7 +117,6 @@ function getClinik($id){
 }
 
 function getDoctor($identity){
-//    echo 'ffffffffffffffffff'.'<br>';
     $conn = db_connect();
     $sql = "SELECT doctors.id as id, name, address, phone, password, expertise_name, identity, vispay"
             . " FROM doctors inner join expertise on doctors.expertise_id = expertise.id"

@@ -3,8 +3,8 @@
     src: url('../fonts/Lalezar-Regular'),
     url('../fonts/Lalezar-Regular.woff');
 }
-.body{
 
+.body{
     font-family:Font_I;
     /*background-image: url("../pics/background.JPG");*/
     background-color: white;

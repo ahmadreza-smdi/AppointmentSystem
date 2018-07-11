@@ -5,7 +5,7 @@
     if(empty($_SESSION['identity'])) header("location:index.php");
     $identity = $_SESSION['identity'];
     $doctor = getDoctor($identity);
-    //if($doctor===false) header("location:index.php");
+    if($doctor===false) header("location:index.php");
     
     $dateStr = getJdateStr();
     
@@ -63,7 +63,8 @@
     
     <style>
         .customers {
-            font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+            font-family: 'B Nazanin';
+            font-size: 20px;
             border-collapse: collapse;
             width: 100%;
         }
@@ -143,165 +144,187 @@
     </div>
     <div class="find_main">
         <div class="find_box">
-
             <div class="find_box_content">
-                    <div id="doctor_clinik_info">
-                        <div class="list_forms">
-                                <div class="b_4">
-                                    <span>اطلاعات پزشک</span><br>
-                                </div>
-                            <form method="post">
-
-                                <div id="doctor_info">
-                                    <div class="b_1">
-                                        <p for="identity">کد ملی</p>
-                                        <input class="b_2" type="text" id="melli" name="melli" value="<?php echo $doctor['identity']; ?>"><br>
-                                    </div>
-                                    <div class="b_1">
-                                        <p for="name">نام</p>
-                                        <input class="b_2" type="text" id="name" name="name" value="<?php echo $doctor['name']; ?>"><br>
-                                    </div>
-                                    <div class="b_1">
-                                        <p for="address">آدرس</p>
-                                        <input class="b_2" type="text" id="address" name="address" value="<?php  echo $doctor['address']; ?>"><br>
-                                    </div>
-                                    <div class="b_1">
-                                        <p for="phone">شماره تلفن</p>
-                                        <input class="b_2" type="text" id="phone" name="phone" value="<?php echo $doctor['phone'] ?>"><br>
-                                    </div>
-                                    <div class="b_1">
-                                        <p for="phone">هزینه ویزیت</p>
-                                        <input class="b_2" type="text" id="vispay" name="vispay" value="<?php echo $doctor['vispay'] ?>"><br>
-                                    </div>
-                                    <div class="b_1">
-                                        <p for="password">رمز عبور </p>
-                                        <input class="b_2_p" type="password" id="password" name="password"><br>
-                                    </div>
-                                    <div class="b_1">
-                                        <p for="password">تایید رمز عبور</p>
-                                        <input class="b_2_p" type="password" id="password_conf" name="password_conf">
-                                    </div>
-                                </div>
-                                <div class="submit">
-                                    <input class="b_2_p" style="background-color: darkred ;color: white" type="submit" value="ثبت تغییرات" name="submit" onclick="return submitForm();">
-                                </div>
-                            </form> <br>
-                                <div class="b_1">
-                                    <p for="phone">تخصص: </p>
-                                    <div class="b_2" style="padding:5px; margin-top: 20px ; border-style: solid; border-color: gold; background-color:#f2f2f2 "> <?php echo $doctor['expertise_name']; ?> </div>
-                                </div>
-                                <br>
-                                <div class="b_1">
-                                    <p for="phone">کلینیک: </p>
-                                    <div class="b_2" style="padding:5px; height:100px;margin-top: 20px ; border-style: solid; border-color: gold; background-color:#f2f2f2 ">
-                                        <?php
-                                        $clinik = getDoctorClinik($doctor['id']);
-                                        if(($clinik!=false)){
-
-                                            echo $clinik['city_name'] . ' - ' . $clinik['address'] . ' - ' . $clinik['clinik_name'] . '<br>';
-                                        }
-                                        ?>
-                                    </div>
-                                </div>
+                <div id="doctor_clinik_info">
+                    <div class="list_forms">
+                        <div class="b_4">
+                            <span style="font-family:Font_I;">اطلاعات پزشک</span><br>
                         </div>
+                        <form method="post">
+                            <div id="doctor_info">
+                                <div class="b_1">
+                                    <p for="identity" class="ptitr">کد ملی</p>
+                                    <input class="b_2_p" type="text" id="melli" name="melli" value="<?php echo $doctor['identity']; ?>"><br>
+                                </div>
+                                <div class="b_1">
+                                    <p for="name" class="ptitr">نام</p>
+                                    <input class="b_2_p" type="text" id="name" name="name" value="<?php echo $doctor['name']; ?>"><br>
+                                </div>
+                                <div class="b_1">
+                                    <p for="address" class="ptitr">آدرس</p>
+                                    <input class="b_2_p" type="text" id="address" name="address" value="<?php  echo $doctor['address']; ?>"><br>
+                                </div>
+                                <div class="b_1">
+                                    <p for="phone" class="ptitr">شماره تلفن</p>
+                                    <input class="b_2_p" type="text" id="phone" name="phone" value="<?php echo $doctor['phone'] ?>"><br>
+                                </div>
+                                <div class="b_1">
+                                    <p for="phone" class="ptitr">هزینه ویزیت</p>
+                                    <input class="b_2_p" type="text" id="vispay" name="vispay" value="<?php echo $doctor['vispay'] ?>"><br>
+                                </div>
+                                <div class="b_1">
+                                    <p for="password" class="ptitr">رمز عبور </p>
+                                    <input class="b_2_p" type="password" id="password" name="password"><br>
+                                </div>
+                                <div class="b_1">
+                                    <p for="password" class="ptitr">تایید رمز عبور</p>
+                                    <input class="b_2_p" type="password" id="password_conf" name="password_conf">
+                                </div>
+                            </div>
+                            <div class="submit">
+                                <input class="b_2_p" style="background-color: darkred ;color: white; margin-top: 20px; text-align: center;" type="submit" value="ثبت تغییرات" name="submit" onclick="return submitForm();">
+                            </div>
+                        </form> <br>
+                        
+                        <div class="b_1">
+                            <p for="phone" class="ptitr">تخصص: </p>
+                            <div class="b_2" style="padding:5px; margin-top: 20px ; border-style: solid; border-color: gold; background-color:#f2f2f2 "> <?php echo $doctor['expertise_name']; ?> </div>
+                        </div>
+                        
+                        <br>
+                        <div class="b_1">
+                            <p for="phone" class="ptitr">کلینیک: </p>
+                            <div class="b_2" style="padding:5px; height:100px;margin-top: 20px ; border-style: solid; border-color: gold; background-color:#f2f2f2 ">
+                                <?php
+                                $clinik = getDoctorClinik($doctor['id']);
+                                if(($clinik!=false)){
+
+                                    echo $clinik['city_name'] . ' - ' . $clinik['address'] . ' - ' . $clinik['clinik_name'] . '<br>';
+                                }
+                                ?>
+                            </div>
+                        </div>
+                        
+                        <form method="get">
+                            <div class="b_1 date">
+                                <p class="ptitr">زمان: </p>
+                                <input class="b_2" type="text" id="pcal" name="date" class="pdate" readonly="true" style="background-color: #262626; text-align: center;" value="<?php echo $dateStr; ?>"><br>
+
+
+                                <script type="text/javascript">
+                                var objCal = new AMIB.persianCalendar('pcal');
+                                </script>
+                            </div>
+
+                            <input type="submit" value="ثبت" name="submdate"  class="b_2_p"  style="background-color: darkred ;color: white; margin-top: 20px; text-align: center;">
+                        </form>
                     </div>
-            </div>
-
-                    <br>
                 </div>
-        <div class="pic_find">
-            <img src="assets/pics/doctor_account.png">
-            <h2>پنل کاربری پزشک </h2>
-        </div>
-    </div>
-        <form method="get">
-            <div class="date">
-                <p style="color: white;font-size: 25px;margin-right: -250px;margin-bottom: -15">: زمان</p>
-                <input type="text" id="pcal" name="date" class="pdate" readonly="true" value="<?php echo $dateStr; ?>"><br>
-
-
-                <script type="text/javascript">
-                var objCal = new AMIB.persianCalendar('pcal');
-                </script>
             </div>
 
-            <input type="submit" value="ثبت" name="submdate" style="padding-left: 10px; padding-right: 10px">
-        </form>
-
-        <?php
-            if(!isset($_REQUEST['submdate'])) die;
-            $date = $_REQUEST['date'];
-            $dbDate = getDbDateFromJdateStr($date);
-            $enableTimes = getDoctorEnableTimeSlots($dbDate, $doctor['id']);
-            $disableTimes = getDoctorDisableTimeSlots($dbDate, $doctor['id']);
-        ?>
-
-
-        <div id="doctor_disable_times" style="margin: 20px;">
-            <form method="post">
-                <table class="customers" style="width: 70%;">
-                    <tr>
-                    <th>تاریخ</th>
-                    <th>زمان</th>
-                    <th>فعال کردن</th>
-                    </tr>
-
-                    <input id="addfree" name="addfree" type="hidden" value="">
-                    <input id="adddate" name="adddate" type="hidden" value="<?php echo $dbDate; ?>">
-
-                    <?php
-                        for($i=0; count($disableTimes)>$i; $i++){
-                            $disable = $disableTimes[$i];
-                            echo "<tr>";
-                            echo "<td>".$dbDate."</td>";
-                            echo "<td>".$disable['time']."</td>";
-                            echo "<td>".'<input type="checkbox" id="cbaddfree'.$i.'" value="'.$disable['id'].'"'.
-                                    ' onchange="checkReserve(this.id);">'."</td>";
-
-                            echo"</td>";
-                            echo "</tr>";
-                        }
-                    ?>
-                </table>
-
-                <input type="submit" value="ثبت" name="submit_addfree"
-                       style="padding-left: 10px; padding-right: 10px;" onclick="return addFree();">
-            </form>
+        <br>
         </div>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <div class="pic_find">
+            <?php
+                if(!isset($_REQUEST['submdate'])){
+                    echo '<img src="assets/pics/doctor_account.png">';
+                    die;
+                }
+                $date = $_REQUEST['date'];
+                $dbDate = getDbDateFromJdateStr($date);
+                $enableTimes = getDoctorEnableTimeSlots($dbDate, $doctor['id']);
+                $disableTimes = getDoctorDisableTimeSlots($dbDate, $doctor['id']);
+            ?>
 
-        <div id="doctor_enable_times" style="margin: 20px;">
-            <form method="post">
-                <table class="customers" style="width: 70%;">
-                    <tr>
-                    <th>تاریخ</th>
-                    <th>زمان</th>
-                    <th>لغو کردن</th>
-                    </tr>
+            <div id="doctor_disable_times" style="width: 70%; margin: auto;">
+                <form method="post">
+                    <p class="ptable" style="font-family: 'B Nazanin'; margin-top: 280px; font-size: 25px; font-weight: bold;">زمان های فعال</p>
+                    <table class="customers">
+                        <tr>
+                        <th>تاریخ</th>
+                        <th>زمان</th>
+                        <th>فعال کردن</th>
+                        </tr>
 
-                    <input id="delfree" name="delfree" type="hidden" value="">
-                    <input id="deldate" name="deldate" type="hidden" value="<?php echo $dbDate; ?>">
+                        <input id="addfree" name="addfree" type="hidden" value="">
+                        <input id="adddate" name="adddate" type="hidden" value="<?php echo $dbDate; ?>">
 
-                    <?php
-                        for($i=0; count($enableTimes)>$i; $i++){
-                            $enable = $enableTimes[$i];
-                            echo "<tr>";
-                            echo "<td>".$dbDate."</td>";
-                            echo "<td>".$enable['time']."</td>";
-                            echo "<td>".'<input type="checkbox" id="cbdelfree'.$i.'" value="'.$enable['id'].'"'.
-                                    ' onchange="checkReserve(this.id);">'."</td>";
+                        <?php
+                            for($i=0; count($disableTimes)>$i; $i++){
+                                $disable = $disableTimes[$i];
+                                echo "<tr>";
+                                echo "<td>".$dbDate."</td>";
+                                echo "<td>".$disable['time']."</td>";
+                                echo "<td>".'<input type="checkbox" id="cbaddfree'.$i.'" value="'.$disable['id'].'"'.
+                                        ' onchange="checkReserve(this.id);">'."</td>";
 
-                            echo"</td>";
-                            echo "</tr>";
-                        }
-                    ?>
-                </table>
+                                echo"</td>";
+                                echo "</tr>";
+                            }
+                        ?>
+                    </table>
 
-                <input type="submit" value="ثبت" name="submit_delfree"
-                       style="padding-left: 10px; padding-right: 10px;"
-                       onclick="return delFree();">
-            </form>
+                    <input type="submit" value="ثبت" name="submit_addfree"
+                           class="cbutton" onclick="return addFree();">
+                </form>
+            </div>
+
+            <div id="doctor_enable_times" style="width: 70%; margin: auto;">
+                <form method="post">
+                    <p style="font-family: 'B Nazanin'; margin-top: 5%; font-size: 25px; font-weight: bold;">زمان های غیرفعال</p>
+                    <table class="customers">
+                        <tr>
+                        <th>تاریخ</th>
+                        <th>زمان</th>
+                        <th>لغو کردن</th>
+                        </tr>
+
+                        <input id="delfree" name="delfree" type="hidden" value="">
+                        <input id="deldate" name="deldate" type="hidden" value="<?php echo $dbDate; ?>">
+
+                        <?php
+                            for($i=0; count($enableTimes)>$i; $i++){
+                                $enable = $enableTimes[$i];
+                                echo "<tr>";
+                                echo "<td>".$dbDate."</td>";
+                                echo "<td>".$enable['time']."</td>";
+                                echo "<td>".'<input type="checkbox" id="cbdelfree'.$i.'" value="'.$enable['id'].'"'.
+                                        ' onchange="checkReserve(this.id);">'."</td>";
+
+                                echo"</td>";
+                                echo "</tr>";
+                            }
+                        ?>
+                    </table>
+
+                    <input type="submit" value="ثبت" name="submit_delfree"
+                           class="cbutton" onclick="return delFree();">
+                </form>
+            </div>
         </div>
-
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
     </div>
 </body>
 

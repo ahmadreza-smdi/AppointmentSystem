@@ -14,7 +14,7 @@
 
 </head>
 
-<body  style="direction: rtl;>
+<body  style="direction: rtl;">
     <div class="container" >
         <?php
         include_once("navbar.php");

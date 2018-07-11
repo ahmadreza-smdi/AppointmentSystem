@@ -1,9 +1,11 @@
 @font-face {
-    font-family: Font_I;
+    font-family: myfont;
     src: url('../fonts/glyphicons-halflings-regular.svg'),
     url('../fonts/glyphicons-halflings-regular.svg');
 }
+
 .body{
+    font-family: Font_I;
     background-image: url("../pics/background.jpg");
     background-size: 50%;
     position: relative;
@@ -37,7 +39,6 @@
 
 /*...*/
 .find_box{
-
     width: 100%;
     padding: 0px;
     margin-top: 0px;
@@ -46,8 +47,6 @@
     margin-top: 0.5px;
     position: absolute;
     left: 0px;
-
-
 }
 
 .f_box{
@@ -57,6 +56,7 @@
     margin-top: 15%;
 
 }
+
 .find_box_content{
     background-image: url("../pics/background.jpg");
     /*background-size: 100%;*/
@@ -68,7 +68,7 @@
     /*margin-top: -50px;*/
     /*margin-right: 150px;*/
     /*background-color: blanchedalmond;*/
-    height: 1200px;
+    height: 1400px;
     /*background-attachment: fixed;*/
     /*background-position: top;*/
     width: 50%;
@@ -86,6 +86,7 @@
     font-size: 30px;
     /*color: white;*/
 }
+
 .list_forms{
     margin-top: 150px;
     margin-right: 100px;
@@ -95,14 +96,16 @@
     position: relative;
     float: right;
 }
+
 .control{
-color: white;
-font-size: 30px;
+    color: white;
+    font-size: 30px;
 }
+
 .date{
-color: white;
-font-size: 30px;
-border-radius: 50px;
+    color: white;
+    font-size: 30px;
+    border-radius: 50px;
 }
 
 
@@ -113,7 +116,7 @@ border-radius: 50px;
 
 .pic_find{
     background-color: blanchedalmond;
-    height: 1200px;
+    height: 1400px;
     /*background-attachment: fixed;*/
     /*background-position: top;*/
     width: 50%;
@@ -127,6 +130,14 @@ border-radius: 50px;
     top: 0px;
 
 }
+
+.ptitr{
+    font-family: 'B Nazanin';
+    font-weight: bold;
+    margin-top: 20px;
+    margin-left: 30px;
+}
+
 .pic_find img{
     height:256px;
     width:256px;
@@ -160,13 +171,13 @@ border-radius: 50px;
 .b_4{
     text-align: center;
     height: 45px;
-    width: 200px;
+    width: 40%;
     border-style: dashed;
     border-top-right-radius: 50px;
     border-bottom-right-radius: 50px;
     border-bottom-left-radius: 50px;
-    margin-top: 200px;
-    margin-right: 30%;
+    margin-top: 150px;
+    margin-right: auto;
     background-color: gold;
     margin-bottom: 20px;
     font-size: 20px;
@@ -189,19 +200,36 @@ border-radius: 50px;
     width: 80%;
     height: 40px;
 }
+
 .b_2_p{
+    font-family: 'B Nazanin';
     text-align:right ;
     padding:5px;
     padding-right: 15px;
     border-radius:20px;
     font-size: 20px;
-    margin-top: 20px ;
+    margin-top: 10px ;
     float: right;
     margin-right: 300px;
     width: 50%;
     height: 40px;
 }
+
+.cbutton{
+    font-family: 'B Nazanin';
+    text-align:center;
+    padding:5px;
+    padding-right: 15px;
+    border-radius:20px;
+    font-size: 20px;
+    margin-top: 12px;
+    margin-right: auto;
+    width: 30%;
+    height: 40px;
+}
+
 .b_2{
+    font-family: 'B Nazanin';
     text-align:right ;
     padding:5px;
     padding-right: 15px;

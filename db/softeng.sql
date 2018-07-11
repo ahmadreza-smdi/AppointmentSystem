@@ -83,10 +83,9 @@ CREATE TABLE `cliniks_doctors` (
   `doctor_id` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `id_UNIQUE` (`id`),
-  KEY `fk_cliniks_id_1_idx` (`clinik_id`),
-  KEY `fk_doctors_id_1_idx` (`doctor_id`),
   CONSTRAINT `fk_cliniks_id_1` FOREIGN KEY (`clinik_id`) REFERENCES `cliniks` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_doctors_id_1` FOREIGN KEY (`doctor_id`) REFERENCES `doctors` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  CONSTRAINT `fk_doctors_id_1` FOREIGN KEY (`doctor_id`) REFERENCES `doctors` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT cdunique UNIQUE (`clinik_id`, `doctor_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_persian_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 

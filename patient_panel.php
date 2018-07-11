@@ -13,7 +13,8 @@
     
     <style>
         #customers {
-            font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+            font-family: 'B Nazanin';
+            font-size: 20px;
             border-collapse: collapse;
             width: 100%;
         }
@@ -71,7 +72,7 @@
     <link rel="stylesheet" href="assets/css/c_patient_panel.css">
     <title>پنل بیمار</title>
 </head>
-<body style="direction: rtl;">
+<body style="direction: rtl; font-family: 'B Nazanin';">
     <div class="container" >
         <?php
             include_once("navbar.php");
