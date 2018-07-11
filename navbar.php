@@ -45,7 +45,12 @@
         </ul>
 
         <div class="btn btn-default" style="margin-top: 8px;float: left">
-            <div> <?php getApi() ?> </div>
+            <div>
+                <?php 
+                    //getApi();
+                    echo '0000';
+                ?>
+            </div>
         </div>
 
          <?php }else{

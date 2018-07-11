@@ -62,20 +62,21 @@
 
     <title>Login and Registration Form with HTML5 and CSS3</title>
 </head>
-<body>
+<body style="direction: rtl; font-family: 'B Nazanin';">
+    <div class="container" >
+        <?php
+        include_once("navbar.php")
+        ?>
+    </div>
+    
     <div class="search_main">
-        <div class="container" >
-            <?php
-            include_once("navbar.php")
-            ?>
-        </div>
         <div class="search_box">
             <div class="s_box">
                 <form action="select_doctor.php" method="get" style="direction: rtl;">
 
                     <div class="exp">
-                        <p>* تخصص:</p>
-                        <input id="txt_exp" type="text" list="list_exp" autocomplete="off" style="color: black; border-radius:20px; height:35px;font-size: 65%;margin-right: 10%"/><br>
+                        <p style="margin-top: 10px;">* تخصص:</p>
+                        <input id="txt_exp" type="text" list="list_exp" autocomplete="off" style="color: black; border-radius:20px; height:35px;font-size: 65%; margin-right: 10%; padding: 10px;"/><br>
                         <datalist id="list_exp" name="list_exp">
                         <?php
                             foreach($expertieses as $exp){
@@ -89,8 +90,8 @@
 
                     <div class="city">
                         <input type="hidden" id="city_name" name="city_name" />
-                        <p>* شهر :</p>
-                        <input id="txt_city" type="text" list="list_city" autocomplete="off" style="color: black;border-radius:20px ;height:35px;font-size: 65%;margin-right: 10%" /><br>
+                        <p style="margin-top: 10px;">* شهر :</p>
+                        <input id="txt_city" type="text" list="list_city" autocomplete="off" style="color: black;border-radius:20px ;height:35px;font-size: 65%;margin-right: 10%; padding: 10px;" /><br>
                         <datalist id="list_city" name="list_city">
                             <?php
                             foreach($cities as $city){
@@ -100,8 +101,8 @@
                         </datalist>
                         
                         <input type="hidden" id="insurance_id" name="insurance_id" />
-                        <p>* بیمه :</p>
-                        <input id="txt_insurance" type="text" list="list_insurance" autocomplete="off" style="color: black;border-radius:20px ;height:35px;font-size: 65%;margin-right: 10%" /><br>
+                        <p style="margin-top: 10px;">* بیمه :</p>
+                        <input id="txt_insurance" type="text" list="list_insurance" autocomplete="off" style="color: black;border-radius:20px ;height:35px;font-size: 65%;margin-right: 10%; padding: 10px;" /><br>
                         <datalist id="list_insurance" name="list_insurance">
                             <?php
                             foreach($insurances as $insurance){
@@ -112,7 +113,7 @@
                     </div>
 
                     <div s_bottom>
-                    <input type="submit" value="جستجوی پزشکان" style="border-radius:20px;font-size: 25px; color:white; margin-top: 20px; height:35px;width:100%; font-size: 100%;margin-right: 10%;background-color: darkred;" onclick="return submitForm(); ">
+                    <input type="submit" value="جستجوی پزشکان" style="border-radius:20px;font-size: 20px; color:white; margin-top: 20px; height:35px; width:100%; margin-right: 10%; background-color: darkred; margin-top: 30px;" onclick="return submitForm(); ">
                     </div>
 
                 </form>

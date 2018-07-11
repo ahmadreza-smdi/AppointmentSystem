@@ -15,8 +15,8 @@
 
 .search_main{
     position: relative;
-    height: 15%;
-    width: 75%;
+    height: 100%;
+    width: 100%;
 }
 .container.flud{
     margin-top: 15px;
