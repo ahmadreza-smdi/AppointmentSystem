@@ -11,8 +11,21 @@
     /*margin: 0px;*/
 }
 
-
+container{
+    z-index: 9999;
+    width: 100%;
+    padding-left: 0;
+    padding-right: 0;
+    position: fixed;
+    text-align: left;
+    /*left: -50%;*/
+    /*position: fixed;*/
+    /*transform: translate(-50%, 0);*/
+    /*background-position: center,center;*/
+    /*box-shadow: 5px 20px 18px #888888;*/
+}
 .b_5{
+    margin-top: 100px;
     /*text-align: center;*/
     height: 45px;
     width: 220px;
