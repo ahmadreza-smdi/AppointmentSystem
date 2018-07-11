@@ -68,7 +68,7 @@
     /*margin-top: -50px;*/
     /*margin-right: 150px;*/
     /*background-color: blanchedalmond;*/
-    height: 1200px;
+    height: 1400px;
     /*background-attachment: fixed;*/
     /*background-position: top;*/
     width: 50%;
@@ -116,7 +116,7 @@
 
 .pic_find{
     background-color: blanchedalmond;
-    height: 1200px;
+    height: 1400px;
     /*background-attachment: fixed;*/
     /*background-position: top;*/
     width: 50%;
@@ -132,6 +132,8 @@
 }
 
 .ptitr{
+    font-family: 'B Nazanin';
+    font-weight: bold;
     margin-top: 20px;
     margin-left: 30px;
 }
@@ -200,6 +202,7 @@
 }
 
 .b_2_p{
+    font-family: 'B Nazanin';
     text-align:right ;
     padding:5px;
     padding-right: 15px;
@@ -213,6 +216,7 @@
 }
 
 .cbutton{
+    font-family: 'B Nazanin';
     text-align:center;
     padding:5px;
     padding-right: 15px;
@@ -225,6 +229,7 @@
 }
 
 .b_2{
+    font-family: 'B Nazanin';
     text-align:right ;
     padding:5px;
     padding-right: 15px;

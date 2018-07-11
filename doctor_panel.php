@@ -63,7 +63,8 @@
     
     <style>
         .customers {
-            font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+            font-family: 'B Nazanin';
+            font-size: 20px;
             border-collapse: collapse;
             width: 100%;
         }
@@ -247,7 +248,7 @@
 
             <div id="doctor_disable_times" style="width: 70%; margin: auto;">
                 <form method="post">
-                    <p class="ptable" style="margin-top: 280px; font-size: 25px; font-weight: bold;">زمان های فعال</p>
+                    <p class="ptable" style="font-family: 'B Nazanin'; margin-top: 280px; font-size: 25px; font-weight: bold;">زمان های فعال</p>
                     <table class="customers">
                         <tr>
                         <th>تاریخ</th>
@@ -280,7 +281,7 @@
 
             <div id="doctor_enable_times" style="width: 70%; margin: auto;">
                 <form method="post">
-                    <p style="margin-top: 5%; font-size: 25px; font-weight: bold;">زمان های غیرفعال</p>
+                    <p style="font-family: 'B Nazanin'; margin-top: 5%; font-size: 25px; font-weight: bold;">زمان های غیرفعال</p>
                     <table class="customers">
                         <tr>
                         <th>تاریخ</th>

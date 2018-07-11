@@ -4,6 +4,30 @@
   url('../fonts/Lalezar-Regular.woff');
 }
 
+@font-face {
+    font-family: 'B Nazanin';
+    src: local('B Nazanin'), 
+        local('BNazanin'),
+        url('../fonts/BNazanin.woff2') format('woff2'), 
+        url('../fonts/BNazanin.woff') format('woff'), 
+        url('../fonts/BNazanin.ttf') format('truetype');
+    font-weight: 400;
+    font-stretch: normal;
+    /*font-style: normal;*/
+}
+
+@font-face {
+    font-family: 'B Nazanin';
+    src: local('B Nazanin Bold'), 
+        local('BNazanin-Bold'),
+        url('../fonts/BNaznnBd.woff2') format('woff2'), 
+        url('../fonts/BNaznnBd.woff') format('woff'), 
+        url('../fonts/BNaznnBd.ttf') format('truetype');
+    font-weight: 700;
+    font-stretch: normal;
+    /*font-style: normal;*/
+}
+
 .my_crausel{
   height: auto;
   width: auto;
