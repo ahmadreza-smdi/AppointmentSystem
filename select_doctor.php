@@ -35,7 +35,7 @@
     <script type="text/javascript" src="assets/js/js-persian-cal.min.js"></script>
 </head>
 
-<body style="text-align: center">
+<body style="text-align: center; direction: rtl; font-family: 'B Nazanin';">
 <div class="container" >
     <?php
     include_once("navbar.php");
@@ -52,7 +52,7 @@
             <form method="get" action="reserve.php">
                 <!--                <label for="doctors">دکتر مورد نظر را انتخاب کنید</label><br>-->
                 <div class="control">
-                    <p style="color: white;font-size: 25px;margin-right: -250px; margin-bottom: -50">: دکتر</p>
+                    <p style="color: white; font-size: 30px; font-weight: bold; margin-right: -250px; margin-bottom: -50">دکتر: </p>
                     <select name="doctor" class="form-control" id="doctors" style="border-radius:20px;font-size: 20px; margin-top: 50px ;width: 80%;height: 40px;margin-right: 10%">
 
                     <?php
@@ -61,12 +61,10 @@
 
                     <?php } ?>
                     </select>
-
-                            <br><br>
                 </div>
                 <div class="date">
-                        <p style="color: white;font-size: 25px;margin-right: -250px;margin-bottom: -15">: زمان</p>
-                        <input type="text" id="pcal" class="pdate" name="date" readonly="true" style="color:black;border-radius:20px;font-size: 25px; margin-top: 20px;width: 80%;height: 35px" value="<?php echo $dateStr; ?>"><br>
+                        <p style="color: white; font-size: 30px; font-weight: bold; margin-right: -250px;margin-bottom: -15; margin-top: 20px;">زمان: </p>
+                        <input type="text" id="pcal" class="pdate" name="date" readonly="true" style="color:black;border-radius:20px;font-size: 25px; margin-top: 20px;width: 80%;height: 35px;" value="<?php echo $dateStr; ?>"><br>
 
 
                         <script type="text/javascript">

@@ -30,7 +30,8 @@
     <link rel="stylesheet" type="text/css" href="assets/css/c_reserve.css"/>
     <style>
         #customers {
-            font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+            font-family: 'B Nazanin';
+            font-size: 20px;
             border-collapse: collapse;
             width: 100%;
         }
@@ -83,13 +84,13 @@
     </script>
 </head>
 
-<body style="direction: rtl;">
-<div class="container" >
-    <?php
-    include_once("navbar.php")
-    ?>
-</div>
-<div class="reserve_main">
+<body style="text-align: center; direction: rtl; font-family: 'B Nazanin';">
+    <div class="container" >
+        <?php
+        include_once("navbar.php")
+        ?>
+    </div>
+    <div class="reserve_main">
         <div class="list_text">
             <span style="font-weight: bold; font-size: 20px; margin-top:100x">
                 <?php echo 'هزینه: '; echo $doctor['vispay']; echo ' تومان' ?></span>
