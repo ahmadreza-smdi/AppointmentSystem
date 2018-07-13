@@ -8,7 +8,7 @@
     if($doctor===false) header("location:index.php");
     
     $dateStr = getJdateStr();
-    
+
     if(isset($_POST['submit'])){
         $conn = db_connect();
         $name = $_POST['name'];
@@ -47,7 +47,6 @@
     <link rel="shortcut icon" type="image/png" href="assets/pics/icon.png"/>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Login and Registration Form with HTML5 and CSS3</title>
     <link rel="stylesheet" href="assets/css/c_doctor_panel.css">
     <link rel="stylesheet" href="assets/css/lr.css">
 
@@ -70,7 +69,7 @@
             width: 100%;
         }
 
-        .customers td, #customers th {
+        .customers td, .customers th {
             border: 1px solid #ddd;
             padding: 8px;
         }
@@ -245,11 +244,12 @@
                 $dbDate = getDbDateFromJdateStr($date);
                 $enableTimes = getDoctorEnableTimeSlots($dbDate, $doctor['id']);
                 $disableTimes = getDoctorDisableTimeSlots($dbDate, $doctor['id']);
+                $reservedTimes = getDoctorReservedTimeSlots($dbDate, $doctor['id']);
             ?>
 
             <div id="doctor_disable_times" style="width: 70%; margin: auto;">
                 <form method="post">
-                    <p class="ptable" style="font-family: 'B Nazanin'; margin-top: 280px; font-size: 25px; font-weight: bold;">زمان های فعال</p>
+                    <p class="ptable" style="font-family: 'B Nazanin'; margin-top: 280px; font-size: 25px; font-weight: bold;">زمان های غیرفعال</p>
                     <table class="customers">
                         <tr>
                         <th>تاریخ</th>
@@ -282,7 +282,7 @@
 
             <div id="doctor_enable_times" style="width: 70%; margin: auto;">
                 <form method="post">
-                    <p style="font-family: 'B Nazanin'; margin-top: 5%; font-size: 25px; font-weight: bold;">زمان های غیرفعال</p>
+                    <p style="font-family: 'B Nazanin'; margin-top: 5%; font-size: 25px; font-weight: bold;">زمان های فعال</p>
                     <table class="customers">
                         <tr>
                         <th>تاریخ</th>
@@ -300,7 +300,9 @@
                                 echo "<td>".$dbDate."</td>";
                                 echo "<td>".$enable['time']."</td>";
                                 echo "<td>".'<input type="checkbox" id="cbdelfree'.$i.'" value="'.$enable['id'].'"'.
-                                        ' onchange="checkReserve(this.id);">'."</td>";
+                                        ' onchange="checkReserve(this.id);"';
+                                if(in_array($enable['id'], $reservedTimes)) echo ' disabled';
+                                echo '>'."</td>";
 
                                 echo"</td>";
                                 echo "</tr>";
