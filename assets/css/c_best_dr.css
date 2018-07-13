@@ -8,6 +8,19 @@ body{
     background-image: url("../pics/background.jpg");
 }
 
+container{
+    z-index: 9999;
+    width: 100%;
+    padding-left: 0;
+    padding-right: 0;
+    position: fixed;
+    text-align: left;
+    /*left: -50%;*/
+    /*position: fixed;*/
+    /*transform: translate(-50%, 0);*/
+    /*background-position: center,center;*/
+    /*box-shadow: 5px 20px 18px #888888;*/
+}
 
 .b_5{
     height: 45px;
@@ -21,6 +34,7 @@ body{
     font-weight: bold;
     margin: 10px;
 }
+
 .b_5 span{
     float: none;
     padding-top: 5px;
