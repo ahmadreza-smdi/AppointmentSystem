@@ -27,7 +27,8 @@
     <meta charset="UTF-8" />
     <meta http-equiv="content-language" content="fa-IR">
     <!-- <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">  -->
-    <title>جست و جوی نوبت دکتر</title>
+    <title>انتخاب دکتر</title>
+    <link rel="shortcut icon" type="image/png" href="assets/pics/icon.png"/>
 
     <link rel="stylesheet" href="assets/css/js-persian-cal.css">
     <link rel="stylesheet" href="assets/css/c_select_doctor.css">

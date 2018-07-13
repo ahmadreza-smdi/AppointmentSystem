@@ -9,9 +9,20 @@
 <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>پروفایل دکتر</title>
+    <title><?php echo 'دکتر '.$doctor['name']; ?></title>
+    <link rel="shortcut icon" type="image/png" href="assets/pics/icon.png"/>
     <link rel="stylesheet" href="assets/css/c_doctors.css">
 
+    <script language="javascript">
+        function addComment(){
+            let comment = document.getElementById('comment').value;
+            let score = document.getElementById('score').value;
+
+            if(!comment){alert("متن کامنت را وارد کنید!"); return false;}
+            if(!score){alert("امتیاز را وارد کنید!"); return false;}
+            return true;
+        }
+    </script>
 </head>
 
 <body  style="direction: rtl; background-color: darkgray;">
@@ -73,7 +84,7 @@
                 $doctorId = $doctor['id'];
                 $conn = db_connect();
                 $comment = $_REQUEST['comment'];
-                $rate = $_REQUEST['menu'];
+                $rate = $_REQUEST['score'];
 
                 $sql="insert into doctors_comments set patient_id='$patientId', doctor_id = '$doctorId',comment_text = '$comment',comment_score='$rate' " ;
                 if($conn->query($sql)) echo 'با موفقیت ثبت شد';
@@ -99,11 +110,11 @@
     <div class="patient_table" align='center'>
         <form method='post' name='comm'>
                 <p class="b_6">نظر خود را وارد کنید</p>
-                <textarea  class="comment_box" name="comment" cols="50" rows="15"></textarea>
+                <textarea  class="comment_box" id="comment" name="comment" cols="50" rows="15"></textarea>
 
             <p class="b_7">به این دکتر چه نمره ای می دهید؟</p>
             <div class="find_box_content">
-                <select class="select" name="menu">
+                <select class="select" id="score" name="score">
                     <option value="0"></option>
                     <option value="1">۱</option>
                     <option value="2">۲</option>
@@ -116,7 +127,7 @@
                     <option value="9">۹</option>
                     <option value="10">۱۰</option>
                 </select>
-                <div><input class="b_8" name='sub' type="submit" value="ثبت نظر"></div>
+                <div><input class="b_8" name='sub' type="submit" value="ثبت نظر" onclick="return addComment();"></div>
             </div>
         </form>
     </div>

@@ -71,6 +71,7 @@
 
     <link rel="stylesheet" href="assets/css/c_patient_panel.css">
     <title>پنل بیمار</title>
+    <link rel="shortcut icon" type="image/png" href="assets/pics/icon.png"/>
 </head>
 <body style="direction: rtl; font-family: 'B Nazanin';">
     <div class="container" >

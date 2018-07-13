@@ -10,7 +10,8 @@
 <head>
     <link rel="stylesheet" href="assets/css/c_best_dr.css">
     <meta charset="UTF-8" />
-    <title> پزشکان پر مخاطب </title>
+    <title>پزشکان پر مخاطب</title>
+    <link rel="shortcut icon" type="image/png" href="assets/pics/icon.png"/>
     <?php
     include_once("css_links.php");
     include_once("js_links.php");
