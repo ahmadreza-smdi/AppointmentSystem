@@ -100,14 +100,29 @@
             function loginSubmit(){
                 return true;
             }
+            
+            function onLoad(){
+                document.getElementById("identity").value = "";
+                document.getElementById("password").value = "";
+                document.getElementById("r_identity").value = "";
+                document.getElementById("r_name").value = "";
+                document.getElementById("r_phone").value = "";
+                document.getElementById("r_address").value = "";
+                document.getElementById("r_password").value = "";
+                document.getElementById("r_password_confirm").value = "";
+                document.getElementById("r_blood_type").value = "";
+                document.getElementById("r_disease").value = "";
+                document.getElementById("r_vispay").value = "";
+                document.getElementById("r_exp").value = "";
+            }
         </script>
         
     </head>
-    <body>
+    <body onload="onLoad();">
         <div class="container">
            
             <header>
-                <h1>فرم ورود و ثبت نام</h1>
+                <h1 style="color: #31708f;">فرم ورود و ثبت نام</h1>
 				
             </header>
             <section>				
@@ -117,12 +132,12 @@
                     <a class="hiddenanchor" id="tologin"></a>
                     <div id="wrapper">
                         <div id="login" class="animate form">
-                            <form  action="logic.php" method="post" autocomplete="on"> 
+                            <form  action="logic.php" method="post" autocomplete="off"> 
                                 <input type="hidden" name="job" value="login"/>
                                 <h1>ورود</h1> 
                                 <p> 
                                     <label for="identity" class="uname" > شماره ملی </label>
-                                    <input id="identity" name="identity" required="required" type="text" placeholder="شماره ملی خود را وارد فرمایید"/>
+                                    <input id="identity" name="identity" required="required" type="text" value="" placeholder="شماره ملی خود را وارد فرمایید"/>
                                 </p>
                                 <p> 
                                     <label for="password" class="youpasswd">رمز عبور</label>
