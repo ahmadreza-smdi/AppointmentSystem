@@ -9,7 +9,8 @@
 <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>پروفایل دکتر</title>
+    <title><?php echo 'دکتر '.$doctor['name']; ?></title>
+    <link rel="shortcut icon" type="image/png" href="assets/pics/icon.png"/>
     <link rel="stylesheet" href="assets/css/c_doctors.css">
 
 </head>

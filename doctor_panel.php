@@ -43,7 +43,8 @@
     }
 ?>
 <head>
-    <title> پنل کاربری پزشک</title>
+    <title>پنل دکتر</title>
+    <link rel="shortcut icon" type="image/png" href="assets/pics/icon.png"/>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <title>Login and Registration Form with HTML5 and CSS3</title>

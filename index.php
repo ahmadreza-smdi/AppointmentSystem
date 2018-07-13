@@ -7,8 +7,9 @@
 <html>
     <header>
         <meta charset="UTF-8">
-        <title> نوین ویزیت </title>
         <link rel="stylesheet" type="text/css" href="assets/css/c_index.css"/>
+        <title>سیستم رزرو نوبت دکتر</title>
+        <link rel="shortcut icon" type="image/png" href="assets/pics/icon.png"/>
     </header>
     <body class="body">
         <div class="container" >

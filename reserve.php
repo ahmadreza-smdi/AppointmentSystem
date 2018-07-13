@@ -26,7 +26,8 @@
     <meta charset="UTF-8" />
     <meta http-equiv="content-language" content="fa-IR">
     <!-- <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">  -->
-    <title>رزرو نوبت دکتر</title>
+    <title>رزرو نوبت</title>
+    <link rel="shortcut icon" type="image/png" href="assets/pics/icon.png"/>
     <link rel="stylesheet" type="text/css" href="assets/css/c_reserve.css"/>
     <style>
         #customers {

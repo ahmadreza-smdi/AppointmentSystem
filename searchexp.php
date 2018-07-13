@@ -9,7 +9,8 @@
 
 <head>
     <meta charset="UTF-8" />
-    <title> جستجوی ‍پزشکان </title>
+    <title>جستجوی پزشکان</title>
+    <link rel="shortcut icon" type="image/png" href="assets/pics/icon.png"/>
     <?php
     include_once("css_links.php");
     include_once("js_links.php");
