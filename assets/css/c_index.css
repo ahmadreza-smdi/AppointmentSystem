@@ -29,7 +29,6 @@
 .reserve{
     background-image: url("../pics/reserve.jpg");
     background-size: cover;
-    background-attachment: scroll;
     background-repeat: no-repeat;
     background-position: center;
     opacity: 0.9;
