@@ -45,7 +45,7 @@ function getExpertises(){
 
 function getCliniksCities(){
     $conn = db_connect();
-    $sql = "SELECT city_name FROM cliniks inner join cities on cliniks.city_id = cities.id";
+    $sql = "SELECT cities.id AS city_id ,city_name FROM cliniks inner join cities on cliniks.city_id = cities.id";
     $result = $conn->query($sql);
     $out=Array();
     $index=0;
@@ -56,12 +56,12 @@ function getCliniksCities(){
     return $out;
 }
 
-function selectDoctor($exp_id,$city_name,$insurance_id=0){
+function selectDoctor($exp_id,$city_id,$insurance_id=0){
     $conn = db_connect();
     if($insurance_id){
-        $sql = "select doctors.id,doctors.identity,doctors.name,doctors.address,doctors.phone from doctors INNER JOIN cliniks_doctors INNER JOIN cliniks INNER JOIN cities INNER JOIN doctors_insurances ON (doctors.id = cliniks_doctors.doctor_id AND cliniks_doctors.clinik_id = cliniks.id AND cliniks.city_id = cities.id AND doctors_insurances.doctor_id = doctors.id ) where expertise_id='".$exp_id."' AND cities.city_name='".$city_name."' AND doctors_insurances.insurance_id ='".$insurance_id."'";
+        $sql = "select doctors.id,doctors.identity,doctors.name,doctors.address,doctors.phone from doctors INNER JOIN cliniks_doctors INNER JOIN cliniks INNER JOIN doctors_insurances ON (doctors.id = cliniks_doctors.doctor_id AND cliniks_doctors.clinik_id = cliniks.id AND doctors_insurances.doctor_id = doctors.id ) where expertise_id='".$exp_id."' AND cliniks.city_id='".$city_id."' AND doctors_insurances.insurance_id ='".$insurance_id."'";
     }else{
-        $sql = "select doctors.id,doctors.identity,doctors.name,doctors.address,doctors.phone from doctors INNER JOIN cliniks_doctors INNER JOIN cliniks INNER JOIN cities ON (doctors.id = cliniks_doctors.doctor_id AND cliniks_doctors.clinik_id = cliniks.id AND cliniks.city_id = cities.id) where expertise_id='".$exp_id."' AND cities.city_name ='".$city_name."'";
+        $sql = "select doctors.id,doctors.identity,doctors.name,doctors.address,doctors.phone from doctors INNER JOIN cliniks_doctors INNER JOIN cliniks ON (doctors.id = cliniks_doctors.doctor_id AND cliniks_doctors.clinik_id = cliniks.id ) where expertise_id='".$exp_id."' AND cliniks.city_id ='".$city_id."'";
     }
     
     $result = $conn->query($sql);  

@@ -2,15 +2,15 @@
     session_start();
     require_once('functions.php');
     
-    if(isset($_REQUEST['exp_id']) && isset($_REQUEST['city_name'])){
+    if(isset($_REQUEST['exp_id']) && isset($_REQUEST['city_id'])){
         $exp_id = $_REQUEST['exp_id'];
-        $city_name = $_REQUEST['city_name'];
+        $city_id = $_REQUEST['city_id'];
         $insurance_id = $_REQUEST['insurance_id'];
         if ($insurance_id) {
-            $doctors = selectDoctor($exp_id,$city_name,$insurance_id);
+            $doctors = selectDoctor($exp_id,$city_id,$insurance_id);
         }
         else{
-            $doctors = selectDoctor($exp_id,$city_name);
+            $doctors = selectDoctor($exp_id,$city_id);
         }
     }
     else{

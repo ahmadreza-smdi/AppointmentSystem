@@ -37,25 +37,25 @@
             }
             else document.getElementById('exp_id').value = findId;
 
-            let findCity = false;
+            let findCityId = false;
             for(let i=0; citiesArray.length>i; i++)
-                if(cityInp === citiesArray[i])
-                    findCity=citiesArray[i];
-            if(findCity===false){
+                if(cityInp === citiesArray[i]["city_name"])
+                    findCityId=citiesArray[i]["city_id"];
+            if(findCityId===false){
                 alert("شهر مورد نظر یافت نشد!");
                 return false;
             }
-            else document.getElementById('city_name').value = findCity;
+            else document.getElementById('city_id').value = findCityId;
             if( document.getElementById('txt_insurance').value ){
-                let findInsurance = false;
+                let findInsuranceId = false;
                 for(let i=0; insurancesArray.length>i; i++)
                     if(insuranceInp === insurancesArray[i]["insurance_name"])
-                        findInsurance=insurancesArray[i]["id"];
-                if(findInsurance===false){
+                        findInsuranceId=insurancesArray[i]["id"];
+                if(findInsuranceId===false){
                     alert("نام بیمه مورد نظر یافت نشد!");
                     return false;
                 }
-                else document.getElementById('insurance_id').value = findInsurance;
+                else document.getElementById('insurance_id').value = findInsuranceId;
             }
         }
     </script>
