@@ -224,7 +224,7 @@ function getPatientAllReserves($patientId){
 
 function getNewestDoctors(){
     $conn = db_connect();
-    $sql_newst_doctors = "SELECT doctors.id,doctors.name,doctors.address,doctors.phone FROM doctors ORDER BY id DESC";
+    $sql_newst_doctors = "SELECT * FROM doctors ORDER BY id DESC";
     $result = $conn->query($sql_newst_doctors);
     if($result===false) return false;
     $out = Array();
@@ -237,7 +237,7 @@ function getNewestDoctors(){
 
 function getMostPopularDoctors(){
     $conn = db_connect();
-    $sql_mostـpopular_doctors = "SELECT doctors_comments.doctor_id as id, AVG(doctors_comments.comment_score) as avg_score,doctors.name,doctors.address,doctors.phone FROM doctors_comments INNER JOIN doctors ON doctors_comments.doctor_id = doctors.id GROUP BY doctors_comments.doctor_id ORDER BY avg_score DESC";
+    $sql_mostـpopular_doctors = "SELECT doctors_comments.doctor_id as id, AVG(doctors_comments.comment_score) as avg_score,doctors.name,doctors.address,doctors.phone,doctors.identity FROM doctors_comments INNER JOIN doctors ON doctors_comments.doctor_id = doctors.id GROUP BY doctors_comments.doctor_id ORDER BY avg_score DESC";
     $result = $conn->query($sql_mostـpopular_doctors);
     if($result===false) return false;
     $out = Array();

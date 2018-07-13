@@ -137,7 +137,7 @@
 
 <body style="direction: rtl;">
 
-    <div class="container1" style="height: " >
+    <div class="container1">
         <?php
         include_once("navbar.php");
         ?>
