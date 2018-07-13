@@ -186,9 +186,10 @@ function getDoctorFreeTimes($doctorId, $date){
     $conn->close();
     return $out;
 }
-function getAllComments(){
+function getAllDoctorComments($doctorId){
     $conn = db_connect();
-    $sql = "select * from doctors_comments inner join patients on doctors_comments.patient_id =patients.id ";
+    $sql = "SELECT * FROM doctors_comments INNER JOIN patients ON doctors_comments.patient_id = patients.id "
+            . "WHERE doctors_comments.doctor_id = '$doctorId'";
     $result = $conn->query($sql);  
     if($result===false) return false;
     
