@@ -338,6 +338,26 @@ function getDoctorDisableTimeSlots($dbDate, $doctorId){
     return $out;    
 }
 
+function getDoctorReservedTimeSlots($dbDate, $doctorId){
+    $conn = db_connect();
+    echo 'sdrwfcwrververv<br>wrcfwedfcwefcwfe<br>';
+    $sql = "SELECT free_times.time_slot_id"
+            . " FROM reserves INNER JOIN free_times ON reserves.free_time_id = free_times.id"
+            . " WHERE free_times.doctor_id='$doctorId' AND free_times.date='$dbDate'";
+    
+    $result = $conn->query($sql);
+    if($result===false) return false;
+    
+    $out = Array();
+    $index = 0;
+    while ($row = mysqli_fetch_array($result)){
+        echo $row['time_slot_id'].'<br>';
+        $out[$index++] = $row['time_slot_id'];
+    }
+    $conn->close();
+    return $out;    
+}
+
 function getDbDateFromJdateStr($jdateStr){
     $pieces = explode("/", $jdateStr);
     if(strlen($pieces[0]) == 2) $year = '13' . $pieces[0];

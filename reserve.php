@@ -43,8 +43,8 @@
         }
 
         #customers tr:nth-child(even){background-color: #f2f2f2;}
-
-        #customers tr:hover {background-color: #ddd;}
+        #customers tr {background-color: #ccc;}
+        #customers tr:hover {background-color: #aaa;}
 
         #customers th {
             padding-top: 12px;
