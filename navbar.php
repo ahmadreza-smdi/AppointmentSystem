@@ -1,7 +1,7 @@
 <?php
     require_once("functions.php");
 ?>
-<nav class="navbar navbar-default" style="background-color:#7c84e8; z-index: 9999">
+<nav class="navbar navbar-default" style="background-color:#ad1457; z-index: 9999">
     <div class="container-fluid" style="padding-right: 10%; padding-left: 10%; margin-right: auto; margin-left: auto; margin-top: 5px; margin-bottom: 5px; z-index: 9999">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
@@ -30,7 +30,7 @@
         <?php
             }else{?>
             <ul class="nav navbar-nav navbar-right">
-                <li><a style="color: brown; font-family:Font_I; font-size: 25px;font-family:Font_I; font-size: 25px;" href="logic.php?job=session_des">خروج</a></li>
+                <li><a style="color: white; font-family:Font_I; font-size: 25px;font-family:Font_I; font-size: 25px;" href="logic.php?job=session_des">خروج</a></li>
             </ul>
            <?php }
         ?>
@@ -38,10 +38,10 @@
             if(isset($_SESSION['type']) && $_SESSION['type']=='patient'){
         ?>
         <ul class="nav navbar-nav navbar-right">
-            <li><a style="color: brown; font-family:Font_I; font-size: 25px;" href="patient_panel.php">پنل کاربری</a></li>
+            <li><a style="color: white; font-family:Font_I; font-size: 25px;" href="patient_panel.php">پنل کاربری</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
-            <li><a style="color: brown; font-family:Font_I; font-size: 25px;" href="searchexp.php">رزرو وقت دکتر</a></li>
+            <li><a style="color: white; font-family:Font_I; font-size: 25px;" href="searchexp.php">رزرو وقت دکتر</a></li>
         </ul>
 
         <div class="btn btn-default" style="margin-top: 8px;float: left">

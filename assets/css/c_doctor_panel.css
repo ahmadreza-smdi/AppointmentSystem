@@ -58,9 +58,10 @@
 }
 
 .find_box_content{
-    background-image: url("../pics/background.jpg");
+    /*background-image: url("../pics/background.jpg");*/
     /*background-size: 100%;*/
     background-size: 50%;
+    background-color: #455a64;
     width: 50%;
     padding: 0px;
     /*position: relative;*/
@@ -68,12 +69,12 @@
     /*margin-top: -50px;*/
     /*margin-right: 150px;*/
     /*background-color: blanchedalmond;*/
-    height: 1400px;
+    height: 1600px;
     /*background-attachment: fixed;*/
     /*background-position: top;*/
     width: 50%;
     /*display:inline-block;*/
-    margin-top: -190px;
+    margin-top: -140px;
     text-align: center;
     /*position: relative;*/
     /*float: left;*/
@@ -115,13 +116,13 @@
 /*...*/
 
 .pic_find{
-    background-color: blanchedalmond;
-    height: 1400px;
+    background-color: #546e7a;
+    height: 1590px;
     /*background-attachment: fixed;*/
     /*background-position: top;*/
     width: 50%;
     /*display:inline-block;*/
-    margin-top: -190px;
+    margin-top: -130px;
     text-align: center;
     /*position: relative;*/
     /*float: left;*/
@@ -169,21 +170,25 @@
     margin-right: 5%;
 }
 .b_4{
-    text-align: center;
+    display: flex;
+    /*flex-direction: column;*/
+    justify-content: center;
+    /*text-align: center;*/
     height: 45px;
     width: 40%;
-    border-style: dashed;
-    border-top-right-radius: 50px;
-    border-bottom-right-radius: 50px;
-    border-bottom-left-radius: 50px;
+    /*border-style: dashed;*/
+    /*border-top-right-radius: 50px;*/
+    /*border-bottom-right-radius: 50px;*/
+    border-radius: 15px;
     margin-top: 150px;
     margin-right: auto;
-    background-color: gold;
+    background-color: #004d40;
     margin-bottom: 20px;
     font-size: 20px;
     font-weight: bold;
 }
 .b_4 span {
+    color: white;
     float: none;
     padding-top: 5px;
 }
@@ -208,13 +213,30 @@
     padding-right: 15px;
     border-radius:20px;
     font-size: 20px;
-    margin-top: 10px ;
+    margin-top: -25px ;
     float: right;
     margin-right: 300px;
     width: 50%;
     height: 40px;
 }
-
+.b_2_p_{
+    font-family: 'B Nazanin';
+    text-align:right ;
+    padding:5px;
+    padding-right: 15px;
+    border-radius:20px;
+    font-size: 20px;
+    margin-top: 5px ;
+    float: right;
+    margin-right: 300px;
+    width: 50%;
+    height: 40px;
+}
+.pcalBtn{
+    float: right;
+    margin-top: -27px!important;
+    margin-right: 262px!important;
+}
 .cbutton{
     font-family: 'B Nazanin';
     text-align:center;
@@ -226,6 +248,8 @@
     margin-right: auto;
     width: 30%;
     height: 40px;
+    background-color: #004d40;
+    color: white;
 }
 
 .b_2{
@@ -253,7 +277,9 @@
 .clear{
     clear: both;
 }
-
+.ptitr{
+    margin-top: 0px !important;
+}
 .patient_table{
     margin-top: 10px;
     padding-top: 50px;

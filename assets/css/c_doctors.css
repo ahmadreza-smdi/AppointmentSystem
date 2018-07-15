@@ -4,7 +4,7 @@
     url('../fonts/Lalezar-Regular.woff');
 }
 .body{
-    font-family:Font_I;
+    font-family: 'B Nazanin';
     background-image: url("../pics/background.jpg");
     background-size: 50%;
     position: relative;
@@ -83,7 +83,7 @@ border-radius: 50px;
 /*...*/
 
 .pic_find{
-background-color: blanchedalmond;
+background-color: #546e7a;
 height: 500px;
 /*background-attachment: fixed;*/
 /*background-position: top;*/
@@ -205,6 +205,7 @@ padding-top: 5px;
 margin-right: 5%;
 }
 .b_4{
+    font-family: 'B Nazanin';
 text-align: center;
 height: 45px;
 width: 200px;
@@ -237,6 +238,7 @@ width: 5%;
 height: 40px;
 }
 .b_2{
+    font-family: 'B Nazanin';
 padding-right: 15px;
 border-radius:20px;
 font-size: 20px;
@@ -252,6 +254,7 @@ width: 80%;
 height: 40px;
 }
 .b_1 p{
+    font-family: 'B Nazanin';
 font-size: 20px;
 color: white;
 text-align: center;
@@ -271,36 +274,36 @@ background-color: darkgray;
 width: 100%;
 }
 
-/*.find_box_content{*/
-    /*background-size: 100%;*/
-    /*width: 20%;*/
-    /*padding: 0px;*/
-    /*position: relative;*/
-    /*!*float: right;*!*/
-    /*!*margin-top: -50px;*!*/
-    /*margin-right: 150px;*/
-/*}*/
+.find_box_content{
+    background-size: 100%;
+    width: 20%;
+    padding: 0px;
+    position: relative;
+    /*float: right;*/
+    /*margin-top: -50px;*/
+    margin-right: 150px;
+}
 #customers{
 /*float: right;*/
 margin-right: 15%;
 }
 
-/*.comments{*/
-/*padding-right: 15px;*/
-/*border-radius:20px;*/
-/*font-size: 20px;*/
-/*border-style: solid;*/
-/*border-color: white;*/
-/*background-color: antiquewhite;*/
-/*display: block;*/
+.comments{
+padding-right: 15px;
+border-radius:20px;
+font-size: 20px;
+border-style: solid;
+border-color: white;
+background-color: antiquewhite;
+display: block;
 
-/*!*margin-top: 50px ;*!*/
-/*float: right;*/
-/*margin-right: 150px;*/
-/*width: 80%;*/
-/*height: 100%;*/
-/*display: inline-block;*/
-/*}*/
+/*margin-top: 50px ;*/
+float: right;
+margin-right: 150px;
+width: 80%;
+height: 100%;
+display: inline-block;
+}
 /*.get_comments{*/
 
 /*}*/

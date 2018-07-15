@@ -16,7 +16,7 @@ a.pcalBtn {
 	display: inline-block;
 	background-image: url( "pcal.png" );
 	background-repeat: no-repeat;
-	margin: 0 1px;
+	/* margin: 0 1px; */
 }
 
 a.pcalBtn:hover {

@@ -178,7 +178,7 @@
                                 </div>
                                 <div class="b_1">
                                     <p for="password" class="ptitr">تایید رمز عبور</p>
-                                    <input class="b_2_p" type="password" id="password_conf" name="password_conf">
+                                    <input class="b_2_p_" type="password" id="password_conf" name="password_conf">
                                 </div>
                             </div>
                             <div class="submit">
@@ -194,7 +194,7 @@
                         <br>
                         <div class="b_1">
                             <p for="phone" class="ptitr">کلینیک: </p>
-                            <div class="b_2" style="padding:5px; height:100px;margin-top: 20px ; border-style: solid; border-color: gold; background-color:#f2f2f2 ">
+                            <div class="b_2" style="font-size:15px; padding:5px; height:100px;margin-top: 20px ; border-style: solid; border-color: gold; background-color:#f2f2f2 ">
                                 <?php
                                 $clinik = getDoctorClinik($doctor['id']);
                                 if(($clinik!=false)){
@@ -248,7 +248,7 @@
 
             <div id="doctor_disable_times" style="width: 70%; margin: auto;">
                 <form method="post">
-                    <p class="ptable" style="font-family: 'B Nazanin'; margin-top: 280px; font-size: 25px; font-weight: bold;">زمان های فعال</p>
+                    <p class="ptable" style="margin-bottom:20px;color:white; font-family: 'B Nazanin'; margin-top: 280px; font-size: 25px; font-weight: bold;">زمان های فعال</p>
                     <table class="customers">
                         <tr>
                         <th>تاریخ</th>
@@ -281,7 +281,7 @@
 
             <div id="doctor_enable_times" style="width: 70%; margin: auto;">
                 <form method="post">
-                    <p style="font-family: 'B Nazanin'; margin-top: 5%; font-size: 25px; font-weight: bold;">زمان های غیرفعال</p>
+                    <p style="margin-bottom:20px;color:white;font-family: 'B Nazanin'; margin-top: 5%; font-size: 25px; font-weight: bold;">زمان های غیرفعال</p>
                     <table class="customers">
                         <tr>
                         <th>تاریخ</th>
@@ -307,7 +307,7 @@
                         ?>
                     </table>
 
-                    <input type="submit" value="ثبت" name="submit_delfree"
+                    <input  type="submit" value="ثبت" name="submit_delfree"
                            class="cbutton" onclick="return delFree();">
                 </form>
             </div>
