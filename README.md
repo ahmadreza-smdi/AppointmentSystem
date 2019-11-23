@@ -1,8 +1,5 @@
 # Appointment System
-## For Doctor's Office Appointment System
-
-This project represents the appointment system implementation for the
-**University of Kashan Software Engineering course** of *2018*.
+In this project, we implemented a doctor's office appointment system.
 
 The contributors to this project are as listed.
 
